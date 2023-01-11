@@ -3,7 +3,6 @@ const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
 const router = require("./router");
-const { verifyToken } = require("../auth");
 
 const app = express();
 
@@ -23,11 +22,8 @@ app.use(express.static(path.join(__dirname, "../public")));
 // Serve REACT APP
 app.use(express.static(path.join(__dirname, "..", "..", "frontend", "dist")));
 
-// API public routes
-app.use("/api/", router);
-
-// API private routes
-app.use(verifyToken);
+// API routes
+app.use(router);
 
 // Redirect all requests to the REACT app
 const reactIndexFile = path.join(
