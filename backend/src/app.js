@@ -4,6 +4,7 @@ const path = require("path");
 const cors = require("cors");
 const router = require("./router");
 const { verifyToken } = require("../auth");
+const privateRouter = require("./private.routes");
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use("/api/", router);
 
 // API private routes
 app.use(verifyToken);
+app.use("/private", privateRouter);
 
 // Redirect all requests to the REACT app
 const reactIndexFile = path.join(
