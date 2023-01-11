@@ -5,7 +5,7 @@ function Login() {
   const [email, setemail] = useState("");
 
   return (
-    <div className="bg-[#391397]">
+    <div className="bg-[#391397] width content">
       <form>
         <div className="mb-6">
           <label
