@@ -1,15 +1,16 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/no-array-index-key */
 
 import { Link } from "react-router-dom";
 
 const navigation = {
   main: [
-    { name: "About", href: "#" },
-    { name: "Jobs", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Accessibility", href: "#" },
-    { name: "You want to be a partner ?", href: "#" },
+    { name: "About", href: "/", id: 10 },
+    { name: "Jobs", href: "/", id: 20 },
+    { name: "Press", href: "/", id: 30 },
+    { name: "Accessibility", href: "/", id: 40 },
+    { name: "You want to be a partner ?", href: "/", id: 50 },
   ],
   social: [
     {
@@ -70,11 +71,16 @@ export default function Footer() {
           ))}
         </nav>
         <div className="mt-8 flex justify-center space-x-6">
-          {navigation.social.map((item) => (
-            <Link to={item.href} className="text-gray-400 hover:text-gray-500">
-              <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
-            </Link>
+          {navigation.social.map((item, index) => (
+            <div key={index}>
+              <Link
+                to={item.href}
+                className="text-gray-400 hover:text-gray-500"
+              >
+                <span className="sr-only">{item.name}</span>
+                <item.icon className="h-6 w-6" aria-hidden="true" />
+              </Link>
+            </div>
           ))}
         </div>
         <p className="mt-8 text-center font-light text-sm text-gray-400">
