@@ -96,6 +96,7 @@ CREATE TABLE
         `birthday` date NOT NULL,
         `city` varchar(100) NOT NULL,
         `email` varchar(255) NOT NULL,
+        `isAdmin` TINYINT(1),
         `hashedPassword` varchar(255) NOT NULL,
         PRIMARY KEY (`id`),
         UNIQUE INDEX `Mail`(`email`)
@@ -109,15 +110,26 @@ INSERT INTO
         birthday,
         city,
         email,
+        isAdmin,
         hashedPassword
     )
 VALUES (
+        "12564345678",
+        "Admin",
+        "Admin",
+        "2000-01-01",
+        "Toulouse",
+        "root@root.com",
+        1,
+        "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
+    ), (
         "12345678",
         "Bonno",
         "Ben",
         "2009-11-12",
         "Toulouse",
         "ben@mail.com",
+        0,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "123456348",
@@ -126,6 +138,7 @@ VALUES (
         "2006-12-12",
         "Clermont-Ferrand",
         "leonidas@wcs.com",
+        0,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "1234098098",
@@ -134,6 +147,7 @@ VALUES (
         "2009-12-12",
         "Paris",
         "chathechat@wcs.com",
+        0,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "128907678",
@@ -142,6 +156,7 @@ VALUES (
         "2008-12-12",
         "Paris",
         "thefaz@wcs.com",
+        0,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "127635678",
@@ -150,6 +165,7 @@ VALUES (
         "2000-12-12",
         "Toulouse",
         "ldc@wcs.com",
+        0,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "1238098678",
@@ -158,6 +174,7 @@ VALUES (
         "2007-09-12",
         "Clermont-Ferrand",
         "gigi@wcs.com",
+        0,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "12309878",
@@ -166,6 +183,7 @@ VALUES (
         "2007-12-23",
         "Paris",
         "jogrls@wcs.com",
+        0,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "198745678",
@@ -174,6 +192,7 @@ VALUES (
         "2009-09-12",
         "Toulouse",
         "ben@wcs.com",
+        0,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "12367878",
@@ -182,6 +201,7 @@ VALUES (
         "2004-07-12",
         "Paris",
         "potus@wcs.com",
+        0,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "98345678",
@@ -190,6 +210,7 @@ VALUES (
         "2001-06-12",
         "Clermont-Ferrand",
         "themanu@wcs.com",
+        0,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     );
 
@@ -202,10 +223,13 @@ CREATE TABLE
         `year` int NOT NULL,
         `color` varchar(45) NOT NULL,
         `seats` int NOT NULL,
+        `mileage` INT NOT NULL,
         `city` varchar(100) NOT NULL,
         `price` int NOT NULL,
         `id_owner` int NOT NULL,
-        `isAvailable` tinyint(1) NOT NULL,
+        `isAvailable` TINYINT(1) NOT NULL,
+        `maintenanceStartDate` DATE,
+        `maintenanceEndDate` DATE,
         `isValidate` tinyint(1) NOT NULL,
         `insuranceCompany` varchar(45) NOT NULL,
         `insuranceNumber` varchar(45) NOT NULL,
@@ -221,6 +245,7 @@ INSERT INTO
         year,
         color,
         seats,
+        mileage,
         city,
         price,
         id_owner,
@@ -237,6 +262,7 @@ VALUES (
         "2021",
         "gris",
         2,
+        10255,
         "Toulouse",
         5,
         2,
@@ -252,6 +278,7 @@ VALUES (
         "2022",
         "blanc",
         2,
+        4568,
         "Paris",
         5,
         4,
@@ -267,6 +294,7 @@ VALUES (
         "2022",
         "rouge",
         2,
+        6874,
         "Toulouse",
         8,
         1,
@@ -282,6 +310,7 @@ VALUES (
         "2022",
         "vert",
         1,
+        6854,
         "Paris",
         50,
         4,
@@ -297,6 +326,7 @@ VALUES (
         "2021",
         "gris",
         2,
+        564,
         "Clermont-Ferrand",
         4,
         3,
@@ -312,6 +342,7 @@ VALUES (
         "2019",
         "bleu",
         2,
+        86,
         "Paris",
         4,
         4,
@@ -327,6 +358,7 @@ VALUES (
         "2022",
         "jaune",
         2,
+        6874,
         "Toulouse",
         7,
         2,
@@ -342,6 +374,7 @@ VALUES (
         "2021",
         "vert",
         2,
+        687,
         "Toulouse",
         15,
         1,
@@ -357,6 +390,7 @@ VALUES (
         "2021",
         "blanc",
         2,
+        6857,
         "Toulouse",
         12,
         3,
@@ -372,6 +406,7 @@ VALUES (
         "2022",
         "rouge",
         2,
+        687,
         "Paris",
         5,
         4,
