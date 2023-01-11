@@ -1,23 +1,15 @@
 const models = require("../models");
 
-const addVehicle = (req, res) => {
-  const user = req.body;
-  models.user
-    .addUser(user)
-    .then(([result]) => {
-      res.location(`/user/${result.insertId}`).sendStatus(201);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.sendStatus(500);
-    });
-};
-
 const getAllVehicles = (req, res) => {
   models.vehicule
     .findVehicle()
     .then(([result]) => {
-      res.send(result);
+      const reservation = req.body.resa;
+      const vehicles = result.map((element) => {
+        const element2 = reservation.find((i) => i.id_vehicule === element.id);
+        return { ...element, ...element2 };
+      });
+      res.status(200).json(vehicles);
     })
     .catch((err) => {
       console.error(err);
@@ -26,6 +18,5 @@ const getAllVehicles = (req, res) => {
 };
 
 module.exports = {
-  addVehicle,
   getAllVehicles,
 };
