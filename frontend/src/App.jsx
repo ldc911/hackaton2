@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="h-screen w-screen flex flex-col items-center">
       <Router>
-      <Header />
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/rent" element={<Rent />} />
