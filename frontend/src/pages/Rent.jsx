@@ -1,11 +1,14 @@
 import { Fragment, useState } from "react";
+// eslint-disable-next-line import/no-unresolved
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
+// eslint-disable-next-line import/no-unresolved
 import { XIcon } from "@heroicons/react/outline";
 import {
   ChevronDownIcon,
   FilterIcon,
   MinusSmIcon,
   PlusSmIcon,
+  // eslint-disable-next-line import/no-unresolved
 } from "@heroicons/react/solid";
 
 const sortOptions = [
