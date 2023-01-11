@@ -1,19 +1,40 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const { VITE_BACKEND_URL } = import.meta.env;
 
 function Register() {
-  //   const navigate = useNavigate();
-
-  //   const { VITE_BACKEND_URL } = import.meta.env;
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
+  const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
   const [phone, setPhone] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    axios
+      .post(
+        `${VITE_BACKEND_URL}/users`,
+        {
+          email,
+          password,
+          firstname,
+          lastname,
+          phone,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(function handleResponse() {
+        navigate("/login");
+      });
   };
 
   const btn =
@@ -21,7 +42,7 @@ function Register() {
     phone.length !== 10 ||
     password === "" ||
     password !== confirmPassword ||
-    firstName === "" ||
+    firstname === "" ||
     lastname === "" ? (
       <button
         type="submit"
@@ -40,7 +61,7 @@ function Register() {
     );
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen ">
+    <div className="width content flex flex-col items-center justify-center ">
       <form onSubmit={handleSubmit}>
         <div className="">
           <div className="relative z-0 mb-6 w-full group">
@@ -66,7 +87,7 @@ function Register() {
               type="text"
               name="floating_first_name"
               id="first_name"
-              value={firstName}
+              value={firstname}
               onChange={(e) => setFirstName(e.target.value)}
               className="block py-2.5 px-0  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
