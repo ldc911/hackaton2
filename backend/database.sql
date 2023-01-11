@@ -5,10 +5,9 @@ CREATE TABLE
         `email` varchar(255) NOT NULL,
         `city` varchar(100) NOT NULL,
         `hashedPassword` varchar(255) NOT NULL,
-        PRIMARY KEY (`id`)
-
+        PRIMARY KEY (`id`),
+        UNIQUE INDEX `Mail`(`email`)
     );
-
 
 INSERT INTO
     owner (
@@ -98,8 +97,8 @@ CREATE TABLE
         `city` varchar(100) NOT NULL,
         `email` varchar(255) NOT NULL,
         `hashedPassword` varchar(255) NOT NULL,
-        PRIMARY KEY (`id`)
-
+        PRIMARY KEY (`id`),
+        UNIQUE INDEX `Mail`(`email`)
     );
 
 INSERT INTO
