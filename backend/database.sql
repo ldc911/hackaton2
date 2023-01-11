@@ -8,6 +8,7 @@ CREATE TABLE
         PRIMARY KEY (`id`)
     );
 
+
 INSERT INTO
     owner (
         company,
