@@ -10,15 +10,8 @@ CREATE TABLE `reservation`  (
   `id` int NOT NULL AUTO_INCREMENT,
   `id_vehicule` int NOT NULL,
   `id_user` int NOT NULL,
-  `id_owner` int NOT NULL,
-  `rentStart` datetime NOT NULL,
-  `rentEnd` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-);
-
-CREATE TABLE `type`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
+  `rentStart` date NOT NULL,
+  `rentEnd` date NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -53,6 +46,5 @@ CREATE TABLE `vehicule`  (
 
 ALTER TABLE `reservation` ADD CONSTRAINT `idVehicule` FOREIGN KEY (`id_vehicule`) REFERENCES `vehicule` (`id`) ON DELETE CASCADE;
 ALTER TABLE `reservation` ADD CONSTRAINT `idUser` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE;
-ALTER TABLE `reservation` ADD CONSTRAINT `idOwnerReservation` FOREIGN KEY (`id_owner`) REFERENCES `owner` (`id`) ON DELETE CASCADE;
 ALTER TABLE `vehicule` ADD CONSTRAINT `idOwnerVehicule` FOREIGN KEY (`id_owner`) REFERENCES `owner` (`id`) ON DELETE CASCADE;
 
