@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
 const router = require("./router");
-const verifyToken = require("../auth");
+const { verifyToken } = require("../auth");
 
 const app = express();
 
