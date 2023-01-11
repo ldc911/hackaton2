@@ -6,6 +6,8 @@ CREATE TABLE
         `city` varchar(100) NOT NULL,
         `hashedPassword` varchar(255) NOT NULL,
         PRIMARY KEY (`id`)
+        UNIQUE INDEX `Mail`(`email`),
+
     );
 
 
@@ -98,6 +100,8 @@ CREATE TABLE
         `email` varchar(255) NOT NULL,
         `hashedPassword` varchar(255) NOT NULL,
         PRIMARY KEY (`id`)
+        UNIQUE INDEX `Mail`(`email`),
+
     );
 
 INSERT INTO
@@ -116,7 +120,7 @@ VALUES (
         "Ben",
         "2009-11-12",
         "Toulouse",
-        "ben@wcs.com",
+        "ben@mail.com",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "123456348",
