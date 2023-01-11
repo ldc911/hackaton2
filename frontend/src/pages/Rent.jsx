@@ -1,4 +1,6 @@
-
+/* eslint-disable no-undef */
+/* eslint-disable react/jsx-no-undef */
+/* eslint-disable no-unused-vars */
 function Rent() {
   return (
     <div>
