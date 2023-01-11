@@ -6,7 +6,6 @@ CREATE TABLE
         `city` varchar(100) NOT NULL,
         `hashedPassword` varchar(255) NOT NULL,
         PRIMARY KEY (`id`)
-        UNIQUE INDEX `Mail`(`email`),
 
     );
 
@@ -100,7 +99,6 @@ CREATE TABLE
         `email` varchar(255) NOT NULL,
         `hashedPassword` varchar(255) NOT NULL,
         PRIMARY KEY (`id`)
-        UNIQUE INDEX `Mail`(`email`),
 
     );
 
