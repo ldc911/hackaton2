@@ -12,7 +12,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`${VITE_BACKEND_URL}/login`, {
+      .post(`${VITE_BACKEND_URL}/api/login`, {
         email,
         password,
       })
