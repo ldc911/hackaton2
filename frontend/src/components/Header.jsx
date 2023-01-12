@@ -1,11 +1,25 @@
 /* eslint-disable import/no-unresolved */
 import { Link } from "react-router-dom";
-import { Fragment } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import logo from "@assets/logo.png";
 
 function Header() {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    window.location.replace("/login");
+  };
+
   return (
     <Popover className="relative bg-white width">
       <div className="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
@@ -34,18 +48,40 @@ function Header() {
           </Link>
         </Popover.Group>
         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-          <Link
-            to="/login"
-            className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
-          >
-            SIGN IN
-          </Link>
-          <Link
-            to="/register"
-            className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-          >
-            SIGN UP
-          </Link>
+          {user && (
+            <>
+              <Link
+                to="/profil"
+                className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
+              >
+                PROFILE
+              </Link>
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+              >
+                LOGOUT
+              </button>
+            </>
+          )}
+
+          {user == null && (
+            <>
+              <Link
+                to="/login"
+                className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
+              >
+                SIGN IN
+              </Link>
+              <Link
+                to="/register"
+                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+              >
+                SIGN UP
+              </Link>
+            </>
+          )}
         </div>
       </div>
       <Transition
