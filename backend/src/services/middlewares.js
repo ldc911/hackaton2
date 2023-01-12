@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+const md5 = require("md5");
+
 const models = require("../models");
 
 const getReservations = (req, res, next) => {
@@ -30,4 +33,24 @@ const getVehicleById = (req, res, next) => {
     });
 };
 
-module.exports = { getReservations, getVehicleById };
+const getUrlImageByEmail = (req, res, next) => {
+  const { email } = req.body;
+  const option = [
+    "mp", // cartoon-style
+    "identicon", // geometric pattern based
+    "wavatar", // generated faces
+    "monsterid", // generated 'monster'
+    "retro", // awesome generated, 8-bit
+    "robohash", // a generated robot
+  ];
+
+  const size = 200; // Size of images
+  const hash = md5(email.trim().toLowerCase());
+
+  req.body.profilePicture = `https://www.gravatar.com/avatar/$%7Bhash%7D?d=$%7B
+    option[Math.floor(Math.random() option.length + 1)]
+  }&s=${size}`;
+  next();
+};
+
+module.exports = { getReservations, getVehicleById, getUrlImageByEmail };
