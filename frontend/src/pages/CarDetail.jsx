@@ -26,7 +26,6 @@ export default function CardDetail() {
 
   useEffect(() => {
     const day = range[0].endDate.getDate() - range[0].startDate.getDate() + 1;
-
     if (dataCar.length !== 0) {
       setCarPrice(dataCar[0].price * day);
     }
