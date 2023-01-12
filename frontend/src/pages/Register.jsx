@@ -74,7 +74,7 @@ export default function Register() {
         <div>
           <div>
             <h3 className="text-lg leading-6 font-medium text-gray-900">
-              Profile
+              Profil
             </h3>
           </div>
 
@@ -110,7 +110,7 @@ export default function Register() {
                     onClick={handleClick}
                     className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    Change
+                    Téléversez votre photo
                   </button>
                 </div>
               </div>
@@ -121,10 +121,11 @@ export default function Register() {
         <div className="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
           <div>
             <h3 className="text-lg leading-6 font-medium text-gray-900">
-              Personal Information
+              Informations personnelles
             </h3>
             <p className="mt-1 max-w-2xl text-sm text-gray-500">
-              Use a permanent address where you can receive mail.
+              Utilisez une adresse e-mail qui vous permettra de valider votre
+              inscription.
             </p>
           </div>
           <div className="space-y-6 sm:space-y-5">
@@ -133,13 +134,14 @@ export default function Register() {
                 htmlFor="first-name"
                 className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
               >
-                First name
+                Prénom
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <input
                   type="text"
                   name="first-name"
                   id="first-name"
+                  placeholder="Prénom"
                   autoComplete="given-name"
                   onChange={(e) => setFirstName(e.target.value)}
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
@@ -153,13 +155,14 @@ export default function Register() {
                 htmlFor="last-name"
                 className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
               >
-                Last name
+                Nom
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <input
                   type="text"
                   name="last-name"
                   id="last-name"
+                  placeholder="Nom"
                   autoComplete="family-name"
                   onChange={(e) => setLastName(e.target.value)}
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
@@ -173,13 +176,14 @@ export default function Register() {
                 htmlFor="birthday"
                 className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
               >
-                Birthday (must be on YYYY-MM-DD format)
+                Date de naissance
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <input
                   type="text"
                   name="birthday"
                   id="birthday"
+                  placeholder="YYYY-MM-DD"
                   autoComplete="birthday"
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                   onChange={(e) => setBirthday(e.target.value)}
@@ -193,13 +197,14 @@ export default function Register() {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
               >
-                Email address
+                Adresse e-mail
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <input
                   id="email"
                   name="email"
                   type="email"
+                  placeholder="@"
                   autoComplete="email"
                   className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
                   onChange={(e) => setEmail(e.target.value)}
@@ -213,13 +218,14 @@ export default function Register() {
                 htmlFor="city"
                 className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
               >
-                City
+                Ville
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <input
                   type="text"
                   name="city"
                   id="city"
+                  placeholder="Ville"
                   autoComplete="address-level2"
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                   onChange={(e) => setCity(e.target.value)}
@@ -233,13 +239,14 @@ export default function Register() {
                 htmlFor="drivingLicense"
                 className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
               >
-                Driving License Number
+                Numéro de permis
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <input
                   type="text"
                   name="drivingLicense"
                   id="drivingLicense"
+                  placeholder="263948576283"
                   autoComplete="driving-number"
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                   onChange={(e) => setDrivingLicense(e.target.value)}
@@ -253,13 +260,14 @@ export default function Register() {
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
               >
-                Password
+                Mot de passe
               </label>
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <input
                   type="password"
                   name="password"
                   id="password"
+                  placeholder="Mon mot de passe"
                   autoComplete="password"
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                   onChange={(e) => setPassword(e.target.value)}
@@ -278,6 +286,7 @@ export default function Register() {
                   type="password"
                   name="confirm-password"
                   id="confirm-password"
+                  placeholder="Encore mon mot de passe"
                   autoComplete="confirm-password"
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                   onChange={(e) => setConfirmPassword(e.target.value)}
@@ -296,13 +305,13 @@ export default function Register() {
             type="button"
             className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Cancel
+            Annuler
           </button>
           <button
             type="submit"
             className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Save
+            Enregistrement
           </button>
         </div>
       </div>

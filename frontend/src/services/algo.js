@@ -45,11 +45,8 @@ rent = object.map((obj) => {
   return { rentStart: obj.rentStart, rentEnd: obj.rentEnd };
 });
 
-rent;
 rent.map(
   (item) =>
     (item.rentStart = new Date(item.rentStart)) &&
     (item.rentEnd = new Date(item.rentEnd))
 );
-
-rent;
