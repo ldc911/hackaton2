@@ -11,5 +11,17 @@ class ReservationManager extends AbstractManager {
       INNER JOIN user ON  user.id = reservation.id_user`
     );
   }
+
+  addReservation(reservation) {
+    return this.connection.query(
+      `INSERT INTO ${this.table} (id_vehicule, id_user, rentStart, rentEnd) VALUES (?, ?, ?, ?)`,
+      [
+        reservation.id_vehicule,
+        reservation.id_loggedIn,
+        reservation.rentStart,
+        reservation.rentEnd,
+      ]
+    );
+  }
 }
 module.exports = ReservationManager;

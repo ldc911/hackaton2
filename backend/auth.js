@@ -81,11 +81,11 @@ const verifyPassword = (req, res, next) => {
     });
 };
 
-const getOwnerIdFromToker = (req, res, next) => {
+const getloggedInIdFromToken = (req, res, next) => {
   const authorization = req.get("Authorization");
   const [type, token] = authorization.split(" ");
   const payload = jwt.decode(token);
-  req.body.id_owner = payload.sub;
+  req.body.id_loggedIn = payload.sub;
   next();
 };
 
@@ -93,5 +93,5 @@ module.exports = {
   hashPassword,
   verifyToken,
   verifyPassword,
-  getOwnerIdFromToker,
+  getloggedInIdFromToken,
 };
