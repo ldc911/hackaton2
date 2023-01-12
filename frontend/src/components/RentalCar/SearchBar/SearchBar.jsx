@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import CarList from "../CarList/CarList";
 
+const { VITE_BACKEND_URL } = import.meta.env;
+
 export default function SearchBar() {
   const [dataCar, setDataCar] = useState([]);
   const [modelFilter, setModelFilter] = useState("");
@@ -14,7 +16,7 @@ export default function SearchBar() {
   const [manufacturerFilter, setManufacturerFilter] = useState("");
   const fetchMovies = () => {
     axios
-      .get("http://localhost:8000/private/vehicles")
+      .get(`${VITE_BACKEND_URL}/private/vehicles`)
       .then((res) => {
         setDataCar(res.data);
       })
