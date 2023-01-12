@@ -22,7 +22,7 @@
   border: thin solid gray;
 }
 .react-datetimerange-picker__inputGroup {
-  min-width: calc(4px + (4px * 3) +  0.54em * 6  +  0.217em * 2);
+  min-width: calc(4px + (4px * 3) + 0.54em * 6 + 0.217em * 2);
   height: 100%;
   flex-grow: 1;
   padding: 0 2px;
@@ -51,7 +51,7 @@
 }
 .react-datetimerange-picker__inputGroup__input--hasLeadingZero {
   margin-left: -0.54em;
-  padding-left: calc(1px +  0.54em);
+  padding-left: calc(1px + 0.54em);
 }
 .react-datetimerange-picker__inputGroup__amPm {
   font: inherit;
@@ -65,11 +65,14 @@
 .react-datetimerange-picker__button:enabled {
   cursor: pointer;
 }
-.react-datetimerange-picker__button:enabled:hover .react-datetimerange-picker__button__icon,
-.react-datetimerange-picker__button:enabled:focus .react-datetimerange-picker__button__icon {
+.react-datetimerange-picker__button:enabled:hover
+  .react-datetimerange-picker__button__icon,
+.react-datetimerange-picker__button:enabled:focus
+  .react-datetimerange-picker__button__icon {
   stroke: #0078d7;
 }
-.react-datetimerange-picker__button:disabled .react-datetimerange-picker__button__icon {
+.react-datetimerange-picker__button:disabled
+  .react-datetimerange-picker__button__icon {
   stroke: #6d6d6d;
 }
 .react-datetimerange-picker__button svg {
