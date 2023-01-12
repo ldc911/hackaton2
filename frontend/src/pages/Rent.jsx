@@ -8,6 +8,7 @@ import {
   MinusSmIcon,
   PlusSmIcon,
 } from "@heroicons/react/solid";
+import DatePicker from "@components/DatePicker";
 import axios from "axios";
 
 const { VITE_BACKEND_URL } = import.meta.env;
@@ -154,6 +155,9 @@ export default function Rent() {
 
               <form className="mt-4 border-t border-gray-200">
                 {/* FILTER FOR PHONE */}
+                <div className="mb-4">
+                  <DatePicker />
+                </div>
                 {filtersList.map((section) => (
                   <Disclosure
                     as="div"
@@ -182,6 +186,7 @@ export default function Rent() {
                             </span>
                           </Disclosure.Button>
                         </h3>
+
                         <Disclosure.Panel className="pt-6">
                           <div className="space-y-6">
                             {section.options.map((option, optionIdx) => (
@@ -341,6 +346,7 @@ export default function Rent() {
                   )}
                 </Disclosure>
               ))}
+              <DatePicker />
             </form>
             {/* Product grid */}
             <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:col-span-3 lg:gap-x-8">
