@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
@@ -72,12 +73,40 @@ const verifyPassword = (req, res, next) => {
             res.sendStatus(401);
           });
       } else {
-        throw new Error();
+        database
+          .query("SELECT * FROM owner WHERE EMAIL = ?", [email])
+          .then(([owner]) => {
+            if (owner[0] != null) {
+              const verifiedOwner = owner[0];
+              req.user = verifiedOwner;
+              argon2
+                .verify(req.user.hashedPassword, req.body.password)
+                .then((isVerified) => {
+                  if (isVerified) {
+                    const payload = { sub: req.user.id, isOwner: 1 };
+                    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+                      expiresIn: "2h",
+                    });
+                    delete req.user.hashedPassword;
+                    req.user.token = token;
+                    next();
+                  } else {
+                    res.status(401).send("Wrong password");
+                  }
+                })
+                .catch((error) => {
+                  console.error(error);
+                  res.sendStatus(401);
+                });
+            } else {
+              throw new Error();
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            res.sendStatus(500);
+          });
       }
-    })
-    .catch((error) => {
-      console.error(error);
-      res.sendStatus(500);
     });
 };
 
@@ -86,6 +115,7 @@ const getloggedInIdFromToken = (req, res, next) => {
   const [type, token] = authorization.split(" ");
   const payload = jwt.decode(token);
   req.body.id_loggedIn = payload.sub;
+  payload.isOwner ? (req.body.isOwner = 1) : (req.body.isOwner = 0);
   next();
 };
 
