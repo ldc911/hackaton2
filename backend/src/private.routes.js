@@ -2,15 +2,23 @@ const express = require("express");
 
 const router = express.Router();
 const vehicleControllers = require("./controllers/vehicleControllers");
+
 const middlewares = require("./services/middlewares");
 const auth = require("../auth");
 
+
+const userControllers = require("./controllers/userControllers");
+
+// cars routes
 // récupérer toutes les voitures
 router.get(
   "/vehicles",
   middlewares.getReservations,
   vehicleControllers.getAllVehicles
 );
+// users routes
+router.delete("/user/:id", userControllers.deleteUser);
+
 module.exports = router;
 
 // récupérer une seule voiture
