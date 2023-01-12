@@ -29,11 +29,15 @@
 //     setError("");
 //   };
 
-//   const formatPhoneNumber = (phoneNumber) => {
-//     return phoneNumber.replace(
-//       /(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/,
-//       "$1-$2-$3-$4-$5"
-//     );
+//   const handleChange = (e) => {
+//     const { value } = e.target;
+//     const phoneNumber = value.replace(/[^\d]/g, "").slice(0, 10);
+//     const formattedPhoneNumber = `${phoneNumber.slice(
+//       0,
+//       3
+//     )}-${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6)}`;
+//     setPhoneNumber(formattedPhoneNumber);
+//     onChange(formattedPhoneNumber);
 //   };
 
 //   // const navigate = useNavigate();
@@ -358,9 +362,7 @@
 //                   type="tel"
 //                   autoComplete="phone"
 //                   className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
-//                   onChange={(e) =>
-//                     setPhoneNumber(formatPhoneNumber(e.target.value))
-//                   }
+//                   onChange={handleChange}
 //                   required
 //                 />
 //               </div>
