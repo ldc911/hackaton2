@@ -23,7 +23,7 @@ export default function CardDetail() {
       key: "selection",
     },
   ]);
-  
+
   useEffect(() => {
     const day = range[0].endDate.getDate() - range[0].startDate.getDate() + 1;
 
