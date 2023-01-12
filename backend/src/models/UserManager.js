@@ -56,8 +56,8 @@ class UserManager extends AbstractManager {
       .then((result) => {
         return result;
       })
-      .catch(() => {
-        throw new Error("Error updating user");
+      .catch((err) => {
+        console.warn(err);
       });
   }
 
