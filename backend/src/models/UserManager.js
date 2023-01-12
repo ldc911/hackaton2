@@ -45,27 +45,25 @@ class UserManager extends AbstractManager {
 
   updateUser(user, id) {
     const {
-      userName,
-      firstName,
+      drivingLicenseNumber,
       lastName,
-      isOnline,
+      firstName,
+      birthday,
+      city,
       email,
-      profilePicture,
-      idCompany,
-      companyName,
+      isAdmin,
     } = user;
     return this.connection
       .query(
-        `update ${this.table} set userName=?,firstName=?,lastName=?,isOnline=?,email=?,profilePicture=?,id_company=?,companyName=? where id=?`,
+        `update ${this.table} set drivingLicenseNumber=?,lastName=?,firstName=?,birthday=?,city=?,email=?,isAdmin=? where id=?`,
         [
-          userName,
-          firstName,
+          drivingLicenseNumber,
           lastName,
-          isOnline,
+          firstName,
+          birthday,
+          city,
           email,
-          profilePicture,
-          idCompany,
-          companyName,
+          isAdmin,
           id,
         ]
       )

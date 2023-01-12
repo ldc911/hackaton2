@@ -11,7 +11,10 @@ router.get(
   middlewares.getReservations,
   vehicleControllers.getAllVehicles
 );
+
 // users routes
+router.get("/users/", userControllers.getAllUsers);
+router.put("/user/:id", userControllers.updateUser);
 router.delete("/user/:id", userControllers.deleteUser);
 
 module.exports = router;
