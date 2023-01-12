@@ -14,7 +14,7 @@ export default function SearchBar() {
   const [typeFilter, setTypeFilter] = useState("");
   const [cityFilter, setCityFilter] = useState("");
   const [manufacturerFilter, setManufacturerFilter] = useState("");
-  const fetchMovies = () => {
+  const fetchCars = () => {
     axios
       .get(`${VITE_BACKEND_URL}/private/vehicles`)
       .then((res) => {
@@ -26,7 +26,7 @@ export default function SearchBar() {
   };
 
   useEffect(() => {
-    fetchMovies();
+    fetchCars();
   }, []);
 
   // Filter the cars data based on the selected options
