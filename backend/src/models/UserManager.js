@@ -7,24 +7,26 @@ class UserManager extends AbstractManager {
 
   addUser(user) {
     const {
-      drivingLicenseNumber,
-      lastName,
-      firstName,
+      drivingLicense,
+      lastname,
+      firstname,
       birthday,
       city,
       hashedPassword,
       email,
+      profilePicture,
     } = user;
     return this.connection.query(
-      `insert into ${this.table} (drivingLicenseNumber,lastName,firstName,birthday,city,hashedPassword,email) values (?,?,?,?,?,?,?)`,
+      `insert into ${this.table} (drivingLicenseNumber,lastName,firstName,birthday,city,hashedPassword,email, avatar) values (?,?,?,?,?,?,?,?)`,
       [
-        drivingLicenseNumber,
-        lastName,
-        firstName,
+        drivingLicense,
+        lastname,
+        firstname,
         birthday,
         city,
         hashedPassword,
         email,
+        profilePicture,
       ]
     );
   }

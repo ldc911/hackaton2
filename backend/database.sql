@@ -4,6 +4,7 @@ CREATE TABLE
         `company` varchar(45) NOT NULL,
         `email` varchar(255) NOT NULL,
         `city` varchar(100) NOT NULL,
+        `isValidate` TINYINT,
         `hashedPassword` varchar(255) NOT NULL,
         PRIMARY KEY (`id`),
         UNIQUE INDEX `Mail`(`email`)
@@ -14,27 +15,32 @@ INSERT INTO
         company,
         email,
         city,
+        isValidate,
         hashedPassword
     )
 VALUES (
         "Chatanet",
         "chatanet-toulouse@chatanet.com",
         "Toulouse",
+        1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "Cianni Automobiles",
         "cianni-toulouse@cianni.net",
         "Toulouse",
+        1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "Garage Lereton",
         "concessionLebreton@lebreton.fr",
         "Clermont-Ferrand",
+        1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "JME Auto",
         "jmeparis@jme.net",
         "Paris",
+        1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     );
 
@@ -97,6 +103,7 @@ CREATE TABLE
         `city` varchar(100) NOT NULL,
         `email` varchar(255) NOT NULL,
         `isAdmin` TINYINT(1),
+        `avatar` VARCHAR(255),
         `hashedPassword` varchar(255) NOT NULL,
         PRIMARY KEY (`id`),
         UNIQUE INDEX `Mail`(`email`)
@@ -111,6 +118,7 @@ INSERT INTO
         city,
         email,
         isAdmin,
+        avatar,
         hashedPassword
     )
 VALUES (
@@ -121,6 +129,7 @@ VALUES (
         "Toulouse",
         "root@root.com",
         1,
+        "https://lh3.google.com/u/0/d/1mRV7A_O5DJa35t3HjdLwi3kZNu9M0G7R=w1920-h997-iv1",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "12345678",
@@ -130,6 +139,7 @@ VALUES (
         "Toulouse",
         "ben@mail.com",
         0,
+        "	https://storage.googleapis.com/quest_editor_uploads/1jg9aSLS1kWbidkYjb46E0qFI1MjyooE.png",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "123456348",
@@ -139,6 +149,7 @@ VALUES (
         "Clermont-Ferrand",
         "leonidas@wcs.com",
         0,
+        "https://storage.googleapis.com/quest_editor_uploads/WNxhr6uqNnvtAOqJXRPLaQQnGagkJA7y.jpeg",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "1234098098",
@@ -148,6 +159,7 @@ VALUES (
         "Paris",
         "chathechat@wcs.com",
         0,
+        "https://storage.googleapis.com/quest_editor_uploads/ENtTM2KEj7bxKH6qvWCqSOSqL2ENJsPg.jpeg",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "128907678",
@@ -157,6 +169,7 @@ VALUES (
         "Paris",
         "thefaz@wcs.com",
         0,
+        "https://storage.googleapis.com/quest_editor_uploads/gOPHvMtJE6oqJWROOlEWGDUOylLEayPt.png",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "127635678",
@@ -166,6 +179,7 @@ VALUES (
         "Toulouse",
         "ldc@wcs.com",
         0,
+        "	https://storage.googleapis.com/quest_editor_uploads/wDfIgA0PUKfjarbNKPCGJoy8zxflOz9v.jpg",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "1238098678",
@@ -175,6 +189,7 @@ VALUES (
         "Clermont-Ferrand",
         "gigi@wcs.com",
         0,
+        "https://storage.googleapis.com/quest_editor_uploads/tsbPqJCPtAYDqnB1sedOyv5hpAxmTHgT.jpg",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "12309878",
@@ -184,6 +199,7 @@ VALUES (
         "Paris",
         "jogrls@wcs.com",
         0,
+        "https://www.gravatar.com/avatar/53134?d=monsterid&s=300",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "198745678",
@@ -193,6 +209,7 @@ VALUES (
         "Toulouse",
         "ben@wcs.com",
         0,
+        "https://www.gravatar.com/avatar/56329?d=identicon&s=300",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "12367878",
@@ -202,6 +219,7 @@ VALUES (
         "Paris",
         "potus@wcs.com",
         0,
+        "https://i1.wp.com/dedipic.com/wp-content/uploads/2019/11/avatar_JoeBiden.png?resize=720%2C720&ssl=1",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "98345678",
@@ -211,6 +229,7 @@ VALUES (
         "Clermont-Ferrand",
         "themanu@wcs.com",
         0,
+        "https://assets-decodeurs.lemonde.fr/assets-legacy/pol/avantlevote/macron.png",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     );
 
