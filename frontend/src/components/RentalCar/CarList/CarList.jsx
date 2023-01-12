@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+import { Link } from "react-router-dom";
 /* eslint-disable react/prop-types */
 export default function CarList({
   dataCar,
@@ -23,7 +25,11 @@ export default function CarList({
         )
         .map((car) => (
           <div key={car.id}>
-            <img key={car.id} id={car.id} src={car.picture} alt="" />
+            <Link to={`/cardetails/${car.id}`}>
+              <button type="button">
+                <img key={car.id} id={car.id} src={car.picture} alt="" />
+              </button>
+            </Link>
             <h2>ManufacturerFilter: {car.manufacturer}</h2>
             <h2>Model : {car.model}</h2>
             <h2>Type: {car.type}</h2>

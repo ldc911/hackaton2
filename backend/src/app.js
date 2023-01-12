@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
 const router = require("./router");
-// const { verifyToken } = require("../auth");
+const { verifyToken } = require("../auth");
 const privateRouter = require("./private.routes");
 
 const app = express();
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, "..", "..", "frontend", "dist")));
 app.use("/api/", router);
 
 // API private routes
-// app.use(verifyToken);
+app.use(verifyToken);
 app.use("/private", privateRouter);
 
 // Redirect all requests to the REACT app
