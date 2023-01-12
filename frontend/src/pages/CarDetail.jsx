@@ -1,3 +1,6 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
+
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -8,45 +11,78 @@ const { VITE_BACKEND_URL } = import.meta.env;
 
 export default function CardDetail() {
   const navigate = useNavigate();
-  const [data, setData] = useState([]);
   const { id } = useParams();
+  const [carPrice, setCarPrice] = useState(0);
 
-  const fetchCars = () => {
+  const [dataCar, setDataCar] = useState([]);
+  const [dateReserved, setDateReserved] = useState([]);
+  const [range, setRange] = useState([
+    {
+      startDate: new Date(),
+      endDate: addDays(new Date(), 0),
+      key: "selection",
+    },
+  ]);
+
+  useEffect(() => {
+    const day = range[0].endDate.getDate() - range[0].startDate.getDate() + 1;
+
+    if (dataCar.length !== 0) {
+      setCarPrice(dataCar[0].price * day);
+    }
+  }, [range]);
+
+  const filterRentedData = (e) => {
+    return Object.keys(e[0])
+      .map((key) =>
+        typeof e[0][key] === "object" && e[0][key] !== null ? e[0][key] : null
+      )
+      .filter((other) => other !== null);
+  };
+
+  const fetchDates = (data) => {
+    const newDateReserved = filterRentedData(data);
+    let rentDetails = newDateReserved.map((obj) => {
+      return { rentStart: obj.rentStart, rentEnd: obj.rentEnd };
+    });
+    rentDetails = rentDetails.map(
+      (item) =>
+        (item.rentStart = new Date(item.rentStart)) &&
+        (item.rentEnd = new Date(item.rentEnd))
+    );
+    setDateReserved(rentDetails);
+  };
+
+  const fetchCars = (data) => {
+    const newCars = data.map((key) => {
+      return {
+        id: key.id,
+        manufacturer: key.manufacturer,
+        model: key.model,
+        type: key.type,
+        year: key.year,
+        color: key.color,
+        city: key.city,
+        picture: key.picture,
+        mileage: key.mileage,
+        price: key.price,
+      };
+    });
+    setDataCar(newCars);
+  };
+
+  useEffect(() => {
     axios
       .get(`${VITE_BACKEND_URL}/private/cardetails/${id}`)
       .then((res) => {
-        const newCars = res.data.map((key) => {
-          return {
-            id: key.id,
-            manufacturer: key.manufacturer,
-            model: key.model,
-            type: key.type,
-            year: key.year,
-            color: key.color,
-            city: key.city,
-            picture: key.picture,
-            price: key.price,
-          };
-        });
-        setData(newCars);
+        fetchCars(res.data);
+        fetchDates(res.data);
+        setCarPrice(res.data[0].price);
       })
       .catch((err) => {
         console.error(err);
       });
-  };
-
-  useEffect(() => {
-    fetchCars();
   }, []);
-
-  // date state
-  const [range, setRange] = useState([
-    {
-      startDate: new Date(),
-      endDate: addDays(new Date(), 7),
-      key: "selection",
-    },
-  ]);
 
   return (
     <div className="width">
@@ -69,42 +105,42 @@ export default function CardDetail() {
         </button>
       </nav>
 
-      {data.length === 0 && (
+      {dataCar.length === 0 && (
         <div className="flex justify-center items-center h-screen">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500" />
         </div>
       )}
-      {data.length !== 0 && (
+      {dataCar.length !== 0 && (
         <div className="pt-6">
           {/* Image gallery */}
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
               <img
-                src={data[0].picture}
-                alt={data[0].model}
+                src={dataCar[0].picture}
+                alt={dataCar[0].model}
                 className="h-full w-full object-cover object-center"
               />
             </div>
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
                 <img
-                  src={data[0].picture}
-                  alt={data[0].model}
+                  src={dataCar[0].picture}
+                  alt={dataCar[0].model}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
                 <img
-                  src={data[0].picture}
-                  alt={data[0].model}
+                  src={dataCar[0].picture}
+                  alt={dataCar[0].model}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
             </div>
             <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
               <img
-                src={data[0].picture}
-                alt={data[0].model}
+                src={dataCar[0].picture}
+                alt={dataCar[0].model}
                 className="h-full w-full object-cover object-center"
               />
             </div>
@@ -114,8 +150,8 @@ export default function CardDetail() {
           <div className="max-w-2xl mx-auto pt-6 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-10 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-2 lg:grid-rows-[auto,auto] lg:gap-x-8">
             <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
               <h1 className="text-2xl text-center font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-                {data[0].manufacturer}
-                <p className="text-lg font-normal">{data[0].model}</p>
+                {dataCar[0].manufacturer}
+                <p className="text-lg font-normal">{dataCar[0].model}</p>
               </h1>
             </div>
             <div className="mt-10">
@@ -135,15 +171,27 @@ export default function CardDetail() {
                 <div className="mt-4">
                   <ul className="list-disc space-y-2 pl-4 text-sm">
                     <li className="text-gray-400">
-                      <span className="text-gray-600">{data[0].type}</span>
+                      <span className="text-gray-600">
+                        Type: {dataCar[0].type}
+                      </span>
                     </li>
 
                     <li className="text-gray-400">
-                      <span className="text-gray-600">{data[0].year}</span>
+                      <span className="text-gray-600">
+                        Année: {dataCar[0].year}
+                      </span>
                     </li>
 
                     <li className="text-gray-400">
-                      <span className="text-gray-600">{data[0].color}</span>
+                      <span className="text-gray-600">
+                        Couleur: {dataCar[0].color}
+                      </span>
+                    </li>
+
+                    <li className="text-gray-400">
+                      <span className="text-gray-600">
+                        Kilométrage: {dataCar[0].mileage} KM
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -155,13 +203,14 @@ export default function CardDetail() {
               <div className="flex flex-col justify-center items-center mt-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
                 <h2 className="sr-only">Product information</h2>
                 <p className="text-3xl tracking-tight text-gray-900">
-                  {data[0].price}€{" "}
+                  {carPrice}€{" "}
                 </p>
                 <p className="text-sm text-gray-500">/day</p>
                 <p className="text-xl text-center text-gray-900 flex flex-col items-center">
                   Booking
                 </p>
                 <DateRange
+                  disabledDates={dateReserved}
                   onChange={(item) => setRange([item.selection])}
                   editableDateInputs
                   moveRangeOnFirstSelection={false}
@@ -183,9 +232,7 @@ export default function CardDetail() {
               </div>
             </div>
 
-            <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-              {/* Description and details */}
-            </div>
+            <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8" />
           </div>
         </div>
       )}
