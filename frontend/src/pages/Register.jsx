@@ -49,128 +49,6 @@ export default function Register() {
       });
   };
 
-  // return (
-  //   <div className="width content flex flex-col items-center justify-center ">
-  //     <form onSubmit={handleSubmit}>
-  //       <div className="">
-  //         <div className="relative z-0 mb-6 w-full group">
-  //           <input
-  //             type="text"
-  //             name="floating_last_name"
-  //             id="name"
-  //             value={lastname}
-  //
-  //             className="block py-2.5 px-0  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-  //             placeholder=" "
-  //             required
-  //           />
-  //           <label
-  //             htmlFor="floating_last_name"
-  //             className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-  //           >
-  //             Nom
-  //           </label>
-  //         </div>
-  //         <div className="relative z-0 mb-6 w-full group">
-  //           <input
-  //             type="text"
-  //             name="floating_first_name"
-  //             id="first_name"
-  //             value={firstname}
-  //             onChange={(e) => setFirstName(e.target.value)}
-  //             className="block py-2.5 px-0  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-  //             placeholder=" "
-  //             required
-  //           />
-  //           <label
-  //             htmlFor="floating_first_name"
-  //             className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-  //           >
-  //             Prénom
-  //           </label>
-  //         </div>
-  //       </div>
-
-  //       <div className="relative z-0 mb-6 w-full group">
-  //         <input
-  //           type="email"
-  //           name="floating_email"
-  //           id="email"
-  //           value={email}
-  //           onChange={(e) => setEmail(e.target.value)}
-  //           className="block py-2.5 px-0  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-  //           placeholder=" "
-  //           required
-  //         />
-  //         <label
-  //           htmlFor="floating_email"
-  //           className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-  //         >
-  //           Adresse e-mail
-  //         </label>
-  //       </div>
-
-  //       <div className="relative z-0 w-full mb-6 group">
-  //         <input
-  //           type="tel"
-  //           pattern="[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}"
-  //           name="floating_phone"
-  //           id="phone"
-  //           value={phone}
-  //           onChange={(e) => setPhone(e.target.value)}
-  //           className="block py-2.5 px-0  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-  //           placeholder=" "
-  //           required
-  //         />
-  //         <label
-  //           htmlFor="floating_phone"
-  //           className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-  //         >
-  //           Numéro de téléphone
-  //         </label>
-  //       </div>
-
-  //       <div className="relative z-0 mb-6 w-full group">
-  //         <input
-  //           type="password"
-  //           name="floating_password"
-  //           id="password"
-  //           value={password}
-  //           onChange={(e) => setPassword(e.target.value)}
-  //           className="block py-2.5 px-0  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-  //           placeholder=" "
-  //           required
-  //         />
-  //         <label
-  //           htmlFor="floating_password"
-  //           className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-  //         >
-  //           Mot de passe
-  //         </label>
-  //       </div>
-  //       <div className="relative z-0 mb-6 w-full group">
-  //         <input
-  //           type="password"
-  //           name="repeat_password"
-  //           id="floating_repeat_password"
-  //           value={confirmPassword}
-  //           onChange={(e) => setConfirmPassword(e.target.value)}
-  //           className="block py-2.5 px-2  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-  //           placeholder=" "
-  //           required
-  //         />
-  //         <label
-  //           htmlFor="floating_repeat_password"
-  //           className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-  //         >
-  //           Confirmer le mot de passe
-  //         </label>
-  //       </div>
-
-  //       {btn}
-  //     </form>
-  //   </div>
-  // );
   const hiddenFileInput = useRef(null);
   const user = {};
   const myAvatar = {};
@@ -186,10 +64,6 @@ export default function Register() {
     formData.append("avatar", fileUploaded);
     user.avatar = formData;
   };
-  // hSubmit(evt){
-  //   evt.preventDefault();
-  //   axios.post(`${VITE_BACKEND_URL}/api/users`, )
-  // }
 
   return (
     <form
