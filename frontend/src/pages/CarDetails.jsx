@@ -1,4 +1,6 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable react/prop-types */
+import CarDetailsComponent from "@components/RentalCar/CarDetails/CarDetailsComponent";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -36,19 +38,14 @@ export default function CarDetails() {
   useEffect(() => {
     fetchCar();
   }, []);
+
   return (
     <section>
-      {car.length === 0 && <h1>Loading...</h1>}
-      {car.length > 0 && (
-        <div>
-          <img src={car.picture} alt={car.picture} />
-          <h2>Manufacturer: {car.manufacturer}</h2>
-          <h2>Model : {car.model}</h2>
-          <h2>Type: {car.type}</h2>
-          <h2>Year: {car.year}</h2>
-          <h2>Color: {car.color}</h2>
-        </div>
-      )}
+      <div>
+        <h1>Car Details</h1>
+        <p>Car ID: {car.id}</p>
+        <CarDetailsComponent />
+      </div>
     </section>
   );
 }

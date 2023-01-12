@@ -17,7 +17,7 @@ const getVehicleById = (req, res, next) => {
   models.vehicule
     .findById(req.params.id)
     .then(([result]) => {
-      if (req.body.id_owner === result.id_owner || req.body.id_owner === 1) {
+      if (req.body.id_loggedIn === result.id_owner || req.body.loggedIn === 1) {
         next();
       } else {
         const message = "Cette voiture ne fait pas partie de votre flotte";
