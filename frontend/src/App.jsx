@@ -18,14 +18,16 @@ function App() {
       <Router>
         <Header />
         <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/" element={<Home />} />
           <Route path="/rent" element={<Rent />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/car/:id" element={<CarDetail />} />
-          <Route path="/profilpage" element={<ProfilPage />} />
-          <Route path="/ownercar" element={<OwnerCar />} />
+          <Route path="/profil" element={<ProfilPage />} />
+          <Route path="/fleet" element={<OwnerCar />} />
         </Routes>
         <Footer />
       </Router>
