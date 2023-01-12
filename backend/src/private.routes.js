@@ -16,15 +16,12 @@ router.get(
   vehicleControllers.getAllVehicles
 );
 
-<<<<<<< HEAD
-=======
 // récupérer une seule voiture
 router.get(
   "/cardetails/:id",
   middlewares.getReservations,
   vehicleControllers.getOneVehicle
 );
->>>>>>> fce43ab4ce14e0b09bac10474cae5346c488348c
 // users routes
 router.get("/users/", userControllers.getAllUsers);
 router.put("/user/:id", userControllers.updateUser);
