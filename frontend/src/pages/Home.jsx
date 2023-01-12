@@ -57,7 +57,7 @@ export default function Home() {
                 <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                   <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-1 sm:gap-5">
                     <Link
-                      to="/rent"
+                      to="/car"
                       className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
                     >
                       Louer
@@ -171,7 +171,7 @@ export default function Home() {
                 S'inscrire
               </Link>
               <Link
-                to="/rent"
+                to="/car"
                 className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-800 bg-indigo-50 hover:bg-indigo-100"
               >
                 Louer
