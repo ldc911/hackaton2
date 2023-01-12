@@ -6,7 +6,6 @@ const vehicleControllers = require("./controllers/vehicleControllers");
 const middlewares = require("./services/middlewares");
 const auth = require("../auth");
 
-
 const userControllers = require("./controllers/userControllers");
 
 // cars routes
