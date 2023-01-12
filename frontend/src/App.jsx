@@ -13,11 +13,9 @@ import CarDetails from "./pages/CarDetails";
 import DataContext from "./contexts/DataContext";
 
 function App() {
-  let token;
+  let token = "";
   const cookies = new Cookies();
-  if (cookies.get("token") !== undefined) {
-    token = cookies.cookies.token;
-  }
+  token = cookies.cookies?.token;
 
   return (
     <div className="h-screen w-screen flex flex-col items-center">
