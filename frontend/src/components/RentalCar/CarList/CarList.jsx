@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from "react";
-
 export default function CarList({
   dataCar,
   modelFilter,
@@ -25,8 +23,8 @@ export default function CarList({
         )
         .map((car) => (
           <div key={car.id}>
-            <img src={car.picture} alt="" />
-            <h2>manufacturerFilter: {car.manufacturer}</h2>
+            <img key={car.id} id={car.id} src={car.picture} alt="" />
+            <h2>ManufacturerFilter: {car.manufacturer}</h2>
             <h2>Model : {car.model}</h2>
             <h2>Type: {car.type}</h2>
             <h2>Year: {car.year}</h2>
