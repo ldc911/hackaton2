@@ -35,6 +35,7 @@ export default function Login() {
       navigate("/rent");
     }
   }, []);
+
   return (
     <div className="width flex">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">

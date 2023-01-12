@@ -7,8 +7,10 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Rent from "./pages/Rent";
+import CarDetail from "./pages/CarDetail";
+import ProfilPage from "./pages/ProfilPage";
+import OwnerCar from "./pages/OwnerCar";
 import ContactUs from "./pages/ContactUs";
-import CarDetails from "./pages/CarDetails";
 
 function App() {
   return (
@@ -18,11 +20,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/rent" element={<Rent />} />
-          <Route path="/cardetails/:id" element={<CarDetails />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/car/:id" element={<CarDetails />} />
+          <Route path="/car/:id" element={<CarDetail />} />
+          <Route path="/profilpage" element={<ProfilPage />} />
+          <Route path="/ownercar" element={<OwnerCar />} />
         </Routes>
         <Footer />
       </Router>

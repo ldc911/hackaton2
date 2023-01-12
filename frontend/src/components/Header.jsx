@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import logo from "@assets/logo.png";
 
 function Header() {
   return (
@@ -11,11 +12,7 @@ function Header() {
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <Link to="/">
             <span className="sr-only">Workflow</span>
-            <img
-              className="h-8 w-auto sm:h-10"
-              src="src/assets/logo.png"
-              alt=""
-            />
+            <img className="h-8 w-auto sm:h-10" src={logo} alt="" />
           </Link>
         </div>
         <div className="-mr-2 -my-2 md:hidden">
@@ -70,11 +67,7 @@ function Header() {
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
                 <div>
-                  <img
-                    className="h-8 w-auto"
-                    src="src/assets/logo.png"
-                    alt="Workflow"
-                  />
+                  <img className="h-8 w-auto" src={logo} alt="Workflow" />
                 </div>
                 <div className="-mr-2">
                   <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
