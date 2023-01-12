@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
 import Cookies from "universal-cookie";
 
 const { VITE_BACKEND_URL } = import.meta.env;
@@ -24,7 +23,9 @@ export default function Login() {
           path: "/",
           maxAge: 1 * 60 * 24,
         });
-        navigate("/rent");
+        const { user } = res.data;
+        localStorage.setItem("user", JSON.stringify(user));
+        navigate("/car");
       })
       .catch((err) => {
         console.error(err);
