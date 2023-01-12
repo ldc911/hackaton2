@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { DateRangePicker } from "react-date-range";
+import { DateRange } from "react-date-range";
 
 import format from "date-fns/format";
 import { addDays } from "date-fns";
@@ -7,7 +7,7 @@ import { addDays } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
-function DateRangePickerComp() {
+function DateRangeComp() {
   // date state
   const [range, setRange] = useState([
     {
@@ -28,10 +28,12 @@ function DateRangePickerComp() {
     // console.log(e.key)
     if (e.key === "Escape") {
       setOpen(false);
+    } else if (e.key === "Enter") {
+      setOpen(true);
     }
   };
 
-  // Hide dropdown on outside click
+  // Hide on outside click
   const hideOnClickOutside = (e) => {
     // console.log(refOne.current)
     // console.log(e.target)
@@ -47,25 +49,25 @@ function DateRangePickerComp() {
   }, []);
 
   return (
-    <div className="calendarWrap">
+    <div className="calendarWrap flex justify-center">
       <input
         value={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(
           range[0].endDate,
           "MM/dd/yyyy"
         )}`}
         readOnly
-        className="inputBox"
+        className={open ? "hidden" : "inputBox"}
         onClick={() => setOpen((opened) => !opened)}
       />
 
       <div ref={refOne}>
         {open && (
-          <DateRangePicker
+          <DateRange
             onChange={(item) => setRange([item.selection])}
             editableDateInputs
             moveRangeOnFirstSelection={false}
             ranges={range}
-            months={2}
+            months={1}
             direction="horizontal"
             className="calendarElement"
           />
@@ -75,4 +77,4 @@ function DateRangePickerComp() {
   );
 }
 
-export default DateRangePickerComp;
+export default DateRangeComp;
