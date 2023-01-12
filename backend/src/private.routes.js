@@ -23,6 +23,8 @@ router.get(
   vehicleControllers.getOneVehicle
 );
 // users routes
+router.get("/users/", userControllers.getAllUsers);
+router.put("/user/:id", userControllers.updateUser);
 router.delete("/user/:id", userControllers.deleteUser);
 
 // owners routes
