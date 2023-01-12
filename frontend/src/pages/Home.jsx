@@ -16,8 +16,8 @@ const metrics = [
   {
     id: 3,
     stat: "98%",
-    emphasis: "Satisfaction des clients :",
-    rest: "un retour toujours positive de nos clients",
+    emphasis: "Des clients sont toujours satisfaits de nos services,",
+    rest: " comme en témoignent les retours positifs reçus.",
   },
   {
     id: 4,
