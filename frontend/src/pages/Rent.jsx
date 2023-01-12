@@ -339,9 +339,9 @@ export default function Rent() {
                 </Disclosure>
               ))}
             </form>
-
             {/* Product grid */}
             <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:col-span-3 lg:gap-x-8">
+              <input type="date" />
               {products.map((product) => (
                 <a
                   key={product.id}
