@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -30,11 +30,6 @@ export default function Login() {
         console.error(err);
       });
   };
-  useEffect(() => {
-    if (cookies.get("token") !== undefined) {
-      navigate("/rent");
-    }
-  }, []);
   return (
     <div className="width flex">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">

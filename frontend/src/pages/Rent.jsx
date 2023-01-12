@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Fragment, useState, useEffect } from "react";
+import { Fragment, useState, useEffect, useContext } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import {
@@ -9,8 +9,10 @@ import {
   PlusSmIcon,
 } from "@heroicons/react/solid";
 import axios from "axios";
+import DataContext from "../contexts/DataContext";
 
 const { VITE_BACKEND_URL } = import.meta.env;
+const { token } = useContext(DataContext);
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -45,7 +47,11 @@ export default function Rent() {
 
   const fetchFilters = () => {
     axios
-      .get(`${VITE_BACKEND_URL}/private/vehicles`)
+      .get(`${VITE_BACKEND_URL}/private/vehicles`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         const filters = [];
         Object.keys(res.data[0]).map((key) => {
