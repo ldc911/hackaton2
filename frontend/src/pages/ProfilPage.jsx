@@ -126,6 +126,7 @@ export default function Example() {
                     </dt>
                     <dd
                       className="mt-1 max-w-prose text-sm text-gray-900 space-y-5"
+                      // eslint-disable-next-line react/no-danger
                       dangerouslySetInnerHTML={{ __html: profile.about }}
                     />
                   </div>

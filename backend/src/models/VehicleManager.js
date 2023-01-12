@@ -7,7 +7,8 @@ class VehicleManager extends AbstractManager {
 
   findVehicle() {
     return this.connection.query(
-      `SELECT * FROM ${this.table} WHERE isValidate=1`
+      `SELECT v.id, v.manufacturer, v.model, v.type, v.year, v.color, v.seats, v.mileage, v.city, v.price, v.id_owner, v.isAvailable, v.maintenanceStartDate, v.maintenanceEndDate, v.isValidate, v.insuranceCompany, v.insuranceNumber, v.picture FROM ${this.table} AS v INNER JOIN owner ON owner.id = v.id_owner
+      WHERE v.isValidate=1 AND owner.isValidate = 1`
     );
   }
 
