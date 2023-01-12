@@ -4,6 +4,7 @@ CREATE TABLE
         `company` varchar(45) NOT NULL,
         `email` varchar(255) NOT NULL,
         `city` varchar(100) NOT NULL,
+        `isValidate` TINYINT,
         `hashedPassword` varchar(255) NOT NULL,
         PRIMARY KEY (`id`),
         UNIQUE INDEX `Mail`(`email`)
@@ -14,27 +15,32 @@ INSERT INTO
         company,
         email,
         city,
+        isValidate,
         hashedPassword
     )
 VALUES (
         "Chatanet",
         "chatanet-toulouse@chatanet.com",
         "Toulouse",
+        1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "Cianni Automobiles",
         "cianni-toulouse@cianni.net",
         "Toulouse",
+        1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "Garage Lereton",
         "concessionLebreton@lebreton.fr",
         "Clermont-Ferrand",
+        1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "JME Auto",
         "jmeparis@jme.net",
         "Paris",
+        1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     );
 

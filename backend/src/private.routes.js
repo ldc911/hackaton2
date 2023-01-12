@@ -1,4 +1,7 @@
 const express = require("express");
+const multer = require("multer");
+const fs = require("fs");
+const { v4: uuidv4 } = require("uuid");
 
 const router = express.Router();
 const vehicleControllers = require("./controllers/vehicleControllers");
@@ -7,6 +10,8 @@ const reservationControllers = require("./controllers/reservationControllers");
 
 const middlewares = require("./services/middlewares");
 const auth = require("../auth");
+
+const upload = multer({ dest: "uploads/" });
 
 // cars routes
 // récupérer toutes les voitures
@@ -24,6 +29,21 @@ router.get(
 );
 // users routes
 router.delete("/user/:id", userControllers.deleteUser);
+
+// route pour l'upload de l'avatar
+router.post("/avatar", upload.single("avatar"), (req, res) => {
+  const { originalname } = req.file;
+  const { filename } = req.file;
+
+  fs.rename(
+    `uploads/${filename}`,
+    `uploads/${uuidv4()}-${originalname}`,
+    (err) => {
+      if (err) throw err;
+      res.send("ok cool");
+    }
+  );
+});
 
 // owners routes
 // récupérer les voitures d'un owner
