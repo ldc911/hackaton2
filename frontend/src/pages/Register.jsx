@@ -34,7 +34,7 @@ function Register() {
         }
       )
       .then(function handleResponse() {
-        navigate("/login");
+        navigate("/");
       });
   };
 
