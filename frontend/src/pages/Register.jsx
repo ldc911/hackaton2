@@ -1,42 +1,52 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/no-unresolved */
-// import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import axios from "axios";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-// const { VITE_BACKEND_URL } = import.meta.env;
+const { VITE_BACKEND_URL } = import.meta.env;
 
 export default function Register() {
-  // const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
+  const [streetAdress, setStreetAdress] = useState("");
+  const [city, setCity] = useState("");
+  const [province, setProvince] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
-  // const [firstname, setFirstName] = useState("");
-  // const [lastname, setLastName] = useState("");
-  // const [phone, setPhone] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setError("Password and confirm password should be same");
+      return;
+    }
+    setError("");
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .post(
-  //       `${VITE_BACKEND_URL}/users`,
-  //       {
-  //         email,
-  //         password,
-  //         firstname,
-  //         lastname,
-  //         phone,
-  //       },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //     )
-  //     .then(function handleResponse() {
-  //       navigate("/login");
-  //     });
-  // };
+    axios
+      .post(
+        `${VITE_BACKEND_URL}/users`,
+        {
+          email,
+          password,
+          firstname,
+          lastname,
+          city,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then(function handleResponse() {
+        navigate("/login");
+      });
+  };
 
   // return (
   //   <div className="width content flex flex-col items-center justify-center ">
@@ -48,7 +58,7 @@ export default function Register() {
   //             name="floating_last_name"
   //             id="name"
   //             value={lastname}
-  //             onChange={(e) => setLastName(e.target.value)}
+  //
   //             className="block py-2.5 px-0  text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
   //             placeholder=" "
   //             required
@@ -162,7 +172,10 @@ export default function Register() {
   // );
 
   return (
-    <form className="space-y-8 divide-y divide-gray-200">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-8 divide-y divide-gray-200"
+    >
       <div className="space-y-8 divide-y divide-gray-200 sm:space-y-5">
         <div>
           <div>
@@ -272,7 +285,9 @@ export default function Register() {
                   name="first-name"
                   id="first-name"
                   autoComplete="given-name"
+                  onChange={(e) => setFirstName(e.target.value)}
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                  required
                 />
               </div>
             </div>
@@ -290,7 +305,9 @@ export default function Register() {
                   name="last-name"
                   id="last-name"
                   autoComplete="family-name"
+                  onChange={(e) => setLastName(e.target.value)}
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                  required
                 />
               </div>
             </div>
@@ -309,6 +326,8 @@ export default function Register() {
                   type="email"
                   autoComplete="email"
                   className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -326,6 +345,7 @@ export default function Register() {
                   name="country"
                   autoComplete="country-name"
                   className="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                  required
                 >
                   <option>United States</option>
                   <option>Canada</option>
@@ -347,6 +367,7 @@ export default function Register() {
                   name="street-address"
                   id="street-address"
                   autoComplete="street-address"
+                  onChange={(e) => setStreetAdress(e.target.value)}
                   className="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
                 />
               </div>
@@ -366,6 +387,8 @@ export default function Register() {
                   id="city"
                   autoComplete="address-level2"
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                  onChange={(e) => setCity(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -384,6 +407,8 @@ export default function Register() {
                   id="region"
                   autoComplete="address-level1"
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                  onChange={(e) => setProvince(e.target.value)}
+                  required
                 />
               </div>
             </div>
@@ -402,8 +427,48 @@ export default function Register() {
                   id="postal-code"
                   autoComplete="postal-code"
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                  onChange={(e) => setPostalCode(e.target.value)}
+                  required
                 />
               </div>
+            </div>
+            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+              >
+                Password
+              </label>
+              <div className="mt-1 sm:mt-0 sm:col-span-2">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  autoComplete="password"
+                  className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+              <label
+                htmlFor="confirm-password"
+                className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+              >
+                Confirm password
+              </label>
+              <div className="mt-1 sm:mt-0 sm:col-span-2">
+                <input
+                  type="password"
+                  name="confirm-password"
+                  id="confirm-password"
+                  autoComplete="confirm-password"
+                  className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <p>{error}</p>
             </div>
           </div>
         </div>
