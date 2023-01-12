@@ -1,15 +1,17 @@
 /* eslint-disable import/no-unresolved */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import Cookies from "universal-cookie";
+
 const { VITE_BACKEND_URL } = import.meta.env;
+const cookies = new Cookies();
 
 export default function Login() {
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [email, setemail] = useState("");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
@@ -18,13 +20,21 @@ export default function Login() {
         password,
       })
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
-        navigate("/");
+        cookies.set("token", `${res.data.user.token}`, {
+          path: "/",
+          maxAge: 1 * 60 * 24,
+        });
+        navigate("/rent");
       })
       .catch((err) => {
         console.error(err);
       });
   };
+  useEffect(() => {
+    if (cookies.get("token") !== undefined) {
+      navigate("/rent");
+    }
+  }, []);
   return (
     <div className="width flex">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
