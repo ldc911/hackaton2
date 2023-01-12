@@ -27,13 +27,12 @@ function Header() {
               HOME
             </h2>
           </Link>
-          <Link to="/rent">
+          <Link to="/car">
             <h2 className="text-base font-bold text-gray-500 hover:text-gray-900">
               RENT
             </h2>
           </Link>
         </Popover.Group>
-
         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
           <Link
             to="/login"
@@ -49,7 +48,6 @@ function Header() {
           </Link>
         </div>
       </div>
-
       <Transition
         as={Fragment}
         enter="duration-200 ease-out"
