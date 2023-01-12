@@ -29,20 +29,6 @@ class UserManager extends AbstractManager {
     );
   }
 
-  getUsersByCompany({ query }) {
-    return this.connection
-      .query(
-        "select u.id,u.username,c.name as companyName,u.firstname,u.lastname,u.isOnline,u.profile_picture,u.email from `company` c JOIN `user` u on u.id_company=c.id where c.name = ?",
-        [query.company]
-      )
-      .then((result) => {
-        return result;
-      })
-      .catch(() => {
-        throw new Error("No users in this company");
-      });
-  }
-
   updateUser(user, id) {
     const {
       drivingLicenseNumber,
