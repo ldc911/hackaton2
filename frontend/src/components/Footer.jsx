@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 const navigation = {
   main: [
-    { name: "About", href: "/", id: 10 },
-    { name: "Jobs", href: "/", id: 20 },
-    { name: "Press", href: "/", id: 30 },
-    { name: "Accessibility", href: "/", id: 40 },
-    { name: "You want to be a partner ?", href: "/", id: 50 },
+    { name: "A propos", href: "/", id: 10 },
+    { name: "Emplois", href: "/", id: 20 },
+    { name: "Presse", href: "/", id: 30 },
+    { name: "Accessibilité", href: "/", id: 40 },
+    { name: "Vous louez vos voitures ?", href: "/", id: 50 },
   ],
   social: [
     {
@@ -83,7 +83,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="mt-8 text-center font-light text-sm text-gray-400">
-          &copy; 2023 - Made by Elite Fleet. All rights reserved.
+          &copy; 2023 - Made by Elite Fleet. All rights reserved ©.
         </p>
       </div>
     </footer>
