@@ -1,4 +1,35 @@
 import React from "react";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Pie } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+const data2 = {
+  labels: ["Voiture en maintenance", "Voiture à louer", "Voiture réserver"],
+  datasets: [
+    {
+      label: "nombre de voiture",
+      data: [1, 4, 2],
+      backgroundColor: [
+        "rgba(255, 99, 132, 0.2)",
+        "rgba(54, 162, 235, 0.2)",
+        "rgba(255, 206, 86, 0.2)",
+        "rgba(75, 192, 192, 0.2)",
+        "rgba(153, 102, 255, 0.2)",
+        "rgba(255, 159, 64, 0.2)",
+      ],
+      borderColor: [
+        "rgba(255, 99, 132, 1)",
+        "rgba(54, 162, 235, 1)",
+        "rgba(255, 206, 86, 1)",
+        "rgba(75, 192, 192, 1)",
+        "rgba(153, 102, 255, 1)",
+        "rgba(255, 159, 64, 1)",
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
 
 const people = [
   {
@@ -6,42 +37,68 @@ const people = [
     title: "rouge 2022",
     role: "Electrique",
     email: "janecooper@example.com",
-    telephone: "+1-202-555-0170",
+    telephone: "",
     imageUrl:
       "http://myelectricvehicle.be/wp-content/gallery/mev-hummer-hx-t/MEV-HUMMER-HX-T-Flat-Red-Canopy-Roof-Side-View.png",
   },
   {
-    name: "Hummer Mini HX",
+    name: "Renault Twizy",
+    title: "vert 2022",
+    role: "Electrique",
+    email: "janecooper@example.com",
+    telephone: "",
+    imageUrl:
+      "https://cdn.motor1.com/images/mgl/GxO7J/s1/1x1/renault-twizy-by-oakley-design.webp",
+  },
+  {
+    name: "Jiayuan City Fun 45",
+    title: "jaune 2022",
+    role: "Electrique",
+    email: "janecooper@example.com",
+    telephone: "",
+    imageUrl:
+      "https://media.gqmagazine.fr/photos/5fa94b2fa6095c6ef665d607/master/w_1600,c_limit/1city%20jaune%20chateau.jpeg",
+  },
+  {
+    name: "Citroën AMI",
     title: "rouge 2022",
     role: "Electrique",
     email: "janecooper@example.com",
-    telephone: "+1-202-555-0170",
+    telephone: "",
+    imageUrl: "https://i.servimg.com/u/f86/18/30/80/88/citroe10.png",
+  },
+  {
+    name: "Ligier MICROCAR",
+    title: "Bleu 2020",
+    role: "Thermique",
+    email: "janecooper@example.com",
+    telephone: "",
+    imageUrl:
+      "https://www.ligier.fr/wp-content/uploads/2022/11/M.GO-Must-min.png",
+  },
+  {
+    name: "Casalini M20 Supperleggera",
+    title: "Blanc 2021",
+    role: "Thermique",
+    email: "janecooper@example.com",
+    telephone: "",
+    imageUrl:
+      "https://www.my-vsp.fr/wp-content/uploads/2021/09/casalini-1-1200x800.jpg",
+  },
+  {
+    name: "Estrima Biro",
+    title: "noir 2020",
+    role: "Thermique",
+    email: "janecooper@example.com",
+    telephone: "",
     imageUrl:
       "https://laboutiquegreenlines.com/wp-content/uploads/2021/11/1-1.jpg",
-  },
-  {
-    name: "Hummer Mini HX",
-    title: "rouge 2022",
-    role: "Electrique",
-    email: "janecooper@example.com",
-    telephone: "+1-202-555-0170",
-    imageUrl:
-      "http://myelectricvehicle.be/wp-content/gallery/mev-hummer-hx-t/MEV-HUMMER-HX-T-Flat-Red-Canopy-Roof-Side-View.png",
-  },
-  {
-    name: "Hummer Mini HX",
-    title: "rouge 2022",
-    role: "Electrique",
-    email: "janecooper@example.com",
-    telephone: "+1-202-555-0170",
-    imageUrl:
-      "http://myelectricvehicle.be/wp-content/gallery/mev-hummer-hx-t/MEV-HUMMER-HX-T-Flat-Red-Canopy-Roof-Side-View.png",
   },
 
   // More people...
 ];
 
-export default function Example() {
+export default function OwnerCar() {
   return (
     <div>
       <h2 className="text-3xl mb-4 font-extrabold text-dark tracking-tight sm:text-4xl">
@@ -80,7 +137,7 @@ export default function Example() {
                     href={`mailto:${person.email}`}
                     className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
                   >
-                    <span className="ml-3">Email</span>
+                    <span className="ml-3">Detail</span>
                   </a>
                 </div>
                 <div className="-ml-px w-0 flex-1 flex">
@@ -96,6 +153,12 @@ export default function Example() {
           </li>
         ))}
       </ul>
+
+      <h2 className="text-3xl mt-8 mb-4 font-extrabold text-dark tracking-tight sm:text-4xl">
+        Mes statistiques :
+      </h2>
+
+      <Pie data={data2} />
     </div>
   );
 }

@@ -120,7 +120,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="mt-3 text-3xl font-extrabold text-white">
-                Mettez à louer vos voiture sans permis
+                Mettez à louer vos voitures sans permis
               </p>
               <p className="mt-5 text-lg text-gray-300">
                 Mettez vos voitures sans permis en location dès maintenant pour
