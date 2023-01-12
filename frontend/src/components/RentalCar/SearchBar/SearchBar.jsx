@@ -31,7 +31,7 @@ export default function SearchBar() {
 
   // Filter the cars data based on the selected options
   {
-    dataCar.filter(
+    dataCar.find(
       (car) =>
         (modelFilter === "" || car.model === modelFilter) &&
         (colorFilter === "" || car.color === colorFilter) &&
@@ -41,6 +41,9 @@ export default function SearchBar() {
         (manufacturerFilter === "" || car.manufacturer === manufacturerFilter)
     );
   }
+  const getUniqueValues = (field) => [
+    ...new Set(dataCar.map((car) => car[field])),
+  ];
 
   return (
     <div>
@@ -48,8 +51,8 @@ export default function SearchBar() {
         <label>Manufacturer:</label>
         <select onChange={(event) => setManufacturerFilter(event.target.value)}>
           <option value="">All</option>
-          {dataCar.map((car) => (
-            <option value={car.manufacturer}>{car.manufacturer}</option>
+          {getUniqueValues("manufacturer").map((manufacturer) => (
+            <option value={manufacturer}>{manufacturer}</option>
           ))}
         </select>
       </div>
@@ -57,8 +60,8 @@ export default function SearchBar() {
         <label>Model:</label>
         <select onChange={(event) => setModelFilter(event.target.value)}>
           <option value="">All</option>
-          {dataCar.map((car) => (
-            <option value={car.model}>{car.model}</option>
+          {getUniqueValues("model").map((model) => (
+            <option value={model}>{model}</option>
           ))}
         </select>
       </div>
@@ -66,8 +69,8 @@ export default function SearchBar() {
         <label>Type:</label>
         <select onChange={(event) => setTypeFilter(event.target.value)}>
           <option value="">All</option>
-          {dataCar.map((car) => (
-            <option value={car.type}>{car.type}</option>
+          {getUniqueValues("type").map((type) => (
+            <option value={type}>{type}</option>
           ))}
         </select>
       </div>
@@ -75,8 +78,8 @@ export default function SearchBar() {
         <label>Year:</label>
         <select onChange={(event) => setYearFilter(event.target.value)}>
           <option value="">All</option>
-          {dataCar.map((car) => (
-            <option value={car.year}>{car.year}</option>
+          {getUniqueValues("year").map((year) => (
+            <option value={year}>{year}</option>
           ))}
         </select>
       </div>
@@ -84,8 +87,8 @@ export default function SearchBar() {
         <label>Color:</label>
         <select onChange={(event) => setColorFilter(event.target.value)}>
           <option value="">All</option>
-          {dataCar.map((car) => (
-            <option value={car.color}>{car.color}</option>
+          {getUniqueValues("color").map((color) => (
+            <option value={color}>{color}</option>
           ))}
         </select>
       </div>
@@ -94,8 +97,8 @@ export default function SearchBar() {
         <label>City:</label>
         <select onChange={(event) => setCityFilter(event.target.value)}>
           <option value="">All</option>
-          {dataCar.map((car) => (
-            <option value={car.city}>{car.city}</option>
+          {getUniqueValues("city").map((city) => (
+            <option value={city}>{city}</option>
           ))}
         </select>
       </div>
