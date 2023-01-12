@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const argon2 = require("argon2");
 const jwt = require("jsonwebtoken");
 const database = require("./database");
@@ -79,8 +80,18 @@ const verifyPassword = (req, res, next) => {
       res.sendStatus(500);
     });
 };
+
+const getOwnerIdFromToker = (req, res, next) => {
+  const authorization = req.get("Authorization");
+  const [type, token] = authorization.split(" ");
+  const payload = jwt.decode(token);
+  req.body.id_owner = payload.sub;
+  next();
+};
+
 module.exports = {
   hashPassword,
   verifyToken,
   verifyPassword,
+  getOwnerIdFromToker,
 };

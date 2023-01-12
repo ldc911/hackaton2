@@ -7,7 +7,8 @@ class ReservationManager extends AbstractManager {
 
   findReservation() {
     return this.connection.query(
-      `SELECT id_vehicule, rentStart, rentEnd FROM ${this.table}`
+      `SELECT id_vehicule, CONCAT(user.firstName, ' ', user.lastname) AS user_renter, rentStart, rentEnd FROM ${this.table}
+      INNER JOIN user ON  user.id = reservation.id_user`
     );
   }
 }
