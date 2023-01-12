@@ -40,7 +40,6 @@ function Register() {
 
   const btn =
     email === "" ||
-    phone.length !== 10 ||
     password === "" ||
     password !== confirmPassword ||
     firstname === "" ||
