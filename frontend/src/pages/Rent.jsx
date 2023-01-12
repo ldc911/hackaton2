@@ -1,4 +1,5 @@
-import { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
+import { Fragment, useState, useEffect } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import {
@@ -7,90 +8,108 @@ import {
   MinusSmIcon,
   PlusSmIcon,
 } from "@heroicons/react/solid";
+import axios from "axios";
 
-const sortOptions = [
-  { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Newest", href: "#", current: false },
-  { name: "Price: Low to High", href: "#", current: false },
-  { name: "Price: High to Low", href: "#", current: false },
-];
-const subCategories = [
-  { name: "Totes", href: "#" },
-  { name: "Backpacks", href: "#" },
-  { name: "Travel Bags", href: "#" },
-  { name: "Hip Bags", href: "#" },
-  { name: "Laptop Sleeves", href: "#" },
-];
-const filters = [
-  {
-    id: "color",
-    name: "Color",
-    options: [
-      { value: "white", label: "White", checked: false },
-      { value: "beige", label: "Beige", checked: false },
-      { value: "blue", label: "Blue", checked: true },
-      { value: "brown", label: "Brown", checked: false },
-      { value: "green", label: "Green", checked: false },
-      { value: "purple", label: "Purple", checked: false },
-    ],
-  },
-  {
-    id: "category",
-    name: "Category",
-    options: [
-      { value: "new-arrivals", label: "New Arrivals", checked: false },
-      { value: "sale", label: "Sale", checked: false },
-      { value: "travel", label: "Travel", checked: true },
-      { value: "organization", label: "Organization", checked: false },
-      { value: "accessories", label: "Accessories", checked: false },
-    ],
-  },
-  {
-    id: "size",
-    name: "Size",
-    options: [
-      { value: "2l", label: "2L", checked: false },
-      { value: "6l", label: "6L", checked: false },
-      { value: "12l", label: "12L", checked: false },
-      { value: "18l", label: "18L", checked: false },
-      { value: "20l", label: "20L", checked: false },
-      { value: "40l", label: "40L", checked: true },
-    ],
-  },
-];
-const products = [
-  {
-    id: 1,
-    name: "Nomad Pouch",
-    href: "#",
-    price: "$50",
-    availability: "White and Black",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-07-product-01.jpg",
-    imageAlt:
-      "White fabric pouch with white zipper, black zipper pull, and black elastic loop.",
-  },
-  {
-    id: 2,
-    name: "Zip Tote Basket",
-    href: "#",
-    price: "$140",
-    availability: "Washed Black",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/category-page-07-product-02.jpg",
-    imageAlt:
-      "Front of tote bag with washed black canvas body, black straps, and tan leather handles and accents.",
-  },
-  // More products...
-];
+const { VITE_BACKEND_URL } = import.meta.env;
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Rent() {
+  const sortOptions = [
+    { name: "Most Popular", href: "#", current: true },
+    { name: "Best Rating", href: "#", current: false },
+    { name: "Newest", href: "#", current: false },
+    { name: "Price: Low to High", href: "#", current: false },
+    { name: "Price: High to Low", href: "#", current: false },
+  ];
+
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [dataCar, setDataCar] = useState([]);
+  const [filtersList, setFiltersList] = useState([]);
+  const [filterCar, setFilterCar] = useState([]);
+
+  const getUniqueValues = (data, field) => [
+    ...new Set(data.map((e) => e[field])),
+  ];
+
+  const filtersName = [
+    "model",
+    "color",
+    "year",
+    "type",
+    "city",
+    "manufacturer",
+  ];
+
+  const fetchFilters = () => {
+    axios
+      .get(`${VITE_BACKEND_URL}/private/vehicles`)
+      .then((res) => {
+        const filters = [];
+        Object.keys(res.data[0]).map((key) => {
+          if (filtersName.includes(key)) {
+            filters.push({
+              id: key,
+              name: key,
+              options: getUniqueValues(res.data, key).map((value) => ({
+                value,
+                label: value,
+                checked: false,
+              })),
+            });
+          }
+          return null;
+        });
+        setFiltersList(filters);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  const fetchCars = () => {
+    axios
+      .get(`${VITE_BACKEND_URL}/private/vehicles`)
+      .then((res) => {
+        const cars = res.data.map((car) => ({
+          id: car.id,
+          manufacturer: car.manufacturer,
+          model: car.model,
+          type: car.type,
+          year: car.year,
+          color: car.color,
+          city: car.city,
+          picture: car.picture,
+          price: car.price,
+        }));
+        setDataCar(cars);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchCars();
+    fetchFilters();
+  }, []);
+
+  const handleModelFilter = (e) => {
+    let updatedFilterCar = [...filterCar];
+    if (
+      e.target.checked === true &&
+      !updatedFilterCar.includes(e.target.value)
+    ) {
+      updatedFilterCar.push(e.target.value);
+    } else {
+      updatedFilterCar = updatedFilterCar.filter(
+        (filter) => filter !== e.target.value
+      );
+    }
+    setFilterCar(updatedFilterCar);
+  };
 
   return (
     <div>
@@ -134,18 +153,8 @@ export default function Rent() {
               </div>
 
               <form className="mt-4 border-t border-gray-200">
-                <h3 className="sr-only">Categories</h3>
-                <ul className="font-medium text-gray-900 px-2 py-3">
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href} className="block px-2 py-3">
-                        {category.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-
-                {filters.map((section) => (
+                {/* FILTER FOR PHONE */}
+                {filtersList.map((section) => (
                   <Disclosure
                     as="div"
                     key={section.id}
@@ -155,7 +164,7 @@ export default function Rent() {
                       <>
                         <h3 className="-mx-2 -my-3 flow-root">
                           <Disclosure.Button className="px-2 py-3 bg-white w-full flex items-center justify-between text-gray-400 hover:text-gray-500">
-                            <span className="font-medium text-gray-900">
+                            <span className="font-medium capitalize text-gray-900">
                               {section.name}
                             </span>
                             <span className="ml-6 flex items-center">
@@ -186,6 +195,7 @@ export default function Rent() {
                                   defaultValue={option.value}
                                   type="checkbox"
                                   defaultChecked={option.checked}
+                                  onChange={handleModelFilter}
                                   className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
                                 />
                                 <label
@@ -273,15 +283,7 @@ export default function Rent() {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
             {/* Filters */}
             <form className="hidden lg:block">
-              <h3 className="sr-only">Categories</h3>
-              <ul className="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
-                {subCategories.map((category) => (
-                  <li key={category.name}>
-                    <a href={category.href}>{category.name}</a>
-                  </li>
-                ))}
-              </ul>
-              {filters.map((section) => (
+              {filtersList.map((section) => (
                 <Disclosure
                   as="div"
                   key={section.id}
@@ -291,7 +293,7 @@ export default function Rent() {
                     <>
                       <h3 className="-my-3 flow-root">
                         <Disclosure.Button className="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500">
-                          <span className="font-medium text-gray-900">
+                          <span className="font-medium capitalize text-gray-900">
                             {section.name}
                           </span>
                           <span className="ml-6 flex items-center">
@@ -322,6 +324,7 @@ export default function Rent() {
                                 defaultValue={option.value}
                                 type="checkbox"
                                 defaultChecked={option.checked}
+                                onChange={handleModelFilter}
                                 className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
                               />
                               <label
@@ -339,31 +342,38 @@ export default function Rent() {
                 </Disclosure>
               ))}
             </form>
-
             {/* Product grid */}
             <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:col-span-3 lg:gap-x-8">
-              {products.map((product) => (
-                <a
-                  key={product.id}
-                  href={product.href}
-                  className="group text-sm"
-                >
-                  <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
-                    <img
-                      src={product.imageSrc}
-                      alt={product.imageAlt}
-                      className="w-full h-full object-center object-cover"
-                    />
-                  </div>
-                  <h3 className="mt-4 font-medium text-gray-900">
-                    {product.name}
-                  </h3>
-                  <p className="text-gray-500 italic">{product.availability}</p>
-                  <p className="mt-2 font-medium text-gray-900">
-                    {product.price}
-                  </p>
-                </a>
-              ))}
+              {dataCar
+                .filter((car) =>
+                  filterCar.length === 0
+                    ? car
+                    : Object.keys(car).some((key) =>
+                        filterCar.includes(car[key])
+                      )
+                )
+                .map((product) => (
+                  <Link
+                    key={product.id}
+                    to={`/car/${product.id}`}
+                    className="group text-sm"
+                  >
+                    <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
+                      <img
+                        src={product.picture}
+                        alt={product.picture}
+                        className="w-full h-full object-center object-cover"
+                      />
+                    </div>
+                    <h3 className="mt-4 font-medium text-gray-900">
+                      {product.name}
+                    </h3>
+                    <p className="text-gray-500 italic">{product.name}</p>
+                    <p className="mt-2 font-medium text-gray-900">
+                      {product.price} € / Day
+                    </p>
+                  </Link>
+                ))}
             </div>
           </div>
         </section>

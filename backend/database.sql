@@ -57,7 +57,7 @@ INSERT INTO
     )
 VALUES (
         1,
-        1,
+        8,
         "2023-01-25",
         "2023-01-25"
     ), (
@@ -272,6 +272,22 @@ VALUES (
         "B627T3",
         "https://www.ligier.fr/wp-content/uploads/2021/03/Ligier-JS50-SPort-Ultimate-GA-min-566x400.png"
     ), (
+        "Ligier",
+        "JS50 Sport",
+        "Thermique",
+        "2021",
+        "rouge",
+        2,
+        1055,
+        "Toulouse",
+        5,
+        2,
+        1,
+        1,
+        "MACSF",
+        "B627T3",
+        "https://www.ligier.fr/wp-content/uploads/2020/11/Ligier-JS50-Sport-Young-rouge-566x400.png"
+    ), (
         "Aixam",
         "Minauto",
         "Thermique",
@@ -309,7 +325,7 @@ VALUES (
         "Electrique",
         "2022",
         "vert",
-        1,
+        2,
         6854,
         "Paris",
         50,
@@ -319,6 +335,54 @@ VALUES (
         "MACSF",
         "B623E227T3",
         "https://cdn.motor1.com/images/mgl/GxO7J/s1/1x1/renault-twizy-by-oakley-design.webp"
+    ), (
+        "Renault",
+        "Twizy",
+        "Electrique",
+        "2022",
+        "noir",
+        2,
+        685,
+        "Paris",
+        7,
+        4,
+        1,
+        1,
+        "MACSF",
+        "B623E227T3",
+        "https://images.caradisiac.com/logos-ref/modele/modele--renault-twizy-45/S7-modele--renault-twizy-45.jpg"
+    ), (
+        "Renault",
+        "Twizy",
+        "Electrique",
+        "2022",
+        "bleu",
+        2,
+        8754,
+        "Paris",
+        7,
+        4,
+        1,
+        1,
+        "MACSF",
+        "B623E227T3",
+        "https://tinyurl.com/468a2y74"
+    ), (
+        "Renault",
+        "Twizy",
+        "Electrique",
+        "2022",
+        "rouge",
+        2,
+        8254,
+        "Paris",
+        7,
+        4,
+        1,
+        1,
+        "MACSF",
+        "B623E227T3",
+        "https://www.cdiscount.com/pdt2/5/9/4/1/700x700/auc0884505480594/rw/voiture-electrique-gz05d-renault-twizy-1-18-sclae.jpg"
     ), (
         "Citroën",
         "AMI",
@@ -335,6 +399,22 @@ VALUES (
         "MAIF",
         "B627T9873",
         "https://static.latribune.fr/full_width/1517716/citroen-ami.jpg"
+    ), (
+        "Citroën",
+        "AMI",
+        "Electrique",
+        "2021",
+        "rouge",
+        2,
+        5646,
+        "Clermont-Ferrand",
+        5,
+        3,
+        1,
+        1,
+        "MAIF",
+        "B627T98ZE73",
+        "https://i.servimg.com/u/f86/18/30/80/88/citroe10.png"
     ), (
         "Ligier",
         "MICROCAR",
