@@ -1,19 +1,13 @@
 /* eslint-disable import/no-unresolved */
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import { useState, useEffect, Fragment } from "react";
+import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import logo from "@assets/logo.png";
 
-function Header() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, []);
+function Header({ currentUser }) {
+  const user = currentUser;
 
   const handleLogout = () => {
     localStorage.removeItem("user");
