@@ -25,6 +25,7 @@ export default function Login() {
         });
         const { user } = res.data;
         localStorage.setItem("user", JSON.stringify(user));
+        console.warn(localStorage.getItem("user"));
         navigate("/car");
       })
       .catch((err) => {
