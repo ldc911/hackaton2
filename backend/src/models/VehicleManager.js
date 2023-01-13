@@ -7,14 +7,14 @@ class VehicleManager extends AbstractManager {
 
   findVehicle() {
     return this.connection.query(
-      `SELECT v.id, v.manufacturer, v.model, v.type, v.year, v.color, v.seats, v.mileage, v.city, v.price, v.id_owner, v.isAvailable, v.maintenanceStartDate, v.maintenanceEndDate, v.isValidate, v.insuranceCompany, v.insuranceNumber, v.picture FROM ${this.table} AS v INNER JOIN owner ON owner.id = v.id_owner
-      WHERE v.isValidate=1 AND owner.isValidate = 1`
+      `SELECT v.id, v.marque, v.modele, v.type, v.annee, v.couleur, v.places, v.kilometrage, v.ville, v.prix, v.id_loueur, v.estDisponible, v.entretienDateDebut, v.entretienDateFin, v.estValide, v.compagnieAssurance, v.numeroAssurance, v.image FROM ${this.table} AS v INNER JOIN owner ON owner.id = v.id_loueur
+      WHERE v.estValide=1 AND owner.estValide = 1`
     );
   }
 
   findByOwnerId(id) {
     return this.connection.query(
-      `SELECT * FROM ${this.table} WHERE id_owner = ?`,
+      `SELECT * FROM ${this.table} WHERE id_loueur = ?`,
       [id]
     );
   }
@@ -27,23 +27,23 @@ class VehicleManager extends AbstractManager {
 
   addVehicle(vehicle) {
     return this.connection.query(
-      `INSERT INTO ${this.table} (manufacturer, model, type, year, color, seats, mileage, city, price, id_owner, isAvailable, isValidate, insuranceCompany, insuranceNumber, picture) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
+      `INSERT INTO ${this.table} (marque, modele, type, annee, couleur, places, kilometrage, ville, prix, id_loueur, estDisponible, estValide, compagnieAssurance, numeroAssurance, image) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`,
       [
-        vehicle.manufacturer,
-        vehicle.model,
+        vehicle.marque,
+        vehicle.modele,
         vehicle.type,
-        vehicle.year,
-        vehicle.color,
-        vehicle.seats,
-        vehicle.mileage,
-        vehicle.city,
-        vehicle.price,
-        vehicle.id_owner,
-        vehicle.isAvailable,
-        vehicle.isValidate,
-        vehicle.insuranceCompany,
-        vehicle.insuranceNumber,
-        vehicle.picture,
+        vehicle.annee,
+        vehicle.couleur,
+        vehicle.places,
+        vehicle.kilometrage,
+        vehicle.ville,
+        vehicle.prix,
+        vehicle.id_loueur,
+        vehicle.estDisponible,
+        vehicle.estValide,
+        vehicle.compagnieAssurance,
+        vehicle.numeroAssurance,
+        vehicle.image,
       ]
     );
   }

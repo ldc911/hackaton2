@@ -1,4 +1,4 @@
-const models = require("../models");
+const modeles = require("../models");
 
 const createReservation = (req, res) => {
   const reservation = req.body;
@@ -8,7 +8,7 @@ const createReservation = (req, res) => {
       "Vous ne pouvez pas réserver de voiture avec un profil de loueur.";
     res.status(401).json(message);
   } else {
-    models.reservation
+    modeles.reservation
       .addReservation(reservation)
       .then(([result]) => {
         const message = "Réservation effectuée avec succès.";

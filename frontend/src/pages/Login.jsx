@@ -197,7 +197,7 @@ export default function Login() {
                         viewBox="0 0 24 24"
                       >
                         <circle
-                          className="opacity-25"
+                          className="opaville-25"
                           cx="12"
                           cy="12"
                           r="10"
@@ -205,7 +205,7 @@ export default function Login() {
                           strokeWidth="4"
                         />
                         <path
-                          className="opacity-75"
+                          className="opaville-75"
                           fill="currentColor"
                           d="M4 12a8 8 0 018-8v8H4z"
                         />

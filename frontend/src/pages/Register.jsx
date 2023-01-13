@@ -8,13 +8,13 @@ const { VITE_BACKEND_URL } = import.meta.env;
 
 export default function Register() {
   const [email, setEmail] = useState("");
-  const [firstname, setFirstName] = useState("");
-  const [lastname, setLastName] = useState("");
-  const [city, setCity] = useState("");
+  const [prenom, setprenom] = useState("");
+  const [nom, setnom] = useState("");
+  const [ville, setville] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [dateNaissance, setBirthday] = useState("");
   const [drivingLicense, setDrivingLicense] = useState("");
   const navigate = useNavigate();
 
@@ -30,10 +30,10 @@ export default function Register() {
       .post(`${VITE_BACKEND_URL}/api/register`, {
         email,
         password,
-        firstname,
-        lastname,
-        city,
-        birthday,
+        prenom,
+        nom,
+        ville,
+        dateNaissance,
         drivingLicense,
       })
       .then(function handleResponse() {
@@ -135,7 +135,7 @@ export default function Register() {
                   id="first-name"
                   placeholder="Prénom"
                   autoComplete="given-name"
-                  onChange={(e) => setFirstName(e.target.value)}
+                  onChange={(e) => setprenom(e.target.value)}
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                   required
                 />
@@ -156,7 +156,7 @@ export default function Register() {
                   id="last-name"
                   placeholder="Nom"
                   autoComplete="family-name"
-                  onChange={(e) => setLastName(e.target.value)}
+                  onChange={(e) => setnom(e.target.value)}
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                   required
                 />
@@ -165,7 +165,7 @@ export default function Register() {
 
             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label
-                htmlFor="birthday"
+                htmlFor="dateNaissance"
                 className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
               >
                 Date de naissance
@@ -173,10 +173,10 @@ export default function Register() {
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <input
                   type="text"
-                  name="birthday"
-                  id="birthday"
+                  name="dateNaissance"
+                  id="dateNaissance"
                   placeholder="YYYY-MM-DD"
-                  autoComplete="birthday"
+                  autoComplete="dateNaissance"
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                   onChange={(e) => setBirthday(e.target.value)}
                   required
@@ -207,7 +207,7 @@ export default function Register() {
 
             <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
               <label
-                htmlFor="city"
+                htmlFor="ville"
                 className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
               >
                 Ville
@@ -215,12 +215,12 @@ export default function Register() {
               <div className="mt-1 sm:mt-0 sm:col-span-2">
                 <input
                   type="text"
-                  name="city"
-                  id="city"
+                  name="ville"
+                  id="ville"
                   placeholder="Ville"
                   autoComplete="address-level2"
                   className="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                  onChange={(e) => setCity(e.target.value)}
+                  onChange={(e) => setville(e.target.value)}
                   required
                 />
               </div>

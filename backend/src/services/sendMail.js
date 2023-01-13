@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const sendMail = (req, res, next) => {
-  const { firstName, lastName, email } = req.body;
+  const { prenom, nom, email } = req.body;
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_SENDIN,
@@ -19,7 +19,7 @@ const sendMail = (req, res, next) => {
     from: "notification@eliteFleet.com",
     to: email,
     subject: "Bienvenue chez EliteFleet©",
-    html: `<p> Cher ${lastName}${firstName}, </p> \n\n<p>${message} </p>`,
+    html: `<p> Cher ${nom}${prenom}, </p> \n\n<p>${message} </p>`,
   };
 
   return transporter

@@ -7,6 +7,7 @@ const router = express.Router();
 const vehicleControllers = require("./controllers/vehicleControllers");
 const userControllers = require("./controllers/userControllers");
 const reservationControllers = require("./controllers/reservationControllers");
+const ownerControllers = require("./controllers/ownerControllers");
 
 const middlewares = require("./services/middlewares");
 const auth = require("../auth");
@@ -62,6 +63,9 @@ router.delete(
   middlewares.getVehicleById,
   vehicleControllers.deleteVehicle
 );
+
+// récupérer liste des owners
+router.get("/owners", ownerControllers.getOwners);
 
 // ajout d'une voiture
 router.post("/owners/:id/vehicles", vehicleControllers.createVehicle);

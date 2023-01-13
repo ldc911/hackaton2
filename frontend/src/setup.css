@@ -20,11 +20,10 @@ body {
 
 .content {
   height: 100vh;
-  background-color: #f0f0f0;
+  background-couleur: #f0f0f0;
   padding-top: 1rem;
 }
 
 .link {
   @apply hover:text-gray-600 transition duration-300 ease-in-out;
 }
-
