@@ -35,7 +35,7 @@ export default function Rent() {
 
   const [filtersList, setFiltersList] = useState([]);
   const [filterCar, setFilterCar] = useState([]);
-  const [setDateReserved] = useState([]);
+
 
   const getUniqueValues = (data, field) => [
     ...new Set(data.map((e) => e[field])),
@@ -63,6 +63,7 @@ export default function Rent() {
   };
 
   const fetchCars = (res) => {
+    console.log(res.data)
     const cars = res.data.map((car) => ({
       id: car.id,
       marque: car.marque,
@@ -77,26 +78,7 @@ export default function Rent() {
     setDataCar(cars);
   };
 
-  const filterRentedData = (e) => {
-    return Object.keys(e[0])
-      .map((key) =>
-        typeof e[0][key] === "object" && e[0][key] !== null ? e[0][key] : null
-      )
-      .filter((other) => other !== null);
-  };
 
-  const fetchDates = (data) => {
-    const newDateReserved = filterRentedData(data);
-    let rentDetails = newDateReserved.map((obj) => {
-      return { locationDebut: obj.locationDebut, locationFin: obj.locationFin };
-    });
-    rentDetails = rentDetails.map(
-      (item) =>
-        (item.locationDebut = new Date(item.locationDebut)) &&
-        (item.locationFin = new Date(item.locationFin))
-    );
-    setDateReserved(rentDetails);
-  };
 
   useEffect(() => {
     axios
@@ -104,7 +86,6 @@ export default function Rent() {
       .then((res) => {
         fetchCars(res);
         fetchFilters(res);
-        fetchDates(res.data);
       })
       .catch((err) => {
         console.error(err);
@@ -380,8 +361,8 @@ export default function Rent() {
                   >
                     <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opaville-75">
                       <img
-                        src={product.image}
-                        alt={product.image}
+                        src={product.image.id1}
+                        alt={product.image.id1}
                         className="w-full h-full object-center object-cover"
                       />
                     </div>
