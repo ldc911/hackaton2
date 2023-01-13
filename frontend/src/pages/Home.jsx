@@ -126,7 +126,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="mt-3 text-3xl font-extrabold text-white">
-                Mettez à louer vos voiture sans permis
+                Mettez à louer vos voitures sans permis
               </p>
               <p className="mt-5 text-lg text-gray-300 py-10 px-4 text-justify">
                 Mettez vos voitures sans permis en location dès maintenant pour
@@ -177,7 +177,7 @@ export default function Home() {
                 S'inscrire
               </Link>
               <Link
-                to="/rent"
+                to="/car"
                 className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-800 bg-indigo-50 hover:bg-indigo-100"
               >
                 Louer
