@@ -78,8 +78,8 @@ export default function Home() {
         {/* Logo Cloud */}
         <div className="bg-gray-100">
           <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-sm font-semibold uppercase text-gray-500 text-2xl tracking-wide pb-12">
-              Ils nous font confiance :
+            <p className="text-center font-normal text-gray-500 text-base tracking-wide pb-12">
+              Nos partenaires particuliers et professionnels
             </p>
             <div className="mt-6 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
               <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">

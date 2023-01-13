@@ -225,7 +225,7 @@ export default function Rent() {
       <main className="width mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
           <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
-            Ma recherche :
+            Location
           </h1>
           <div className="flex items-center">
             <Menu as="div" className="relative inline-block text-left">
@@ -374,9 +374,9 @@ export default function Rent() {
                     <h3 className="mt-4 font-medium text-gray-900">
                       {product.name}
                     </h3>
-                    <p className="text-gray-500 italic">{product.name}</p>
-                    <p className="mt-2 font-medium text-gray-900">
-                      {product.price} € / jours
+                    <p className="text-gray-500 text-base italic">{product.manufacturer} {product.model}</p>
+                    <p className="mt-2 font-thin text-sm text-gray-900">
+                      {product.price} € / 24 h
                     </p>
                   </Link>
                 ))}
