@@ -11,6 +11,7 @@ import CarDetail from "./pages/CarDetail";
 import ProfilPage from "./pages/ProfilPage";
 import OwnerCar from "./pages/OwnerCar";
 import ContactUs from "./pages/ContactUs";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/car/:id" element={<CarDetail />} />
           <Route path="/profil" element={<ProfilPage />} />
           <Route path="/fleet" element={<OwnerCar />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
         <Footer />
       </Router>

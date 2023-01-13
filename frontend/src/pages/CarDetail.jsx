@@ -8,6 +8,7 @@ import axios from "axios";
 import { DateRange } from "react-date-range";
 import { addDays } from "date-fns";
 import Order from "@components/Order";
+import fr from "date-fns/locale/fr";
 
 const { VITE_BACKEND_URL } = import.meta.env;
 
@@ -38,7 +39,7 @@ export default function CardDetail() {
       key: "selection",
     },
   ]);
-  
+
   useEffect(() => {
     const day = range[0].endDate.getDate() - range[0].startDate.getDate() + 1;
     if (dataCar.length !== 0) {
@@ -237,6 +238,7 @@ export default function CardDetail() {
                   showSelectionPreview
                   minDate={new Date()}
                   rangeColors={["rgb(79 70 229)"]}
+                  locale={fr}
                 />
                 {!isOwner && (
                   <button

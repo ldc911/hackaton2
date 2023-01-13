@@ -27,4 +27,3 @@ body {
 .link {
   @apply hover:text-gray-600 transition duration-300 ease-in-out;
 }
-
