@@ -34,16 +34,16 @@
     },
     {
       "file": "backend/src/controllers/ItemController.js",
-      "description": "Now, I'm speaking about MySQL errors but there are no \"SELECT * FROM item\" queries here, there's just this `models.item.find()` call...\n\nThat's normal, because your requests manipulate an _Entity_, a _Model_ of your target (here, an item). So we'll have to go to the `src/models/ItemManager.js` file!",
+      "description": "Now, I'm speaking about MySQL errors but there are no \"SELECT * FROM item\" queries here, there's just this `modeles.item.find()` call...\n\nThat's normal, because your requests manipulate an _Entity_, a _Model_ of your target (here, an item). So we'll have to go to the `src/modeles/ItemManager.js` file!",
       "line": 17
     },
     {
-      "file": "backend/src/models/ItemManager.js",
-      "description": "Ah, here we are, we found our SQL queries!\n\nAs you can see, every method here is dead simple: \"do something with the DB, and return the result\".\nThat allows us to regroup **all** our queries in the same files, t make it easier to maintain.\n\nHmm, but although we're in the Item model, I can't see the `find` method...\nOur ItemManager is a specialized AbstractManager (that's OOP for you!), we may as well go and see what this one does ?",
+      "file": "backend/src/modeles/ItemManager.js",
+      "description": "Ah, here we are, we found our SQL queries!\n\nAs you can see, every method here is dead simple: \"do something with the DB, and return the result\".\nThat allows us to regroup **all** our queries in the same files, t make it easier to maintain.\n\nHmm, but although we're in the Item modele, I can't see the `find` method...\nOur ItemManager is a specialized AbstractManager (that's OOP for you!), we may as well go and see what this one does ?",
       "line": 3
     },
     {
-      "file": "backend/src/models/AbstractManager.js",
+      "file": "backend/src/modeles/AbstractManager.js",
       "description": "Hah! Nailed it! (At last)\n\nWe have a `find` method, which does our `SELECT * FROM` query.\nAnd looking more in detail, we can imagine why: except for the table name, the query is strictly identical to find a specific item, or book, or car, or unicorn... So, it makes sense to write it onl once and make sure *every* somethingManager has access to it by default, doesn't it ?\n\nNote that the same goes for `findAll` ans `delete`: you'll never have to write these queries in your own managers !",
       "line": 7
     },

@@ -1,10 +1,10 @@
 CREATE TABLE
     `owner` (
         `id` int NOT NULL AUTO_INCREMENT,
-        `company` varchar(45) NOT NULL,
+        `entreprise` varchar(45) NOT NULL,
         `email` varchar(255) NOT NULL,
-        `city` varchar(100) NOT NULL,
-        `isValidate` TINYINT,
+        `ville` varchar(100) NOT NULL,
+        `estValide` TINYINT,
         `hashedPassword` varchar(255) NOT NULL,
         PRIMARY KEY (`id`),
         UNIQUE INDEX `Mail`(`email`)
@@ -12,10 +12,10 @@ CREATE TABLE
 
 INSERT INTO
     owner (
-        company,
+        entreprise,
         email,
-        city,
-        isValidate,
+        ville,
+        estValide,
         hashedPassword
     )
 VALUES (
@@ -31,7 +31,7 @@ VALUES (
         1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
-        "Garage Lereton",
+        "Garage Lebreton",
         "concessionLebreton@lebreton.fr",
         "Clermont-Ferrand",
         1,
@@ -48,18 +48,18 @@ CREATE TABLE
     `reservation` (
         `id` int NOT NULL AUTO_INCREMENT,
         `id_vehicule` int NOT NULL,
-        `id_user` int NOT NULL,
-        `rentStart` DATE NOT NULL,
-        `rentEnd` DATE NOT NULL,
+        `id_utlisateur` int NOT NULL,
+        `locationDebut` DATE NOT NULL,
+        `locationFin` DATE NOT NULL,
         PRIMARY KEY (`id`)
     );
 
 INSERT INTO
     reservation (
         id_vehicule,
-        id_user,
-        rentStart,
-        rentEnd
+        id_utlisateur,
+        locationDebut,
+        locationFin
     )
 VALUES (
         1,
@@ -96,14 +96,14 @@ VALUES (
 CREATE TABLE
     `user` (
         `id` int NOT NULL AUTO_INCREMENT,
-        `drivingLicenseNumber` VARCHAR(45) NOT NULL,
-        `lastName` varchar(45) NOT NULL,
-        `firstName` varchar(45) NOT NULL,
-        `birthday` date NOT NULL,
-        `city` varchar(100) NOT NULL,
+        `NumeroPermis` VARCHAR(45) NOT NULL,
+        `nom` varchar(45) NOT NULL,
+        `prenom` varchar(45) NOT NULL,
+        `dateNaissance` date NOT NULL,
+        `ville` varchar(100) NOT NULL,
         `email` varchar(255) NOT NULL,
-        `isAdmin` TINYINT(1),
-        `avatar` VARCHAR(255),
+        `estAdmin` TINYINT(1),
+        `avatar` text,
         `hashedPassword` varchar(255) NOT NULL,
         PRIMARY KEY (`id`),
         UNIQUE INDEX `Mail`(`email`)
@@ -111,13 +111,13 @@ CREATE TABLE
 
 INSERT INTO
     user (
-        drivingLicenseNumber,
-        lastName,
-        firstName,
-        birthday,
-        city,
+        NumeroPermis,
+        nom,
+        prenom,
+        dateNaissance,
+        ville,
         email,
-        isAdmin,
+        estAdmin,
         avatar,
         hashedPassword
     )
@@ -236,43 +236,43 @@ VALUES (
 CREATE TABLE
     `vehicule` (
         `id` int NOT NULL AUTO_INCREMENT,
-        `manufacturer` varchar(45) NOT NULL,
-        `model` varchar(45) NOT NULL,
+        `marque` varchar(45) NOT NULL,
+        `modele` varchar(45) NOT NULL,
         `type` varchar(45) NOT NULL,
-        `year` int NOT NULL,
-        `color` varchar(45) NOT NULL,
-        `seats` int NOT NULL,
-        `mileage` INT NOT NULL,
-        `city` varchar(100) NOT NULL,
-        `price` int NOT NULL,
-        `id_owner` int NOT NULL,
-        `isAvailable` TINYINT(1) NOT NULL,
-        `maintenanceStartDate` DATE,
-        `maintenanceEndDate` DATE,
-        `isValidate` tinyint(1) NOT NULL,
-        `insuranceCompany` varchar(45) NOT NULL,
-        `insuranceNumber` varchar(45) NOT NULL,
-        `picture` VARCHAR(255) NOT NULL,
+        `annee` int NOT NULL,
+        `couleur` varchar(45) NOT NULL,
+        `places` int NOT NULL,
+        `kilometrage` INT NOT NULL,
+        `ville` varchar(100) NOT NULL,
+        `prix` int NOT NULL,
+        `id_loueur` int NOT NULL,
+        `estDisponible` TINYINT(1) NOT NULL,
+        `entretienDateDebut` DATE,
+        `entretienDateFin` DATE,
+        `estValide` tinyint(1) NOT NULL,
+        `compagnieAssurance` varchar(45) NOT NULL,
+        `numeroAssurance` varchar(45) NOT NULL,
+        `image` JSON,
         PRIMARY KEY (`id`)
     );
 
 INSERT INTO
     vehicule (
-        manufacturer,
-        model,
+        marque,
+        modele,
         type,
-        year,
-        color,
-        seats,
-        mileage,
-        city,
-        price,
-        id_owner,
-        isAvailable,
-        isValidate,
-        insuranceCompany,
-        insuranceNumber,
-        picture
+        annee,
+        couleur,
+        places,
+        kilometrage,
+        ville,
+        prix,
+        id_loueur,
+        estDisponible,
+        estValide,
+        compagnieAssurance,
+        numeroAssurance,
+        image
     )
 VALUES (
         "Aixam",
@@ -289,7 +289,7 @@ VALUES (
         1,
         "DASFKE32",
         "B3337T3",
-        "https://media.lesechos.com/api/v1/images/view/5c336b6c8fe56f1f3c6d2135/1280x720/0202699408901-web.jpg"
+        '{"id1": "https://media.lesechos.com/api/v1/images/view/5c336b6c8fe56f1f3c6d2135/1280x720/0202699408901-web.jpg"}'
     ), (
         "Chatenet",
         "CH40",
@@ -305,7 +305,8 @@ VALUES (
         1,
         "DASFKE32",
         "B3337T3",
-        "https://www.gsanspermis.com/wp-content/uploads/2020/01/CHATENET-CH40.jpg"
+        '{"id1": "https://www.gsanspermis.com/wp-content/uploads/2020/01/CHATENET-CH40.jpg"}
+'
     ), (
         "Ligier",
         "Microcar M.CROSS",
@@ -321,7 +322,8 @@ VALUES (
         1,
         "DASFKE32",
         "B3337T3",
-        "https://www.bscar-71.fr/app/uploads/M.CROSS_HX_34AV-BA.png"
+        '{"id1": "https://www.bscar-71.fr/app/uploads/M.CROSS_HX_34AV-BA.png"}
+'
     ), (
         "Ligier",
         "JS50 Sport",
@@ -337,7 +339,8 @@ VALUES (
         1,
         "MACSF",
         "B627T3",
-        "https://www.ligier.fr/wp-content/uploads/2021/03/Ligier-JS50-SPort-Ultimate-GA-min-566x400.png"
+        '{"id1": "https://www.ligier.fr/wp-content/uploads/2021/03/Ligier-JS50-SPort-Ultimate-GA-min-566x400.png"}
+'
     ), (
         "Ligier",
         "JS50 Sport",
@@ -353,7 +356,8 @@ VALUES (
         1,
         "MACSF",
         "B627T3",
-        "https://www.ligier.fr/wp-content/uploads/2020/11/Ligier-JS50-Sport-Young-rouge-566x400.png"
+        '{"id1": "https://www.ligier.fr/wp-content/uploads/2020/11/Ligier-JS50-Sport-Young-rouge-566x400.png"}
+'
     ), (
         "Aixam",
         "Minauto",
@@ -369,7 +373,8 @@ VALUES (
         1,
         "MAIF",
         "B62234T3",
-        "https://www.aixam.com/ressources/medias/slide_minauto-access-front-8k.jpg?v2"
+        '{"id1": "https://www.aixam.com/ressources/medias/slide_minauto-access-front-8k.jpg?v2"}
+'
     ), (
         "Chatenet",
         "CH46",
@@ -385,7 +390,8 @@ VALUES (
         1,
         "Matmut",
         "FKJHR789",
-        "https://www.ouestfrance-auto.com/p/annonces/16294189_1_162941895edba5a89af33405275628_w_ouestfranceauto_.jpg"
+        '{"id1": "https://www.ouestfrance-auto.com/p/annonces/16294189_1_162941895edba5a89af33405275628_w_ouestfranceauto_.jpg"}
+'
     ), (
         "Renault",
         "Twizy",
@@ -401,7 +407,8 @@ VALUES (
         1,
         "MACSF",
         "B623E227T3",
-        "https://cdn.motor1.com/images/mgl/GxO7J/s1/1x1/renault-twizy-by-oakley-design.webp"
+        '{"id1": "https://cdn.motor1.com/images/mgl/GxO7J/s1/1x1/renault-twizy-by-oakley-design.webp"}
+'
     ), (
         "Renault",
         "Twizy",
@@ -417,7 +424,8 @@ VALUES (
         1,
         "MACSF",
         "B623E227T3",
-        "https://images.caradisiac.com/logos-ref/modele/modele--renault-twizy-45/S7-modele--renault-twizy-45.jpg"
+        '{"id1": "https://images.caradisiac.com/logos-ref/modelee/modelee--renault-twizy-45/S7-modelee--renault-twizy-45.jpg"}
+'
     ), (
         "Renault",
         "Twizy",
@@ -433,7 +441,8 @@ VALUES (
         1,
         "MACSF",
         "B623E227T3",
-        "https://cdn-s-www.leprogres.fr/images/5FD81F6A-DF4E-4DEB-9B35-CF1EFB08804F/NW_listE/plus-proche-d-un-kart-que-d-une-voiture-la-twizy-est-equipee-de-roues-plus-larges-a-l-arriere-qu-a-l-avant-la-twizy-offre-differentes-couleurs-du-noir-et-du-blanc-et-en-option-les-arches-laterales-peuvent-se-parer-de-bleu-ou-de-rouge-photo-renault-1605113229.jpg"
+        '{"id1": "https://cdn-s-www.leprogres.fr/images/5FD81F6A-DF4E-4DEB-9B35-CF1EFB08804F/NW_listE/plus-proche-d-un-kart-que-d-une-voiture-la-twizy-est-equipee-de-roues-plus-larges-a-l-arriere-qu-a-l-avant-la-twizy-offre-differentes-couleurs-du-noir-et-du-blanc-et-en-option-les-arches-laterales-peuvent-se-parer-de-bleu-ou-de-rouge-photo-renault-1605113229.jpg"}
+'
     ), (
         "Renault",
         "Twizy",
@@ -449,7 +458,8 @@ VALUES (
         1,
         "MACSF",
         "B623E227T3",
-        "https://www.cdiscount.com/pdt2/5/9/4/1/700x700/auc0884505480594/rw/voiture-electrique-gz05d-renault-twizy-1-18-sclae.jpg"
+        '{"id1": "https://www.cdiscount.com/pdt2/5/9/4/1/700x700/auc0884505480594/rw/voiture-electrique-gz05d-renault-twizy-1-18-sclae.jpg"}
+'
     ), (
         "Citroën",
         "AMI",
@@ -465,7 +475,8 @@ VALUES (
         1,
         "MAIF",
         "B627T9873",
-        "https://static.latribune.fr/full_width/1517716/citroen-ami.jpg"
+        '{"id1": "https://static.latribune.fr/full_width/1517716/citroen-ami.jpg"}
+'
     ), (
         "Citroën",
         "AMI",
@@ -481,7 +492,8 @@ VALUES (
         1,
         "MAIF",
         "B627T98ZE73",
-        "https://i.servimg.com/u/f86/18/30/80/88/citroe10.png"
+        '{"id1": "https://i.servimg.com/u/f86/18/30/80/88/citroe10.png"}
+'
     ), (
         "Ligier",
         "MICROCAR",
@@ -497,10 +509,11 @@ VALUES (
         1,
         "MACSF",
         "B627TZE3",
-        "https://www.ligier.fr/wp-content/uploads/2022/11/M.GO-Must-min.png"
+        '{"id1": "https://www.ligier.fr/wp-content/uploads/2022/11/M.GO-Must-min.png"}
+'
     ), (
         "Jiayuan",
-        "City Fun 45",
+        "ville Fun 45",
         "Electrique",
         "2022",
         "jaune",
@@ -513,7 +526,8 @@ VALUES (
         1,
         "Libéa",
         "B6ZR27T3",
-        "https://media.gqmagazine.fr/photos/5fa94b2fa6095c6ef665d607/master/w_1600,c_limit/1city%20jaune%20chateau.jpeg"
+        '{"id1": "https://media.gqmagazine.fr/photos/5fa94b2fa6095c6ef665d607/master/w_1600,c_limit/1ville%20jaune%20chateau.jpeg"}
+'
     ), (
         "Bellier",
         "B8",
@@ -529,7 +543,8 @@ VALUES (
         1,
         "MACSF",
         "B62E7T3",
-        "https://www.gsanspermis.com/wp-content/uploads/2020/01/TABLETTE-GSP40.pdf-Adobe-Acrobat-Pro-1.jpg.webp"
+        '{"id1": "https://www.gsanspermis.com/wp-content/uploads/2020/01/TABLETTE-GSP40.pdf-Adobe-Acrobat-Pro-1.jpg.webp"}
+'
     ), (
         "Casalini",
         "M20 Supperleggera",
@@ -545,7 +560,8 @@ VALUES (
         1,
         "MACSF",
         "B62723T3",
-        "https://www.my-vsp.fr/wp-content/uploads/2021/09/casalini-1-1200x800.jpg"
+        '{"id1": "https://www.my-vsp.fr/wp-content/uploads/2021/09/casalini-1-1200x800.jpg"}
+'
     ), (
         "Hummer",
         "Mini HX",
@@ -561,7 +577,8 @@ VALUES (
         1,
         "MACSF",
         "B62723T3",
-        "http://myelectricvehicle.be/wp-content/gallery/mev-hummer-hx-t/MEV-HUMMER-HX-T-Flat-Red-Canopy-Roof-Side-View.png"
+        '{"id1": "http://myelectricvehicle.be/wp-content/gallery/mev-hummer-hx-t/MEV-HUMMER-HX-T-Flat-Red-Canopy-Roof-Side-View.png"}
+'
     ), (
         "Estrima",
         "Biro",
@@ -577,7 +594,8 @@ VALUES (
         1,
         "MAIF",
         "B627T23E3",
-        "https://laboutiquegreenlines.com/wp-content/uploads/2021/11/1-1.jpg"
+        '{"id1": "https://laboutiquegreenlines.com/wp-content/uploads/2021/11/1-1.jpg"}
+'
     );
 
 ALTER TABLE `reservation`
@@ -586,8 +604,8 @@ ADD
 
 ALTER TABLE `reservation`
 ADD
-    CONSTRAINT `idUser` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+    CONSTRAINT `idUser` FOREIGN KEY (`id_utlisateur`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `vehicule`
 ADD
-    CONSTRAINT `idOwnerVehicule` FOREIGN KEY (`id_owner`) REFERENCES `owner` (`id`) ON DELETE CASCADE;
+    CONSTRAINT `idOwnerVehicule` FOREIGN KEY (`id_loueur`) REFERENCES `owner` (`id`) ON DELETE CASCADE;

@@ -1,7 +1,7 @@
-const models = require("../models");
+const modeles = require("../models");
 
 const getAllVehicles = (req, res) => {
-  models.vehicule
+  modeles.vehicule
     .findVehicle()
     .then(([result]) => {
       const reservation = req.body.resa;
@@ -21,7 +21,7 @@ const getAllVehicles = (req, res) => {
 
 const getOneVehicle = (req, res) => {
   const { id } = req.params;
-  models.vehicule
+  modeles.vehicule
     .findById(id)
     .then(([result]) => {
       if (result.length) {
@@ -46,7 +46,7 @@ const getOneVehicle = (req, res) => {
 
 const getVehicleByOwnerId = (req, res) => {
   const { id } = req.params;
-  models.vehicule
+  modeles.vehicule
     .findByOwnerId(id)
     .then(([result]) => {
       const reservation = req.body.resa;
@@ -66,8 +66,8 @@ const getVehicleByOwnerId = (req, res) => {
 
 const createVehicle = (req, res) => {
   const vehicle = req.body;
-  vehicle.id_owner = parseInt(req.params.id, 10);
-  models.vehicule
+  vehicle.id_loueur = parseInt(req.params.id, 10);
+  modeles.vehicule
     .addVehicle(vehicle)
     .then(([result]) => {
       const message = "Véhicule ajouté avec succès.";
@@ -81,7 +81,7 @@ const createVehicle = (req, res) => {
 
 const deleteVehicle = (req, res) => {
   const { id } = req.params;
-  models.vehicule
+  modeles.vehicule
     .deleteVehicle(id)
     .then(([result]) => {
       if (result.affectedRows > 0) {

@@ -107,7 +107,7 @@ export default function Home() {
             <div className="h-full w-full xl:grid xl:grid-cols-2">
               <div className="h-full xl:relative xl:col-start-2">
                 <img
-                  className="h-full w-full object-cover opacity-25 xl:absolute xl:inset-0"
+                  className="h-full w-full object-cover opaville-25 xl:absolute xl:inset-0"
                   src="https://plus.unsplash.com/premium_photo-1670354502852-86985e103ed6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
                   alt="People working on laptops"
                 />

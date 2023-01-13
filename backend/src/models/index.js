@@ -17,11 +17,11 @@ pool.getConnection().catch(() => {
     "Warning:",
     "Failed to get a DB connection.",
     "Did you create a .env file with valid credentials?",
-    "Routes using models won't work as intended"
+    "Routes using modeles won't work as intended"
   );
 });
 
-const models = fs
+const modeles = fs
   .readdirSync(__dirname)
   .filter((file) => file !== "AbstractManager.js" && file !== "index.js")
   .reduce((acc, file) => {
@@ -44,11 +44,11 @@ const handler = {
       string.slice(0, 1).toUpperCase() + string.slice(1);
 
     throw new ReferenceError(
-      `models.${prop} is not defined. Did you create ${pascalize(
+      `modeles.${prop} is not defined. Did you create ${pascalize(
         prop
       )}Manager.js?`
     );
   },
 };
 
-module.exports = new Proxy(models, handler);
+module.exports = new Proxy(modeles, handler);

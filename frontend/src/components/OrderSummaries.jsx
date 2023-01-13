@@ -1,35 +1,21 @@
+/* eslint-disable react/prop-types */
 /* This example requires Tailwind CSS v2.0+ */
-const products = [
-  {
-    id: 1,
-    name: "Cold Brew Bottle",
-    description:
-      "This glass bottle comes with a mesh insert for steeping tea or cold-brewing coffee. Pour from any angle and remove the top for easy cleaning.",
-    href: "#",
-    quantity: 1,
-    price: "$32.00",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/confirmation-page-05-product-01.jpg",
-    imageAlt: "Glass bottle with black plastic pour top and mesh insert.",
-  },
-];
 
 export default function OrderSummaries({ dataCar, total }) {
-
   const car = [
     {
       id: dataCar.id,
-      manufacturer: dataCar.manufacturer,
-      model: dataCar.model,
-      price: dataCar.price,
-      color: "couleur " + dataCar.color,
-      size: dataCar.mileage + "km",
-      imageSrc: dataCar.picture,
+      marque: dataCar.marque,
+      modele: dataCar.modele,
+      prix: dataCar.prix,
+      couleur: `couleur ${dataCar.couleur}`,
+      size: `${dataCar.kilometrage}km`,
+      imageSrc: dataCar.image,
       imageAlt: dataCar.type,
     },
-  ]
-  let reduction = total * 0.133
-  let totalReduction = total - reduction
+  ];
+  const reduction = total * 0.133;
+  const totalReduction = total - reduction;
   return (
     <div className="bg-white z-50">
       <div className="max-w-3xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
@@ -38,7 +24,7 @@ export default function OrderSummaries({ dataCar, total }) {
             Merci
           </h1>
           <p className="mt-2 text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Vous avez commandé une {car[0].manufacturer} {car[0].model}
+            Vous avez commandé une {car[0].marque} {car[0].modele}
           </p>
           <p className="mt-2 text-base text-gray-500">
             Votre commande #14034056 est confirmée.
@@ -66,9 +52,7 @@ export default function OrderSummaries({ dataCar, total }) {
               />
               <div className="flex-auto flex flex-col">
                 <div>
-                  <h4 className="font-medium text-gray-900">
-                   {product.name}
-                  </h4>
+                  <h4 className="font-medium text-gray-900">{product.name}</h4>
                   <p className="mt-2 text-sm text-gray-600">
                     {product.description}
                   </p>
