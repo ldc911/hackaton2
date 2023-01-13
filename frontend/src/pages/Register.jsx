@@ -39,9 +39,7 @@ export default function Register() {
       .post(`${VITE_BACKEND_URL}/api/register`, {
         user,
       })
-      .then(function handleResponse() {
-        navigate("/login");
-      })
+      .then(() => navigate("/login"))
       .catch(() => {
         setError("Une erreur est survenue");
       });
