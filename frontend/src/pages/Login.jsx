@@ -30,7 +30,7 @@ export default function Login() {
     dispatch(login({ email, password }))
       .unwrap()
       .then(() => {
-        navigate("/profil");
+        navigate("/");
         window.location.reload();
       })
       .catch(() => {

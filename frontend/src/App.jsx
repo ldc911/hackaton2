@@ -17,11 +17,10 @@ import OwnerCar from "./pages/OwnerCar";
 import ContactUs from "./pages/ContactUs";
 
 function App() {
-  const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  const [showAdminBoard, setShowAdminBoard] = useState(false);
+  const [isOwner, setIsOwner] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const { user: currentUser } = useSelector((state) => state.auth);
-
   const dispatch = useDispatch();
 
   const logOut = useCallback(() => {
@@ -30,11 +29,11 @@ function App() {
 
   useEffect(() => {
     if (currentUser) {
-      setShowModeratorBoard(!currentUser.firstName);
-      setShowAdminBoard(currentUser.isAdmin === 1);
+      setIsOwner(!currentUser.user.firstName);
+      setIsAdmin(currentUser.user.isAdmin === 1);
     } else {
-      setShowModeratorBoard(false);
-      setShowAdminBoard(false);
+      setIsOwner(false);
+      setIsAdmin(false);
     }
     EventBus.on("logout", () => {
       logOut();
@@ -48,11 +47,7 @@ function App() {
   return (
     <div className="h-screen w-screen flex flex-col items-center">
       <Router>
-        <Header
-          currentUser={currentUser}
-          showModeratorBoard={showModeratorBoard}
-          showAdminBoard={showAdminBoard}
-        />
+        <Header currentUser={currentUser} isOwner={isOwner} isAdmin={isAdmin} />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -62,10 +57,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/car/:id" element={<CarDetail />} />
-          <Route
-            path="/profil"
-            element={<ProfilPage currentUser={currentUser} />}
-          />
+          <Route path="/profil" element={<ProfilPage />} />
           <Route path="/fleet" element={<OwnerCar />} />
         </Routes>
         <Footer />
