@@ -80,7 +80,7 @@ export default function Example() {
                     href={`mailto:${person.email}`}
                     className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
                   >
-                    <span className="ml-3">Email</span>
+                    <span className="ml-3">E-mail</span>
                   </a>
                 </div>
                 <div className="-ml-px w-0 flex-1 flex">

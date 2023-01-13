@@ -48,7 +48,7 @@ export default function Login() {
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <div>
             <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-              Sign in to your account
+              Se connecter
             </h2>
           </div>
           <div className="mt-8">
@@ -60,7 +60,7 @@ export default function Login() {
                       to="/"
                       className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     >
-                      <span className="sr-only">Sign in with Facebook</span>
+                      <span className="sr-only">Connexion avec Facebook</span>
                       <svg
                         className="w-5 h-5"
                         aria-hidden="true"
@@ -80,7 +80,7 @@ export default function Login() {
                       to="/"
                       className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     >
-                      <span className="sr-only">Sign in with Google</span>
+                      <span className="sr-only">Connexion avec Google</span>
                       <svg
                         className="w-5 h-5"
                         aria-hidden="true"
@@ -104,9 +104,7 @@ export default function Login() {
                   <div className="w-full border-t border-gray-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">
-                    Or continue with
-                  </span>
+                  <span className="px-2 bg-white text-gray-500">ou</span>
                 </div>
               </div>
             </div>
@@ -123,7 +121,7 @@ export default function Login() {
                     htmlFor="email"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Email address
+                    Adresse e-mail
                   </label>
                   <div className="mt-1">
                     <input
@@ -144,7 +142,7 @@ export default function Login() {
                     htmlFor="password"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Password
+                    Mot de passe
                   </label>
                   <div className="mt-1">
                     <input
@@ -172,7 +170,7 @@ export default function Login() {
                       htmlFor="remember-me"
                       className="ml-2 block text-sm text-gray-900"
                     >
-                      Remember me
+                      Enregistrer le mot de passe
                     </label>
                   </div>
 
@@ -181,7 +179,7 @@ export default function Login() {
                       to="/"
                       className="font-medium text-indigo-600 hover:text-indigo-500"
                     >
-                      Forgot your password?
+                      Mot de passe oublié ?
                     </Link>
                   </div>
                 </div>
@@ -213,7 +211,7 @@ export default function Login() {
                         />
                       </svg>
                     )}
-                    Sign in
+                    Connexion
                   </button>
                 </div>
               </form>

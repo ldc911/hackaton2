@@ -148,7 +148,7 @@ export default function Rent() {
                   className="-mr-2 w-10 h-10 bg-white p-2 rounded-md flex items-center justify-center text-gray-400"
                   onClick={() => setMobileFiltersOpen(false)}
                 >
-                  <span className="sr-only">Close menu</span>
+                  <span className="sr-only">Fermeture Menu</span>
                   <XIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
@@ -225,13 +225,13 @@ export default function Rent() {
       <main className="width mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
           <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">
-            Search your car
+            Ma recherche :
           </h1>
           <div className="flex items-center">
             <Menu as="div" className="relative inline-block text-left">
               <div>
                 <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                  Sort
+                  Tri
                   <ChevronDownIcon
                     className="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500"
                     aria-hidden="true"
@@ -276,14 +276,14 @@ export default function Rent() {
               className="p-2 -m-2 ml-4 sm:ml-6 text-gray-400 hover:text-gray-500 lg:hidden"
               onClick={() => setMobileFiltersOpen(true)}
             >
-              <span className="sr-only">Filters</span>
+              <span className="sr-only">Filtres</span>
               <FilterIcon className="w-5 h-5" aria-hidden="true" />
             </button>
           </div>
         </div>
         <section aria-labelledby="products-heading" className="pt-6 pb-24">
           <h2 id="products-heading" className="sr-only">
-            Products
+            Produits
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
             {/* Filters */}
@@ -376,7 +376,7 @@ export default function Rent() {
                     </h3>
                     <p className="text-gray-500 italic">{product.name}</p>
                     <p className="mt-2 font-medium text-gray-900">
-                      {product.price} € / Day
+                      {product.price} € / jours
                     </p>
                   </Link>
                 ))}
