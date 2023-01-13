@@ -3,19 +3,34 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { DateRange } from "react-date-range";
 import { addDays } from "date-fns";
+import Order from "@components/Order";
 
 const { VITE_BACKEND_URL } = import.meta.env;
 
 export default function CardDetail() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [carPrice, setCarPrice] = useState(0);
 
+  const { user: currentUser } = useSelector((state) => state.auth);
+  const [isOwner, setIsOwner] = useState(false);
+
+  useEffect(() => {
+    if (currentUser) {
+      setIsOwner(!currentUser.user.firstName);
+    } else {
+      setIsOwner(false);
+    }
+  }, [currentUser]);
+
+  const [orderModal, setOrderModal] = useState(false);
+  const [carPrice, setCarPrice] = useState(0);
   const [dataCar, setDataCar] = useState([]);
   const [dateReserved, setDateReserved] = useState([]);
+  const [duration, setDuration] = useState(0);
   const [range, setRange] = useState([
     {
       startDate: new Date(),
@@ -23,11 +38,12 @@ export default function CardDetail() {
       key: "selection",
     },
   ]);
-
+  
   useEffect(() => {
     const day = range[0].endDate.getDate() - range[0].startDate.getDate() + 1;
     if (dataCar.length !== 0) {
       setCarPrice(dataCar[0].price * day);
+      setDuration(day);
     }
   }, [range]);
 
@@ -202,9 +218,9 @@ export default function CardDetail() {
               <div className="flex flex-col justify-center items-center mt-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
                 <h2 className="sr-only">Information produit</h2>
                 <p className="text-3xl tracking-tight text-gray-900">
-                  {carPrice}€{" "}
+                  €{carPrice}{" "}
                 </p>
-                <p className="text-sm text-gray-500">/day</p>
+                <p className="text-sm text-gray-500">/jour</p>
                 <p className="text-xl text-center text-gray-900 flex flex-col items-center">
                   Réservation
                 </p>
@@ -222,18 +238,34 @@ export default function CardDetail() {
                   minDate={new Date()}
                   rangeColors={["rgb(79 70 229)"]}
                 />
-                <button
-                  type="submit"
-                  className="mt-10 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                  Réserver
-                </button>
+                {!isOwner && (
+                  <button
+                    role={range.length > 0 ? "button" : "disabled"}
+                    type="submit"
+                    onClick={() => {
+                      if (range.length > 0) {
+                        setOrderModal(true);
+                      }
+                    }}
+                    className="mt-10 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  >
+                    Réserver
+                  </button>
+                )}
               </div>
             </div>
 
             <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8" />
           </div>
         </div>
+      )}
+      {orderModal && (
+        <Order
+          dataCar={dataCar[0]}
+          carPrice={carPrice}
+          duration={duration}
+          close={() => setOrderModal(false)}
+        />
       )}
     </div>
   );
