@@ -97,10 +97,10 @@ export default function OrderSummaries({ dataCar, total }) {
                 <dt className="flex font-medium text-gray-900">
                   Réduction
                   <span className="rounded-full bg-gray-200 text-xs text-gray-600 py-0.5 px-2 ml-2">
-                    sépetitetduraliresurtoutsiséattacéetmalécrit50
+                    bigcarsmall10k
                   </span>
                 </dt>
-                <dd className="text-gray-700">-€{reduction} (13,3%)</dd>
+                <dd className="text-gray-700">-€{reduction} (10%)</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="font-medium text-gray-900">Total</dt>
