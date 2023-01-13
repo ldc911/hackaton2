@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-unresolved */
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
