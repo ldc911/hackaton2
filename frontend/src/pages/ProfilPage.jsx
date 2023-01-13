@@ -1,9 +1,8 @@
 import React from "react";
 
-
 const tabs = [{ name: "Profil", href: "#", current: true }];
 
-const user = JSON.parse(localStorage.getItem("user"));
+const { user } = JSON.parse(localStorage.getItem("user"));
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
