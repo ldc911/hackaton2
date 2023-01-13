@@ -54,13 +54,13 @@ const people = [
       "https://cdn.motor1.com/images/mgl/GxO7J/s1/1x1/renault-twizy-by-oakley-design.webp",
   },
   {
-    name: "Jiayuan City Fun 45",
+    name: "Jiayuan ville Fun 45",
     title: "jaune 2022",
     role: "Electrique",
     email: "janecooper@example.com",
     telephone: "",
     imageUrl:
-      "https://media.gqmagazine.fr/photos/5fa94b2fa6095c6ef665d607/master/w_1600,c_limit/1city%20jaune%20chateau.jpeg",
+      "https://media.gqmagazine.fr/photos/5fa94b2fa6095c6ef665d607/master/w_1600,c_limit/1ville%20jaune%20chateau.jpeg",
   },
   {
     name: "Citroën AMI",

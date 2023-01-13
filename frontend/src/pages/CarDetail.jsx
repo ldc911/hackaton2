@@ -20,7 +20,7 @@ export default function CardDetail() {
 
   useEffect(() => {
     if (currentUser) {
-      setIsOwner(!currentUser.user.firstName);
+      setIsOwner(!currentUser.user.prenom);
     } else {
       setIsOwner(false);
     }
@@ -42,7 +42,7 @@ export default function CardDetail() {
   useEffect(() => {
     const day = range[0].endDate.getDate() - range[0].startDate.getDate() + 1;
     if (dataCar.length !== 0) {
-      setCarPrice(dataCar[0].price * day);
+      setCarPrice(dataCar[0].prix * day);
       setDuration(day);
     }
   }, [range]);
@@ -58,12 +58,12 @@ export default function CardDetail() {
   const fetchDates = (data) => {
     const newDateReserved = filterRentedData(data);
     let rentDetails = newDateReserved.map((obj) => {
-      return { rentStart: obj.rentStart, rentEnd: obj.rentEnd };
+      return { locationDebut: obj.locationDebut, locationFin: obj.locationFin };
     });
     rentDetails = rentDetails.map(
       (item) =>
-        (item.rentStart = new Date(item.rentStart)) &&
-        (item.rentEnd = new Date(item.rentEnd))
+        (item.locationDebut = new Date(item.locationDebut)) &&
+        (item.locationFin = new Date(item.locationFin))
     );
     setDateReserved(rentDetails);
   };
@@ -72,15 +72,15 @@ export default function CardDetail() {
     const newCars = data.map((key) => {
       return {
         id: key.id,
-        manufacturer: key.manufacturer,
-        model: key.model,
+        marque: key.marque,
+        modele: key.modele,
         type: key.type,
-        year: key.year,
-        color: key.color,
-        city: key.city,
-        picture: key.picture,
-        mileage: key.mileage,
-        price: key.price,
+        annee: key.annee,
+        couleur: key.couleur,
+        ville: key.ville,
+        image: key.image,
+        kilometrage: key.kilometrage,
+        prix: key.prix,
       };
     });
     setDataCar(newCars);
@@ -92,7 +92,7 @@ export default function CardDetail() {
       .then((res) => {
         fetchCars(res.data);
         fetchDates(res.data);
-        setCarPrice(res.data[0].price);
+        setCarPrice(res.data[0].prix);
       })
       .catch((err) => {
         console.error(err);
@@ -131,31 +131,31 @@ export default function CardDetail() {
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
               <img
-                src={dataCar[0].picture}
-                alt={dataCar[0].model}
+                src={dataCar[0].image}
+                alt={dataCar[0].modele}
                 className="h-full w-full object-cover object-center"
               />
             </div>
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
                 <img
-                  src={dataCar[0].picture}
-                  alt={dataCar[0].model}
+                  src={dataCar[0].image}
+                  alt={dataCar[0].modele}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
                 <img
-                  src={dataCar[0].picture}
-                  alt={dataCar[0].model}
+                  src={dataCar[0].image}
+                  alt={dataCar[0].modele}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
             </div>
             <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
               <img
-                src={dataCar[0].picture}
-                alt={dataCar[0].model}
+                src={dataCar[0].image}
+                alt={dataCar[0].modele}
                 className="h-full w-full object-cover object-center"
               />
             </div>
@@ -165,8 +165,8 @@ export default function CardDetail() {
           <div className="max-w-2xl mx-auto pt-6 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-10 lg:pb-24 lg:px-8 lg:grid lg:grid-cols-2 lg:grid-rows-[auto,auto] lg:gap-x-8">
             <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
               <h1 className="text-2xl text-center font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-                {dataCar[0].manufacturer}
-                <p className="text-lg font-normal">{dataCar[0].model}</p>
+                {dataCar[0].marque}
+                <p className="text-lg font-normal">{dataCar[0].modele}</p>
               </h1>
             </div>
             <div className="mt-10">
@@ -195,19 +195,19 @@ export default function CardDetail() {
 
                     <li className="text-gray-400">
                       <span className="text-gray-600">
-                        Année: {dataCar[0].year}
+                        Année: {dataCar[0].annee}
                       </span>
                     </li>
 
                     <li className="text-gray-400">
                       <span className="text-gray-600">
-                        Couleur: {dataCar[0].color}
+                        Couleur: {dataCar[0].couleur}
                       </span>
                     </li>
 
                     <li className="text-gray-400">
                       <span className="text-gray-600">
-                        Kilométrage: {dataCar[0].mileage} KM
+                        Kilométrage: {dataCar[0].kilometrage} KM
                       </span>
                     </li>
                   </ul>

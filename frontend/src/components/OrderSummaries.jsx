@@ -1,15 +1,16 @@
 /* eslint-disable react/prop-types */
+/* This example requires Tailwind CSS v2.0+ */
 
 export default function OrderSummaries({ dataCar, total }) {
   const car = [
     {
       id: dataCar.id,
-      manufacturer: dataCar.manufacturer,
-      model: dataCar.model,
-      price: dataCar.price,
-      color: `couleur ${dataCar.color}`,
-      size: `${dataCar.mileage}km`,
-      imageSrc: dataCar.picture,
+      marque: dataCar.marque,
+      modele: dataCar.modele,
+      prix: dataCar.prix,
+      couleur: `couleur ${dataCar.couleur}`,
+      size: `${dataCar.kilometrage}km`,
+      imageSrc: dataCar.image,
       imageAlt: dataCar.type,
     },
   ];
@@ -23,7 +24,7 @@ export default function OrderSummaries({ dataCar, total }) {
             Merci
           </h1>
           <p className="mt-2 text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Vous avez commandé une {car[0].manufacturer} {car[0].model}
+            Vous avez commandé une {car[0].marque} {car[0].modele}
           </p>
           <p className="mt-2 text-base text-gray-500">
             Votre commande #14034056 est confirmée.

@@ -8,22 +8,22 @@ class UserManager extends AbstractManager {
   addUser(user) {
     const {
       drivingLicense,
-      lastname,
-      firstname,
-      birthday,
-      city,
+      nom,
+      prenom,
+      dateNaissance,
+      ville,
       hashedPassword,
       email,
       profilePicture,
     } = user;
     return this.connection.query(
-      `insert into ${this.table} (drivingLicenseNumber,lastName,firstName,birthday,city,hashedPassword,email, avatar) values (?,?,?,?,?,?,?,?)`,
+      `insert into ${this.table} (NumeroPermis,nom,prenom,dateNaissance,ville,hashedPassword,email, avatar) values (?,?,?,?,?,?,?,?)`,
       [
         drivingLicense,
-        lastname,
-        firstname,
-        birthday,
-        city,
+        nom,
+        prenom,
+        dateNaissance,
+        ville,
         hashedPassword,
         email,
         profilePicture,
@@ -32,28 +32,12 @@ class UserManager extends AbstractManager {
   }
 
   updateUser(user, id) {
-    const {
-      drivingLicenseNumber,
-      lastName,
-      firstName,
-      birthday,
-      city,
-      email,
-      isAdmin,
-    } = user;
+    const { NumeroPermis, nom, prenom, dateNaissance, ville, email, estAdmin } =
+      user;
     return this.connection
       .query(
-        `update ${this.table} set drivingLicenseNumber=?,lastName=?,firstName=?,birthday=?,city=?,email=?,isAdmin=? where id=?`,
-        [
-          drivingLicenseNumber,
-          lastName,
-          firstName,
-          birthday,
-          city,
-          email,
-          isAdmin,
-          id,
-        ]
+        `update ${this.table} set NumeroPermis=?,nom=?,prenom=?,dateNaissance=?,ville=?,email=?,estAdmin=? where id=?`,
+        [NumeroPermis, nom, prenom, dateNaissance, ville, email, estAdmin, id]
       )
       .then((result) => {
         return result;

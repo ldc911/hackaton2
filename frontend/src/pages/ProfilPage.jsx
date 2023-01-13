@@ -12,25 +12,25 @@ export default function ProfilPage() {
   const { user: currentUser } = useSelector((state) => state.auth);
 
   const [isOwner, setIsOwner] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [estAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    if (isOwner || isAdmin) window.location.replace("/");
-  }, [isOwner][isAdmin]);
+    if (isOwner || estAdmin) window.location.replace("/");
+  }, [isOwner][estAdmin]);
 
   useEffect(() => {
     if (currentUser) {
-      setIsOwner(!currentUser.user.firstName);
-      setIsAdmin(currentUser.user.isAdmin === 1);
+      setIsOwner(!currentUser.user.prenom);
+      setIsAdmin(currentUser.user.estAdmin === 1);
       setProfile({
-        name: `${currentUser.user.firstName} ${currentUser.user.lastName}`,
+        name: `${currentUser.user.prenom} ${currentUser.user.nom}`,
         imageUrl: currentUser.user.avatar,
         coverImageUrl: "https://picsum.photos/1950/1300",
         fields: {
           Email: currentUser.user.email,
-          Ville: currentUser.user.city,
-          Date_de_naissance: currentUser.user.birthday.split("T")[0],
-          Permis_n: currentUser.user.drivingLicenseNumber,
+          Ville: currentUser.user.ville,
+          Date_de_naissance: currentUser.user.dateNaissance.split("T")[0],
+          Permis_n: currentUser.user.NumeroPermis,
         },
       });
     } else {

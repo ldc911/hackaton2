@@ -41,14 +41,7 @@ export default function Rent() {
     ...new Set(data.map((e) => e[field])),
   ];
 
-  const filtersName = [
-    "model",
-    "color",
-    "year",
-    "type",
-    "city",
-    "manufacturer",
-  ];
+  const filtersName = ["modele", "couleur", "annee", "type", "ville", "marque"];
 
   const fetchFilters = (res) => {
     const filters = [];
@@ -72,14 +65,14 @@ export default function Rent() {
   const fetchCars = (res) => {
     const cars = res.data.map((car) => ({
       id: car.id,
-      manufacturer: car.manufacturer,
-      model: car.model,
+      marque: car.marque,
+      modele: car.modele,
       type: car.type,
-      year: car.year.toString(),
-      color: car.color,
-      city: car.city,
-      picture: car.picture,
-      price: car.price,
+      annee: car.annee.toString(),
+      couleur: car.couleur,
+      ville: car.ville,
+      image: car.image,
+      prix: car.prix,
     }));
     setDataCar(cars);
   };
@@ -95,12 +88,12 @@ export default function Rent() {
   const fetchDates = (data) => {
     const newDateReserved = filterRentedData(data);
     let rentDetails = newDateReserved.map((obj) => {
-      return { rentStart: obj.rentStart, rentEnd: obj.rentEnd };
+      return { locationDebut: obj.locationDebut, locationFin: obj.locationFin };
     });
     rentDetails = rentDetails.map(
       (item) =>
-        (item.rentStart = new Date(item.rentStart)) &&
-        (item.rentEnd = new Date(item.rentEnd))
+        (item.locationDebut = new Date(item.locationDebut)) &&
+        (item.locationFin = new Date(item.locationFin))
     );
     setDateReserved(rentDetails);
   };
@@ -143,14 +136,14 @@ export default function Rent() {
         >
           <Transition.Child
             as={Fragment}
-            enter="transition-opacity ease-linear duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity ease-linear duration-300"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            enter="transition-opaville ease-linear duration-300"
+            enterFrom="opaville-0"
+            enterTo="opaville-100"
+            leave="transition-opaville ease-linear duration-300"
+            leaveFrom="opaville-100"
+            leaveTo="opaville-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-25" />
+            <Dialog.Overlay className="fixed inset-0 bg-black bg-opaville-25" />
           </Transition.Child>
           <Transition.Child
             as={Fragment}
@@ -262,13 +255,13 @@ export default function Rent() {
               <Transition
                 as={Fragment}
                 enter="transition ease-out duration-100"
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
+                enterFrom="transform opaville-0 scale-95"
+                enterTo="transform opaville-100 scale-100"
                 leave="transition ease-in duration-75"
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
+                leaveFrom="transform opaville-100 scale-100"
+                leaveTo="transform opaville-0 scale-95"
               >
-                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opaville-5 focus:outline-none">
                   <div className="py-1">
                     {sortOptions.map((option) => (
                       <Menu.Item key={option.name}>
@@ -385,10 +378,10 @@ export default function Rent() {
                     to={`/car/${product.id}`}
                     className="group text-sm"
                   >
-                    <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opacity-75">
+                    <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opaville-75">
                       <img
-                        src={product.picture}
-                        alt={product.picture}
+                        src={product.image}
+                        alt={product.image}
                         className="w-full h-full object-center object-cover"
                       />
                     </div>
@@ -396,10 +389,10 @@ export default function Rent() {
                       {product.name}
                     </h3>
                     <p className="text-gray-500 text-base italic">
-                      {product.manufacturer} {product.model}
+                      {product.marque} {product.modele}
                     </p>
                     <p className="mt-2 font-thin text-sm text-gray-900">
-                      {product.price} € / 24 h
+                      {product.prix} € / 24 h
                     </p>
                   </Link>
                 ))}

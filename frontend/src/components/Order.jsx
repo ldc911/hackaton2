@@ -1,3 +1,7 @@
+/* eslint-disable prefer-const */
+/* eslint-disable radix */
+/* eslint-disable import/no-unresolved */
+/* eslint-disable prefer-template */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
@@ -11,9 +15,9 @@ const assuranceMethods = [
     id: 1,
     title: "Standard",
     turnaround: "Assurance tourix",
-    price: "€5.00",
+    prix: "€5.00",
   },
-  { id: 2, title: "Premium", turnaround: "A vie", price: "€30.00" },
+  { id: 2, title: "Premium", turnaround: "A vie", prix: "€30.00" },
 ];
 const paymentMethods = [
   { id: "carte-bleu", title: "Carte Bleu" },
@@ -32,22 +36,37 @@ export default function Order({ carPrice, dataCar, duration, close }) {
   const car = [
     {
       id: dataCar.id,
+<<<<<<< HEAD
       manufacturer: dataCar.manufacturer,
       model: dataCar.model,
       price: dataCar.price,
       color: `couleur ${dataCar.color}`,
       size: `${dataCar.mileage}km`,
       imageSrc: dataCar.picture,
+=======
+      marque: dataCar.marque,
+      modele: dataCar.modele,
+      prix: dataCar.prix,
+      couleur: "couleur " + dataCar.couleur,
+      size: dataCar.kilometrage + "km",
+      imageSrc: dataCar.image,
+>>>>>>> 4e670cc0e83525632944e6b3c223ef930d017766
       imageAlt: dataCar.type,
     },
   ];
   const [assurance, setAssurance] = useState(assuranceMethods[0]);
 
+<<<<<<< HEAD
   const TVA =
     carPrice + 224 + parseInt(assurance.price.split("€")[1], 10) * 0.2;
 
   const TOTAL =
     carPrice + 224 + 999 + parseInt(assurance.price.split("€")[1], 10);
+=======
+  let TVA = carPrice + 224 + parseInt(assurance.prix.split("€")[1]) * 0.2;
+
+  let TOTAL = carPrice + 224 + 999 + parseInt(assurance.prix.split("€")[1]);
+>>>>>>> 4e670cc0e83525632944e6b3c223ef930d017766
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -166,7 +185,11 @@ export default function Order({ carPrice, dataCar, duration, close }) {
 
                     <div>
                       <label
+<<<<<<< HEAD
                         htmlFor="city"
+=======
+                        htmlFor="ville"
+>>>>>>> 4e670cc0e83525632944e6b3c223ef930d017766
                         className="block text-sm font-medium text-gray-700"
                       >
                         Ville
@@ -174,8 +197,13 @@ export default function Order({ carPrice, dataCar, duration, close }) {
                       <div className="mt-1">
                         <input
                           type="text"
+<<<<<<< HEAD
                           name="city"
                           id="city"
+=======
+                          name="ville"
+                          id="ville"
+>>>>>>> 4e670cc0e83525632944e6b3c223ef930d017766
                           autoComplete="address-level2"
                           className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
@@ -278,7 +306,11 @@ export default function Order({ carPrice, dataCar, duration, close }) {
                                     as="span"
                                     className="mt-6 text-sm font-medium text-gray-900"
                                   >
+<<<<<<< HEAD
                                     {e.price}
+=======
+                                    {e.prix}
+>>>>>>> 4e670cc0e83525632944e6b3c223ef930d017766
                                   </RadioGroup.Description>
                                 </div>
                               </div>
@@ -437,10 +469,17 @@ export default function Order({ carPrice, dataCar, duration, close }) {
                           <div className="flex">
                             <div className="min-w-0 flex-1">
                               <h4 className="text-sm">
+<<<<<<< HEAD
                                 {product.manufacturer} {product.model}
                               </h4>
                               <p className="mt-1 text-sm text-gray-500">
                                 {product.color}
+=======
+                                {product.marque} {product.modele}
+                              </h4>
+                              <p className="mt-1 text-sm text-gray-500">
+                                {product.couleur}
+>>>>>>> 4e670cc0e83525632944e6b3c223ef930d017766
                               </p>
                               <p className="mt-1 text-sm text-gray-500">
                                 {product.size}
@@ -473,7 +512,11 @@ export default function Order({ carPrice, dataCar, duration, close }) {
                     <div className="flex items-center justify-between">
                       <dt className="text-sm">Assurance</dt>
                       <dd className="text-sm font-medium text-gray-900">
+<<<<<<< HEAD
                         {assurance.price.split("€")[1]}€
+=======
+                        {assurance.prix.split("€")[1]}€
+>>>>>>> 4e670cc0e83525632944e6b3c223ef930d017766
                       </dd>
                     </div>
                     <div className="flex items-center justify-between">

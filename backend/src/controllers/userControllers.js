@@ -1,8 +1,8 @@
-const models = require("../models");
+const modeles = require("../models");
 
 const addUser = (req, res) => {
   const user = req.body;
-  models.user
+  modeles.user
     .addUser(user)
     .then(([result]) => {
       res.location(`/user/${result.insertId}`).sendStatus(201);
@@ -14,7 +14,7 @@ const addUser = (req, res) => {
 };
 
 const getAllUsers = (req, res) => {
-  models.user
+  modeles.user
     .findAll()
     .then(([rows]) => {
       rows.forEach((element) => {
@@ -37,7 +37,7 @@ const displayUser = (req, res) => {
 const updateUser = (req, res) => {
   const user = req.body;
   const id = parseInt(req.params.id, 10);
-  models.user
+  modeles.user
     .updateUser(user, id)
     .then(([result]) => {
       res.location(`/user/${result.insertId}`).sendStatus(201);
@@ -49,7 +49,7 @@ const updateUser = (req, res) => {
 };
 
 const deleteUser = (req, res) => {
-  models.user
+  modeles.user
     .deleteUser(req)
     .then(() => {
       res.sendStatus(204);

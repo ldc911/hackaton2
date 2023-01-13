@@ -10,12 +10,12 @@ import logo from "@assets/logo.png";
 function Header() {
   const { user: currentUser } = useSelector((state) => state.auth);
   const [isOwner, setIsOwner] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [estAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
-      setIsOwner(!currentUser.user.firstName);
-      setIsAdmin(currentUser.user.isAdmin === 1);
+      setIsOwner(!currentUser.user.prenom);
+      setIsAdmin(currentUser.user.estAdmin === 1);
     } else {
       setIsOwner(false);
       setIsAdmin(false);
@@ -55,7 +55,7 @@ function Header() {
           </Link>
         </Popover.Group>
         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-          {currentUser && !isAdmin && !isOwner && (
+          {currentUser && !estAdmin && !isOwner && (
             <Link
               to="/profil"
               className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
@@ -63,7 +63,7 @@ function Header() {
               PROFILE
             </Link>
           )}
-          {currentUser && isAdmin && (
+          {currentUser && estAdmin && (
             <Link
               to="/admin"
               className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
@@ -109,17 +109,17 @@ function Header() {
       <Transition
         as={Fragment}
         enter="duration-200 ease-out"
-        enterFrom="opacity-0 scale-95"
-        enterTo="opacity-100 scale-100"
+        enterFrom="opaville-0 scale-95"
+        enterTo="opaville-100 scale-100"
         leave="duration-100 ease-in"
-        leaveFrom="opacity-100 scale-100"
-        leaveTo="opacity-0 scale-95"
+        leaveFrom="opaville-100 scale-100"
+        leaveTo="opaville-0 scale-95"
       >
         <Popover.Panel
           focus
           className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-30"
         >
-          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+          <div className="rounded-lg shadow-lg ring-1 ring-black ring-opaville-5 bg-white divide-y-2 divide-gray-50">
             <div className="pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
                 <div>

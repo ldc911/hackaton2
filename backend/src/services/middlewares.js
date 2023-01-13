@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 const md5 = require("md5");
 
-const models = require("../models");
+const modeles = require("../models");
 
 const getReservations = (req, res, next) => {
-  models.reservation
+  modeles.reservation
     .findReservation()
     .then(([result]) => {
       req.body.resa = result;
@@ -17,10 +17,13 @@ const getReservations = (req, res, next) => {
 };
 
 const getVehicleById = (req, res, next) => {
-  models.vehicule
+  modeles.vehicule
     .findById(req.params.id)
     .then(([result]) => {
-      if (req.body.id_loggedIn === result.id_owner || req.body.loggedIn === 1) {
+      if (
+        req.body.id_loggedIn === result.id_loueur ||
+        req.body.loggedIn === 1
+      ) {
         next();
       } else {
         const message = "Cette voiture ne fait pas partie de votre flotte";
