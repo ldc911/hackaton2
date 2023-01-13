@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const tabs = [{ name: "Profil", href: "#", current: true }];
 
 const user = JSON.parse(localStorage.getItem("user"));

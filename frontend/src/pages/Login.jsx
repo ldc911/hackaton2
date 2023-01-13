@@ -1,43 +1,54 @@
 /* eslint-disable import/no-unresolved */
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import Cookies from "universal-cookie";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-const { VITE_BACKEND_URL } = import.meta.env;
-const cookies = new Cookies();
+import { login } from "../slices/auth";
+import { clearMessage } from "../slices/message";
 
 export default function Login() {
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.message);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(clearMessage());
+  }, [dispatch]);
+
   const [password, setPassword] = useState("");
   const [email, setemail] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post(`${VITE_BACKEND_URL}/api/login`, {
-        email,
-        password,
+    setLoading(true);
+
+    dispatch(login({ email, password }))
+      .unwrap()
+      .then(() => {
+        navigate("/profil");
+        window.location.reload();
       })
-      .then((res) => {
-        cookies.set("token", `${res.data.user.token}`, {
-          path: "/",
-          maxAge: 1 * 60 * 24,
-        });
-        const { user } = res.data;
-        localStorage.setItem("user", JSON.stringify(user));
-        navigate("/car");
-      })
-      .catch((err) => {
-        console.error(err);
+      .catch(() => {
+        setLoading(false);
       });
   };
+
+  if (isLoggedIn) {
+    return <Navigate to="/profil" />;
+  }
+
   return (
     <div className="width flex">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <div>
             <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-              Sign in to your account
+              Se connecter
             </h2>
           </div>
           <div className="mt-8">
@@ -49,7 +60,7 @@ export default function Login() {
                       to="/"
                       className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     >
-                      <span className="sr-only">Sign in with Facebook</span>
+                      <span className="sr-only">Connexion avec Facebook</span>
                       <svg
                         className="w-5 h-5"
                         aria-hidden="true"
@@ -69,7 +80,7 @@ export default function Login() {
                       to="/"
                       className="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
                     >
-                      <span className="sr-only">Sign in with Google</span>
+                      <span className="sr-only">Connexion avec Google</span>
                       <svg
                         className="w-5 h-5"
                         aria-hidden="true"
@@ -93,9 +104,7 @@ export default function Login() {
                   <div className="w-full border-t border-gray-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">
-                    Or continue with
-                  </span>
+                  <span className="px-2 bg-white text-gray-500">ou</span>
                 </div>
               </div>
             </div>
@@ -112,7 +121,7 @@ export default function Login() {
                     htmlFor="email"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Email address
+                    Adresse e-mail
                   </label>
                   <div className="mt-1">
                     <input
@@ -133,7 +142,7 @@ export default function Login() {
                     htmlFor="password"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Password
+                    Mot de passe
                   </label>
                   <div className="mt-1">
                     <input
@@ -161,7 +170,7 @@ export default function Login() {
                       htmlFor="remember-me"
                       className="ml-2 block text-sm text-gray-900"
                     >
-                      Remember me
+                      Enregistrer le mot de passe
                     </label>
                   </div>
 
@@ -170,7 +179,7 @@ export default function Login() {
                       to="/"
                       className="font-medium text-indigo-600 hover:text-indigo-500"
                     >
-                      Forgot your password?
+                      Mot de passe oublié ?
                     </Link>
                   </div>
                 </div>
@@ -180,10 +189,39 @@ export default function Login() {
                     type="submit"
                     className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    Sign in
+                    {loading && (
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v8H4z"
+                        />
+                      </svg>
+                    )}
+                    Connexion
                   </button>
                 </div>
               </form>
+              {message && (
+                <div className="form-group">
+                  <div className="alert alert-danger" role="alert">
+                    {message}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
