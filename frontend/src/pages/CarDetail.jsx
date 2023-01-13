@@ -8,6 +8,7 @@ import axios from "axios";
 import { DateRange } from "react-date-range";
 import { addDays } from "date-fns";
 import Order from "@components/Order";
+import fr from "date-fns/locale/fr";
 
 const { VITE_BACKEND_URL } = import.meta.env;
 
@@ -131,7 +132,7 @@ export default function CardDetail() {
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
               <img
-                src={dataCar[0].image}
+                src={dataCar[0].image.id1}
                 alt={dataCar[0].modele}
                 className="h-full w-full object-cover object-center"
               />
@@ -139,14 +140,14 @@ export default function CardDetail() {
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
                 <img
-                  src={dataCar[0].image}
+                  src={dataCar[0].image.id1}
                   alt={dataCar[0].modele}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
                 <img
-                  src={dataCar[0].image}
+                  src={dataCar[0].image.id1}
                   alt={dataCar[0].modele}
                   className="h-full w-full object-cover object-center"
                 />
@@ -154,7 +155,7 @@ export default function CardDetail() {
             </div>
             <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
               <img
-                src={dataCar[0].image}
+                src={dataCar[0].image.id1}
                 alt={dataCar[0].modele}
                 className="h-full w-full object-cover object-center"
               />
@@ -239,6 +240,7 @@ export default function CardDetail() {
                   showSelectionPreview
                   minDate={new Date()}
                   rangeColors={["rgb(79 70 229)"]}
+                  locale={fr}
                 />
                 {!isOwner && (
                   <button
