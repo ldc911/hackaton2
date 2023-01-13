@@ -113,17 +113,6 @@ export default function Rent() {
         >
           <Transition.Child
             as={Fragment}
-            enter="transition-opaville ease-linear duration-300"
-            enterFrom="opaville-0"
-            enterTo="opaville-100"
-            leave="transition-opaville ease-linear duration-300"
-            leaveFrom="opaville-100"
-            leaveTo="opaville-0"
-          >
-            <Dialog.Overlay className="fixed inset-0 bg-black bg-opaville-25" />
-          </Transition.Child>
-          <Transition.Child
-            as={Fragment}
             enter="transition ease-in-out duration-300 transform"
             enterFrom="translate-x-full"
             enterTo="translate-x-0"
