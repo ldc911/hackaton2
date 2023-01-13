@@ -44,8 +44,8 @@ export default function OrderSummaries({ dataCar, total }) {
               className="py-10 border-b border-gray-200 flex space-x-6"
             >
               <img
-                src={product.imageSrc.id1}
-                alt={product.imageAlt.id1}
+                src={product.imageSrc.image1}
+                alt={product.imageAlt.image1}
                 className="flex-none w-60 h-60 object-center object-cover bg-gray-100 rounded-lg sm:w-80 sm:h-80"
               />
               <div className="flex-auto flex flex-col">

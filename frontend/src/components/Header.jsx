@@ -139,15 +139,15 @@ function Header() {
                     className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50 "
                   >
                     <h2 className="text-base font-medium text-gray-900">
-                      Home
+                      <Popover.Button>ACCUEIL</Popover.Button>
                     </h2>
                   </Link>
                   <Link
-                    to="/rent"
+                    to="/car"
                     className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50 "
                   >
                     <h2 className="ttext-base font-medium text-gray-900">
-                      Rent
+                      <Popover.Button>LOCATION</Popover.Button>
                     </h2>
                   </Link>
                 </nav>
@@ -155,16 +155,64 @@ function Header() {
             </div>
             <div className="py-6 px-5">
               <div className="mt-6">
-                <Link to="/register">
+                {currentUser && !estAdmin && !isOwner && (
+                  <Link
+                    to="/profil"
+                    className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
+                  >
+                    <Popover.Button>PROFILE</Popover.Button>
+                  </Link>
+                )}
+                {currentUser && estAdmin && (
+                  <Link
+                    to="/admin"
+                    className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
+                  >
+                    <Popover.Button>ADMIN PANNEL</Popover.Button>
+                  </Link>
+                )}
+                {currentUser && isOwner && (
+                  <Link
+                    to="/fleet"
+                    className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
+                  >
+                    <Popover.Button>MY FLEET</Popover.Button>
+                  </Link>
+                )}
+                {currentUser && (
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                  >
+                    <Popover.Button>DECONNEXION</Popover.Button>
+                  </button>
+                )}
+                {!currentUser && (
+                  <>
+                    <Link to="/login">
+                      <Popover.Button className="mt-6 font-medium link w-full text-center">
+                        CONNEXION
+                      </Popover.Button>
+                    </Link>
+                    <Link to="/register">
+                      <Popover.Button className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
+                        ENREGISTREMENT
+                      </Popover.Button>
+                    </Link>
+                  </>
+                )}
+                {/* <Link to="/register">
                   <Popover.Button className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
                     S'inscrire
                   </Popover.Button>
                 </Link>
+
                 <Link to="/login">
                   <Popover.Button className="mt-6 font-medium link w-full text-center">
                     Connexion
                   </Popover.Button>
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>
