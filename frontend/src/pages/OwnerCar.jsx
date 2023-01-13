@@ -99,12 +99,14 @@ const people = [
 ];
 
 export default function OwnerCar() {
-  const [cars, setCars] = useState(people);
+  const initialCars = JSON.parse(localStorage.getItem("deletedCars")) || people;
+  const [cars, setCars] = useState(initialCars);
 
   const handleDelete = (index) => {
     const newCars = [...cars];
     newCars.splice(index, 1);
     setCars(newCars);
+    localStorage.setItem("deletedCars", JSON.stringify(newCars));
   };
 
   return (
