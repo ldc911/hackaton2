@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { DateRange } from "react-date-range";
 import format from "date-fns/format";
+import fr from "date-fns/locale/fr";
 import { addDays } from "date-fns";
 
 import "react-date-range/dist/styles.css";
@@ -11,7 +12,7 @@ export default function DatePicker() {
   const [range, setRange] = useState([
     {
       startDate: new Date(),
-      endDate: addDays(new Date(), 7),
+      endDate: addDays(new Date(), 0),
       key: "selection",
     },
   ]);
@@ -72,6 +73,7 @@ export default function DatePicker() {
             showSelectionPreview
             minDate={new Date()}
             rangeColors={["rgb(79 70 229)"]}
+            locale={fr}
           />
         )}
       </div>

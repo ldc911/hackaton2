@@ -36,7 +36,6 @@ export default function Rent() {
   const [filtersList, setFiltersList] = useState([]);
   const [filterCar, setFilterCar] = useState([]);
 
-
   const getUniqueValues = (data, field) => [
     ...new Set(data.map((e) => e[field])),
   ];
@@ -63,7 +62,6 @@ export default function Rent() {
   };
 
   const fetchCars = (res) => {
-    console.log(res.data)
     const cars = res.data.map((car) => ({
       id: car.id,
       marque: car.marque,
@@ -77,8 +75,6 @@ export default function Rent() {
     }));
     setDataCar(cars);
   };
-
-
 
   useEffect(() => {
     axios
