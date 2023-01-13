@@ -8,11 +8,13 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import logo from "@assets/logo.png";
 
 function Header() {
+
   const { user: currentUser } = useSelector((state) => state.auth);
   const [isOwner, setIsOwner] = useState(false);
   const [estAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
+    
     if (currentUser) {
       setIsOwner(!currentUser.user.prenom);
       setIsAdmin(currentUser.user.estAdmin === 1);
@@ -60,7 +62,7 @@ function Header() {
               to="/profil"
               className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
             >
-              PROFILE
+              {currentUser.user.prenom.toUpperCase()}
             </Link>
           )}
           {currentUser && estAdmin && (
@@ -160,7 +162,7 @@ function Header() {
                     to="/profil"
                     className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
                   >
-                    <Popover.Button>PROFILE</Popover.Button>
+                    <Popover.Button>{currentUser.user.prenom.toUpperCase()}</Popover.Button>
                   </Link>
                 )}
                 {currentUser && estAdmin && (
@@ -202,17 +204,6 @@ function Header() {
                     </Link>
                   </>
                 )}
-                {/* <Link to="/register">
-                  <Popover.Button className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-                    S'inscrire
-                  </Popover.Button>
-                </Link>
-
-                <Link to="/login">
-                  <Popover.Button className="mt-6 font-medium link w-full text-center">
-                    Connexion
-                  </Popover.Button>
-                </Link> */}
               </div>
             </div>
           </div>
