@@ -7,65 +7,51 @@ class UserManager extends AbstractManager {
 
   addUser(user) {
     const {
+      drivingLicense,
+      lastname,
+      firstname,
+      birthday,
+      city,
+      hashedPassword,
+      email,
+      profilePicture,
+    } = user;
+    return this.connection.query(
+      `insert into ${this.table} (drivingLicenseNumber,lastName,firstName,birthday,city,hashedPassword,email, avatar) values (?,?,?,?,?,?,?,?)`,
+      [
+        drivingLicense,
+        lastname,
+        firstname,
+        birthday,
+        city,
+        hashedPassword,
+        email,
+        profilePicture,
+      ]
+    );
+  }
+
+  updateUser(user, id) {
+    const {
       drivingLicenseNumber,
       lastName,
       firstName,
       birthday,
       city,
-      hashedPassword,
       email,
-    } = user;
-    return this.connection.query(
-      `insert into ${this.table} (drivingLicenseNumber,lastName,firstName,birthday,city,hashedPassword,email) values (?,?,?,?,?,?,?)`,
-      [
-        drivingLicenseNumber,
-        lastName,
-        firstName,
-        birthday,
-        city,
-        hashedPassword,
-        email,
-      ]
-    );
-  }
-
-  getUsersByCompany({ query }) {
-    return this.connection
-      .query(
-        "select u.id,u.username,c.name as companyName,u.firstname,u.lastname,u.isOnline,u.profile_picture,u.email from `company` c JOIN `user` u on u.id_company=c.id where c.name = ?",
-        [query.company]
-      )
-      .then((result) => {
-        return result;
-      })
-      .catch(() => {
-        throw new Error("No users in this company");
-      });
-  }
-
-  updateUser(user, id) {
-    const {
-      userName,
-      firstName,
-      lastName,
-      isOnline,
-      email,
-      profilePicture,
-      idCompany,
-      companyName,
+      isAdmin,
     } = user;
     return this.connection
       .query(
-        `update ${this.table} set userName=?,firstName=?,lastName=?,isOnline=?,email=?,profilePicture=?,id_company=?,companyName=? where id=?`,
+        `update ${this.table} set drivingLicenseNumber=?,lastName=?,firstName=?,birthday=?,city=?,email=?,isAdmin=? where id=?`,
         [
-          userName,
-          firstName,
+          drivingLicenseNumber,
           lastName,
-          isOnline,
+          firstName,
+          birthday,
+          city,
           email,
-          profilePicture,
-          idCompany,
-          companyName,
+          isAdmin,
           id,
         ]
       )

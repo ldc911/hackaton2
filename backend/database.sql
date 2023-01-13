@@ -4,6 +4,7 @@ CREATE TABLE
         `company` varchar(45) NOT NULL,
         `email` varchar(255) NOT NULL,
         `city` varchar(100) NOT NULL,
+        `isValidate` TINYINT,
         `hashedPassword` varchar(255) NOT NULL,
         PRIMARY KEY (`id`),
         UNIQUE INDEX `Mail`(`email`)
@@ -14,27 +15,32 @@ INSERT INTO
         company,
         email,
         city,
+        isValidate,
         hashedPassword
     )
 VALUES (
         "Chatanet",
         "chatanet-toulouse@chatanet.com",
         "Toulouse",
+        1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "Cianni Automobiles",
         "cianni-toulouse@cianni.net",
         "Toulouse",
+        1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "Garage Lereton",
         "concessionLebreton@lebreton.fr",
         "Clermont-Ferrand",
+        1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "JME Auto",
         "jmeparis@jme.net",
         "Paris",
+        1,
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     );
 
@@ -57,7 +63,7 @@ INSERT INTO
     )
 VALUES (
         1,
-        1,
+        8,
         "2023-01-25",
         "2023-01-25"
     ), (
@@ -97,6 +103,7 @@ CREATE TABLE
         `city` varchar(100) NOT NULL,
         `email` varchar(255) NOT NULL,
         `isAdmin` TINYINT(1),
+        `avatar` VARCHAR(255),
         `hashedPassword` varchar(255) NOT NULL,
         PRIMARY KEY (`id`),
         UNIQUE INDEX `Mail`(`email`)
@@ -111,6 +118,7 @@ INSERT INTO
         city,
         email,
         isAdmin,
+        avatar,
         hashedPassword
     )
 VALUES (
@@ -121,6 +129,7 @@ VALUES (
         "Toulouse",
         "root@root.com",
         1,
+        "https://lh3.google.com/u/0/d/1mRV7A_O5DJa35t3HjdLwi3kZNu9M0G7R=w1920-h997-iv1",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "12345678",
@@ -130,6 +139,7 @@ VALUES (
         "Toulouse",
         "ben@mail.com",
         0,
+        "	https://storage.googleapis.com/quest_editor_uploads/1jg9aSLS1kWbidkYjb46E0qFI1MjyooE.png",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "123456348",
@@ -139,6 +149,7 @@ VALUES (
         "Clermont-Ferrand",
         "leonidas@wcs.com",
         0,
+        "https://storage.googleapis.com/quest_editor_uploads/WNxhr6uqNnvtAOqJXRPLaQQnGagkJA7y.jpeg",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "1234098098",
@@ -148,6 +159,7 @@ VALUES (
         "Paris",
         "chathechat@wcs.com",
         0,
+        "https://storage.googleapis.com/quest_editor_uploads/ENtTM2KEj7bxKH6qvWCqSOSqL2ENJsPg.jpeg",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "128907678",
@@ -157,6 +169,7 @@ VALUES (
         "Paris",
         "thefaz@wcs.com",
         0,
+        "https://storage.googleapis.com/quest_editor_uploads/gOPHvMtJE6oqJWROOlEWGDUOylLEayPt.png",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "127635678",
@@ -166,6 +179,7 @@ VALUES (
         "Toulouse",
         "ldc@wcs.com",
         0,
+        "	https://storage.googleapis.com/quest_editor_uploads/wDfIgA0PUKfjarbNKPCGJoy8zxflOz9v.jpg",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "1238098678",
@@ -175,6 +189,7 @@ VALUES (
         "Clermont-Ferrand",
         "gigi@wcs.com",
         0,
+        "https://storage.googleapis.com/quest_editor_uploads/tsbPqJCPtAYDqnB1sedOyv5hpAxmTHgT.jpg",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "12309878",
@@ -184,6 +199,7 @@ VALUES (
         "Paris",
         "jogrls@wcs.com",
         0,
+        "https://www.gravatar.com/avatar/53134?d=monsterid&s=300",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "198745678",
@@ -193,6 +209,7 @@ VALUES (
         "Toulouse",
         "ben@wcs.com",
         0,
+        "https://www.gravatar.com/avatar/56329?d=identicon&s=300",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "12367878",
@@ -202,6 +219,7 @@ VALUES (
         "Paris",
         "potus@wcs.com",
         0,
+        "https://i1.wp.com/dedipic.com/wp-content/uploads/2019/11/avatar_JoeBiden.png?resize=720%2C720&ssl=1",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     ), (
         "98345678",
@@ -211,6 +229,7 @@ VALUES (
         "Clermont-Ferrand",
         "themanu@wcs.com",
         0,
+        "https://assets-decodeurs.lemonde.fr/assets-legacy/pol/avantlevote/macron.png",
         "$argon2id$v=19$m=65536,t=5,p=1$WuTKNY/mxe6xbUhTQQFATg$ti0tC7bnOrC54Tg69J+cHOpgYmrfMwq/iTBZJ+4WcDU"
     );
 
@@ -256,6 +275,54 @@ INSERT INTO
         picture
     )
 VALUES (
+        "Aixam",
+        "Coupé GTI",
+        "Thermique",
+        "2020",
+        "jaune",
+        2,
+        16294,
+        "Clermont-Ferrand",
+        24,
+        2,
+        1,
+        1,
+        "DASFKE32",
+        "B3337T3",
+        "https://media.lesechos.com/api/v1/images/view/5c336b6c8fe56f1f3c6d2135/1280x720/0202699408901-web.jpg"
+    ), (
+        "Chatenet",
+        "CH40",
+        "Thermique",
+        "2020",
+        "gris",
+        2,
+        16294,
+        "Clermont-Ferrand",
+        12,
+        2,
+        1,
+        1,
+        "DASFKE32",
+        "B3337T3",
+        "https://www.gsanspermis.com/wp-content/uploads/2020/01/CHATENET-CH40.jpg"
+    ), (
+        "Ligier",
+        "Microcar M.CROSS",
+        "Thermique",
+        "2019",
+        "bleu",
+        2,
+        22223,
+        "Toulouse",
+        5,
+        2,
+        1,
+        1,
+        "DASFKE32",
+        "B3337T3",
+        "https://www.bscar-71.fr/app/uploads/M.CROSS_HX_34AV-BA.png"
+    ), (
         "Ligier",
         "JS50 Sport",
         "Thermique",
@@ -271,6 +338,22 @@ VALUES (
         "MACSF",
         "B627T3",
         "https://www.ligier.fr/wp-content/uploads/2021/03/Ligier-JS50-SPort-Ultimate-GA-min-566x400.png"
+    ), (
+        "Ligier",
+        "JS50 Sport",
+        "Thermique",
+        "2021",
+        "rouge",
+        2,
+        1055,
+        "Toulouse",
+        5,
+        2,
+        1,
+        1,
+        "MACSF",
+        "B627T3",
+        "https://www.ligier.fr/wp-content/uploads/2020/11/Ligier-JS50-Sport-Young-rouge-566x400.png"
     ), (
         "Aixam",
         "Minauto",
@@ -309,7 +392,7 @@ VALUES (
         "Electrique",
         "2022",
         "vert",
-        1,
+        2,
         6854,
         "Paris",
         50,
@@ -319,6 +402,54 @@ VALUES (
         "MACSF",
         "B623E227T3",
         "https://cdn.motor1.com/images/mgl/GxO7J/s1/1x1/renault-twizy-by-oakley-design.webp"
+    ), (
+        "Renault",
+        "Twizy",
+        "Electrique",
+        "2022",
+        "noir",
+        2,
+        685,
+        "Paris",
+        7,
+        4,
+        1,
+        1,
+        "MACSF",
+        "B623E227T3",
+        "https://images.caradisiac.com/logos-ref/modele/modele--renault-twizy-45/S7-modele--renault-twizy-45.jpg"
+    ), (
+        "Renault",
+        "Twizy",
+        "Electrique",
+        "2022",
+        "bleu",
+        2,
+        8754,
+        "Paris",
+        7,
+        4,
+        1,
+        1,
+        "MACSF",
+        "B623E227T3",
+        "https://cdn-s-www.leprogres.fr/images/5FD81F6A-DF4E-4DEB-9B35-CF1EFB08804F/NW_listE/plus-proche-d-un-kart-que-d-une-voiture-la-twizy-est-equipee-de-roues-plus-larges-a-l-arriere-qu-a-l-avant-la-twizy-offre-differentes-couleurs-du-noir-et-du-blanc-et-en-option-les-arches-laterales-peuvent-se-parer-de-bleu-ou-de-rouge-photo-renault-1605113229.jpg"
+    ), (
+        "Renault",
+        "Twizy",
+        "Electrique",
+        "2022",
+        "rouge",
+        2,
+        8254,
+        "Paris",
+        7,
+        4,
+        1,
+        1,
+        "MACSF",
+        "B623E227T3",
+        "https://www.cdiscount.com/pdt2/5/9/4/1/700x700/auc0884505480594/rw/voiture-electrique-gz05d-renault-twizy-1-18-sclae.jpg"
     ), (
         "Citroën",
         "AMI",
@@ -335,6 +466,22 @@ VALUES (
         "MAIF",
         "B627T9873",
         "https://static.latribune.fr/full_width/1517716/citroen-ami.jpg"
+    ), (
+        "Citroën",
+        "AMI",
+        "Electrique",
+        "2021",
+        "rouge",
+        2,
+        5646,
+        "Clermont-Ferrand",
+        5,
+        3,
+        1,
+        1,
+        "MAIF",
+        "B627T98ZE73",
+        "https://i.servimg.com/u/f86/18/30/80/88/citroe10.png"
     ), (
         "Ligier",
         "MICROCAR",

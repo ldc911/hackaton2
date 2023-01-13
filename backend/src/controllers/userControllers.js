@@ -31,8 +31,6 @@ const getAllUsers = (req, res) => {
 };
 
 const displayUser = (req, res) => {
-  const boolify = Boolean(req.user.isOnline);
-  req.user.isOnline = boolify;
   res.send({ user: req.user });
 };
 
