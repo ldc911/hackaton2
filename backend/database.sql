@@ -433,7 +433,7 @@ VALUES (
         1,
         "MACSF",
         "B623E227T3",
-        "https://tinyurl.com/468a2y74"
+        "https://cdn-s-www.leprogres.fr/images/5FD81F6A-DF4E-4DEB-9B35-CF1EFB08804F/NW_listE/plus-proche-d-un-kart-que-d-une-voiture-la-twizy-est-equipee-de-roues-plus-larges-a-l-arriere-qu-a-l-avant-la-twizy-offre-differentes-couleurs-du-noir-et-du-blanc-et-en-option-les-arches-laterales-peuvent-se-parer-de-bleu-ou-de-rouge-photo-renault-1605113229.jpg"
     ), (
         "Renault",
         "Twizy",

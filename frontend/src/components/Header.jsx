@@ -1,13 +1,26 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import { Fragment } from "react";
+import { useSelector } from "react-redux";
+import { Fragment, useState, useEffect } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import logo from "@assets/logo.png";
 
-function Header({ currentUser }) {
-  const user = currentUser;
+function Header() {
+  const { user: currentUser } = useSelector((state) => state.auth);
+  const [isOwner, setIsOwner] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (currentUser) {
+      setIsOwner(!currentUser.user.firstName);
+      setIsAdmin(currentUser.user.isAdmin === 1);
+    } else {
+      setIsOwner(false);
+      setIsAdmin(false);
+    }
+  }, [currentUser]);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
@@ -31,48 +44,63 @@ function Header({ currentUser }) {
         </div>
         <Popover.Group as="nav" className="hidden md:flex space-x-10">
           <Link to="/">
-            <h2 className="text-base font-bold text-gray-500 hover:text-gray-900">
-              Accueil
+            <h2 className="text-sm font-normal text-gray-500 hover:text-gray-900">
+              ACCUEIL
             </h2>
           </Link>
           <Link to="/car">
-            <h2 className="text-base font-bold text-gray-500 hover:text-gray-900">
-              Location
+            <h2 className="text-sm font-normal text-gray-500 hover:text-gray-900">
+              LOCATION
             </h2>
           </Link>
         </Popover.Group>
         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-          {user && (
-            <>
-              <Link
-                to="/profil"
-                className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
-              >
-                PROFILE
-              </Link>
-              <button
-                type="button"
-                onClick={handleLogout}
-                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-              >
-                Deconnexion
-              </button>
-            </>
+          {currentUser && !isAdmin && !isOwner && (
+            <Link
+              to="/profil"
+              className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
+            >
+              PROFILE
+            </Link>
           )}
-
-          {user == null && (
+          {currentUser && isAdmin && (
+            <Link
+              to="/admin"
+              className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
+            >
+              ADMIN PANNEL
+            </Link>
+          )}
+          {currentUser && isOwner && (
+            <Link
+              to="/fleet"
+              className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
+            >
+              MY FLEET
+            </Link>
+          )}
+          {currentUser && (
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+            >
+              DECONNEXION
+            </button>
+          )}
+          {!currentUser && (
             <>
               <Link
                 to="/login"
                 className="whitespace-nowrap text-sm font-medium text-gray-500 hover:text-gray-900"
               >
-                Connexion
+                CONNEXION
               </Link>
               <Link
                 to="/register"
                 className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700"
               >
-                Enregistrement
+                ENREGISTREMENT
               </Link>
             </>
           )}

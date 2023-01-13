@@ -30,7 +30,7 @@ export default function Login() {
     dispatch(login({ email, password }))
       .unwrap()
       .then(() => {
-        navigate("/profil");
+        navigate("/car");
         window.location.reload();
       })
       .catch(() => {
@@ -39,7 +39,7 @@ export default function Login() {
   };
 
   if (isLoggedIn) {
-    return <Navigate to="/profil" />;
+    return <Navigate to="/" />;
   }
 
   return (

@@ -78,8 +78,8 @@ export default function Home() {
         {/* Logo Cloud */}
         <div className="bg-gray-100">
           <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-sm font-semibold uppercase text-gray-500 text-2xl tracking-wide pb-12">
-              Ils nous font confiance :
+            <p className="text-center font-normal text-gray-500 text-base tracking-wide pb-12">
+              Nos partenaires particuliers et professionnels
             </p>
             <div className="mt-6 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
               <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
@@ -126,7 +126,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="mt-3 text-3xl font-extrabold text-white">
-                Mettez à louer vos voiture sans permis
+                Mettez à louer vos voitures sans permis
               </p>
               <p className="mt-5 text-lg text-gray-300 py-10 px-4 text-justify">
                 Mettez vos voitures sans permis en location dès maintenant pour
@@ -177,7 +177,7 @@ export default function Home() {
                 S'inscrire
               </Link>
               <Link
-                to="/rent"
+                to="/car"
                 className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-800 bg-indigo-50 hover:bg-indigo-100"
               >
                 Louer
