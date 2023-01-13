@@ -1,3 +1,6 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable no-param-reassign */
+
 import { Link } from "react-router-dom";
 import { Fragment, useState, useEffect } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
@@ -29,8 +32,10 @@ export default function Rent() {
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [dataCar, setDataCar] = useState([]);
+
   const [filtersList, setFiltersList] = useState([]);
   const [filterCar, setFilterCar] = useState([]);
+  const [setDateReserved] = useState([]);
 
   const getUniqueValues = (data, field) => [
     ...new Set(data.map((e) => e[field])),
@@ -45,57 +50,72 @@ export default function Rent() {
     "manufacturer",
   ];
 
-  const fetchFilters = () => {
-    axios
-      .get(`${VITE_BACKEND_URL}/private/vehicles`)
-      .then((res) => {
-        const filters = [];
-        Object.keys(res.data[0]).map((key) => {
-          if (filtersName.includes(key)) {
-            filters.push({
-              id: key,
-              name: key,
-              options: getUniqueValues(res.data, key).map((value) => ({
-                value,
-                label: value,
-                checked: false,
-              })),
-            });
-          }
-          return null;
+  const fetchFilters = (res) => {
+    const filters = [];
+    Object.keys(res.data[0]).map((key) => {
+      if (filtersName.includes(key)) {
+        filters.push({
+          id: key,
+          name: key,
+          options: getUniqueValues(res.data, key).map((value) => ({
+            value,
+            label: value,
+            checked: false,
+          })),
         });
-        setFiltersList(filters);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+      }
+      return null;
+    });
+    setFiltersList(filters);
   };
 
-  const fetchCars = () => {
-    axios
-      .get(`${VITE_BACKEND_URL}/private/vehicles`)
-      .then((res) => {
-        const cars = res.data.map((car) => ({
-          id: car.id,
-          manufacturer: car.manufacturer,
-          model: car.model,
-          type: car.type,
-          year: car.year,
-          color: car.color,
-          city: car.city,
-          picture: car.picture,
-          price: car.price,
-        }));
-        setDataCar(cars);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+  const fetchCars = (res) => {
+    const cars = res.data.map((car) => ({
+      id: car.id,
+      manufacturer: car.manufacturer,
+      model: car.model,
+      type: car.type,
+      year: car.year.toString(),
+      color: car.color,
+      city: car.city,
+      picture: car.picture,
+      price: car.price,
+    }));
+    setDataCar(cars);
+  };
+
+  const filterRentedData = (e) => {
+    return Object.keys(e[0])
+      .map((key) =>
+        typeof e[0][key] === "object" && e[0][key] !== null ? e[0][key] : null
+      )
+      .filter((other) => other !== null);
+  };
+
+  const fetchDates = (data) => {
+    const newDateReserved = filterRentedData(data);
+    let rentDetails = newDateReserved.map((obj) => {
+      return { rentStart: obj.rentStart, rentEnd: obj.rentEnd };
+    });
+    rentDetails = rentDetails.map(
+      (item) =>
+        (item.rentStart = new Date(item.rentStart)) &&
+        (item.rentEnd = new Date(item.rentEnd))
+    );
+    setDateReserved(rentDetails);
   };
 
   useEffect(() => {
-    fetchCars();
-    fetchFilters();
+    axios
+      .get(`${VITE_BACKEND_URL}/private/vehicles`)
+      .then((res) => {
+        fetchCars(res);
+        fetchFilters(res);
+        fetchDates(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   const handleModelFilter = (e) => {
