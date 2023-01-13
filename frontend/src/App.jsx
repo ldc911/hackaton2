@@ -62,7 +62,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/car/:id" element={<CarDetail />} />
-          <Route path="/profil" element={<ProfilPage currentUser={currentUser}/>} />
+          <Route
+            path="/profil"
+            element={<ProfilPage currentUser={currentUser} />}
+          />
           <Route path="/fleet" element={<OwnerCar />} />
         </Routes>
         <Footer />

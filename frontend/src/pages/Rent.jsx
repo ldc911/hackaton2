@@ -374,7 +374,9 @@ export default function Rent() {
                     <h3 className="mt-4 font-medium text-gray-900">
                       {product.name}
                     </h3>
-                    <p className="text-gray-500 text-base italic">{product.manufacturer} {product.model}</p>
+                    <p className="text-gray-500 text-base italic">
+                      {product.manufacturer} {product.model}
+                    </p>
                     <p className="mt-2 font-thin text-sm text-gray-900">
                       {product.price} € / 24 h
                     </p>
