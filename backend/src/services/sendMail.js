@@ -1,8 +1,8 @@
 const nodemailer = require("nodemailer");
 require("dotenv").config();
 
-const sendMail = (req, res) => {
-  const { userName, email, message } = req.body;
+const sendMail = (req, res, next) => {
+  const { firstName, lastName, email } = req.body;
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_SENDIN,
@@ -13,20 +13,20 @@ const sendMail = (req, res) => {
       pass: process.env.SMTP_SENDIN_PASSWORD,
     },
   });
-
+  const message =
+    "Merci pour votre confiance et bienvenue dans la plus grande entreprise de location de véhicules sans permis. Nous sommes ravis de vous conmpter parmi nos utilisateurs et sommes à votre entière disposition. N'hésitez pas à nous contacter si besoin à `eliteFleet@eliteFleet.eliteFleet.fleet`";
   const mailOptions = {
-    from: "notification@cellsforce.net",
+    from: "notification@eliteFleet.com",
     to: email,
-    subject: "Welcome to this new project",
-    text: `Dear: ${userName} \n\n ${message} `,
-    html: `<p> Dear: ${userName} \n\n ${message} </p> <p>${message} </p>`,
+    subject: "Bienvenue chez EliteFleet©",
+    html: `<p> Cher ${lastName}${firstName}, </p> \n\n<p>${message} </p>`,
   };
 
   return transporter
     .sendMail(mailOptions)
-    .then((info) => {
-      console.warn(info);
-      res.status(200).send("Message sent");
+    .then(() => {
+      console.warn();
+      next();
     })
     .catch((err) => {
       console.warn(err);

@@ -2,6 +2,7 @@ import React from "react";
 
 const people = [
   {
+    id: 0,
     name: "Hummer Mini HX",
     title: "rouge 2022",
     role: "Electrique",
@@ -11,6 +12,7 @@ const people = [
       "http://myelectricvehicle.be/wp-content/gallery/mev-hummer-hx-t/MEV-HUMMER-HX-T-Flat-Red-Canopy-Roof-Side-View.png",
   },
   {
+    id: 1,
     name: "Hummer Mini HX",
     title: "rouge 2022",
     role: "Electrique",
@@ -20,8 +22,9 @@ const people = [
       "https://laboutiquegreenlines.com/wp-content/uploads/2021/11/1-1.jpg",
   },
   {
+    id: 2,
     name: "Hummer Mini HX",
-    title: "rouge 2022",
+    title: "noir 2022",
     role: "Electrique",
     email: "janecooper@example.com",
     telephone: "+1-202-555-0170",
@@ -29,6 +32,7 @@ const people = [
       "http://myelectricvehicle.be/wp-content/gallery/mev-hummer-hx-t/MEV-HUMMER-HX-T-Flat-Red-Canopy-Roof-Side-View.png",
   },
   {
+    id: 3,
     name: "Hummer Mini HX",
     title: "rouge 2022",
     role: "Electrique",
