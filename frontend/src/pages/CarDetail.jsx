@@ -132,7 +132,7 @@ export default function CardDetail() {
           <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
               <img
-                src={dataCar[0].image.id1}
+                src={dataCar[0].image.image1}
                 alt={dataCar[0].modele}
                 className="h-full w-full object-cover object-center"
               />
@@ -140,14 +140,14 @@ export default function CardDetail() {
             <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
                 <img
-                  src={dataCar[0].image.id1}
+                  src={dataCar[0].image.image1}
                   alt={dataCar[0].modele}
                   className="h-full w-full object-cover object-center"
                 />
               </div>
               <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
                 <img
-                  src={dataCar[0].image.id1}
+                  src={dataCar[0].image.image1}
                   alt={dataCar[0].modele}
                   className="h-full w-full object-cover object-center"
                 />
@@ -155,7 +155,7 @@ export default function CardDetail() {
             </div>
             <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
               <img
-                src={dataCar[0].image.id1}
+                src={dataCar[0].image.image1}
                 alt={dataCar[0].modele}
                 className="h-full w-full object-cover object-center"
               />
@@ -175,9 +175,11 @@ export default function CardDetail() {
                 <h3 className="sr-only">Description</h3>
                 <div className="space-y-6">
                   <p className="text-base text-gray-900">
-                    Déplacez-vous autrement ! Twizy E-Tech 100% électrique est
-                    le véhicule idéal pour tous vos trajets urbains à 2. Twizy
-                    E-Tech 100% electric peut se conduire avec et sans permis.
+                    Déplacez-vous autrement ! La {dataCar[0].manufacturer}
+                    {dataCar[0].model} est le véhicule idéal pour tous vos
+                    trajets urbains à 2. La {dataCar[0].manufacturer}
+                    {dataCar[0].model} peut se conduire avec et sans permis.
+                    N'hésitez pas à venir l'essayer !
                   </p>
                 </div>
               </div>

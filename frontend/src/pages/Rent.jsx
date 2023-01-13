@@ -1,6 +1,5 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable no-param-reassign */
-
 import { Link } from "react-router-dom";
 import { Fragment, useState, useEffect } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
@@ -70,7 +69,7 @@ export default function Rent() {
       annee: car.annee.toString(),
       couleur: car.couleur,
       ville: car.ville,
-      image: car.image,
+      image: car.image.image1,
       prix: car.prix,
     }));
     setDataCar(cars);
@@ -111,17 +110,6 @@ export default function Rent() {
           className="fixed inset-0 flex z-40 lg:hidden"
           onClose={setMobileFiltersOpen}
         >
-          <Transition.Child
-            as={Fragment}
-            enter="transition-opaville ease-linear duration-300"
-            enterFrom="opaville-0"
-            enterTo="opaville-100"
-            leave="transition-opaville ease-linear duration-300"
-            leaveFrom="opaville-100"
-            leaveTo="opaville-0"
-          >
-            <Dialog.Overlay className="fixed inset-0 bg-black bg-opaville-25" />
-          </Transition.Child>
           <Transition.Child
             as={Fragment}
             enter="transition ease-in-out duration-300 transform"
@@ -357,8 +345,8 @@ export default function Rent() {
                   >
                     <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opaville-75">
                       <img
-                        src={product.image.id1}
-                        alt={product.image.id1}
+                        src={product.image}
+                        alt={product.image}
                         className="w-full h-full object-center object-cover"
                       />
                     </div>
