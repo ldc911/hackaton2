@@ -864,7 +864,7 @@ VALUES (
         1,
         'MACSF',
         'B623E227T3',
-        '{\"image1\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673613127/Hackaton%202/renault-twizy-renault-twizy-bleu_8689418413_gbmo3n.jpg\", \"image2\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673612930/Hackaton%202/S1-renault-twizy-le-coleoptere-branche-salon-caradisiac-electrique-hybride-2021-677376_cnokn7.jpg\"}'
+        '{\"image1\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673613127/Hackaton%202/renault-twizy-renault-twizy-bleu_8689418413_gbmo3n.jpg\", \"image2\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673612930/Hackaton%202/S1-renault-twizy-le-coleoptere-branche-salon-caradisiac-electrique-hybride-2021-677376_cnokn7.jpg\",\"image3\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673613127/Hackaton%202/renault-twizy-renault-twizy-bleu_8689418413_gbmo3n.jpg\", \"image4\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673612930/Hackaton%202/S1-renault-twizy-le-coleoptere-branche-salon-caradisiac-electrique-hybride-2021-677376_cnokn7.jpg\"}'
     );
 
 INSERT INTO
@@ -1032,7 +1032,7 @@ VALUES (
         1,
         'MACSF',
         'B627TZE3',
-        '{\"image1\": \"https://www.ligier.fr/wp-content/uploads/2022/11/M.GO-Must-min.png\"}'
+        '{\"image1\": \"https://www.ligier.fr/wp-content/uploads/2022/11/M.GO-Must-min.png\",\"image2\": \"https://www.ligier.fr/wp-content/uploads/2022/11/M.GO-Must-min.png\",\"image3\": \"https://www.ligier.fr/wp-content/uploads/2022/11/M.GO-Must-min.png\",\"image4\": \"https://www.ligier.fr/wp-content/uploads/2022/11/M.GO-Must-min.png\"}'
     );
 
 INSERT INTO
@@ -1074,7 +1074,7 @@ VALUES (
         1,
         'Libéa',
         'B6ZR27T3',
-        '{\"image1\": \"https://media.gqmagazine.fr/photos/5fa94b2fa6095c6ef665d607/master/w_1600,c_limit/1ville%20jaune%20chateau.jpeg\"}'
+        '{\"image1\": \"https://media.gqmagazine.fr/photos/5fa94b2fa6095c6ef665d607/master/w_1600,c_limit/1ville%20jaune%20chateau.jpeg\",\"image2\": \"https://media.gqmagazine.fr/photos/5fa94b2fa6095c6ef665d607/master/w_1600,c_limit/1ville%20jaune%20chateau.jpeg\",\"image3\": \"https://media.gqmagazine.fr/photos/5fa94b2fa6095c6ef665d607/master/w_1600,c_limit/1ville%20jaune%20chateau.jpeg\",\"image4\": \"https://media.gqmagazine.fr/photos/5fa94b2fa6095c6ef665d607/master/w_1600,c_limit/1ville%20jaune%20chateau.jpeg\"}'
     );
 
 INSERT INTO
@@ -1116,7 +1116,7 @@ VALUES (
         1,
         'MACSF',
         'B62E7T3',
-        '{\"image1\": \"https://www.gsanspermis.com/wp-content/uploads/2020/01/TABLETTE-GSP40.pdf-Adobe-Acrobat-Pro-1.jpg.webp\"}'
+        '{\"image1\": \"https://www.gsanspermis.com/wp-content/uploads/2020/01/TABLETTE-GSP40.pdf-Adobe-Acrobat-Pro-1.jpg.webp\",\"image2\": \"https://www.gsanspermis.com/wp-content/uploads/2020/01/TABLETTE-GSP40.pdf-Adobe-Acrobat-Pro-1.jpg.webp\",\"image3\": \"https://www.gsanspermis.com/wp-content/uploads/2020/01/TABLETTE-GSP40.pdf-Adobe-Acrobat-Pro-1.jpg.webp\",\"image4\": \"https://www.gsanspermis.com/wp-content/uploads/2020/01/TABLETTE-GSP40.pdf-Adobe-Acrobat-Pro-1.jpg.webp\"}'
     );
 
 INSERT INTO
@@ -1158,7 +1158,7 @@ VALUES (
         1,
         'MACSF',
         'B62723T3',
-        '{\"image1\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673601852/VoituresEliteFleet/casalini-1-1200x800_bubdcj.jpg\", \"image2\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673601853/VoituresEliteFleet/casalini-2-600x400_r0i6of.jpg\"}'
+        '{\"image1\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673601852/VoituresEliteFleet/casalini-1-1200x800_bubdcj.jpg\", \"image2\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673601853/VoituresEliteFleet/casalini-2-600x400_r0i6of.jpg\",\"image3\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673601852/VoituresEliteFleet/casalini-1-1200x800_bubdcj.jpg\", \"image4\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673601853/VoituresEliteFleet/casalini-2-600x400_r0i6of.jpg\"}'
     );
 
 INSERT INTO
@@ -1200,7 +1200,7 @@ VALUES (
         1,
         'MACSF',
         'B62723T3',
-        '{\"image1\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673601727/VoituresEliteFleet/2021032818193269509_pj9i5c.jpg\", \"image2\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673601712/VoituresEliteFleet/2021032818192851564_otk3wi.jpg\"}'
+        '{\"image1\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673601727/VoituresEliteFleet/2021032818193269509_pj9i5c.jpg\", \"image2\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673601712/VoituresEliteFleet/2021032818192851564_otk3wi.jpg\",\"image3\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673601727/VoituresEliteFleet/2021032818193269509_pj9i5c.jpg\", \"image4\": \"https://res.cloudinary.com/dhudn6li6/image/upload/v1673601712/VoituresEliteFleet/2021032818192851564_otk3wi.jpg\"}'
     );
 
 INSERT INTO
@@ -1242,7 +1242,7 @@ VALUES (
         1,
         'MAIF',
         'B627T23E3',
-        '{\"image1\": \"https://laboutiquegreenlines.com/wp-content/uploads/2021/11/1-1.jpg\"}'
+        '{\"image1\": \"https://laboutiquegreenlines.com/wp-content/uploads/2021/11/1-1.jpg\",\"image2\": \"https://laboutiquegreenlines.com/wp-content/uploads/2021/11/1-1.jpg\",\"image3\": \"https://laboutiquegreenlines.com/wp-content/uploads/2021/11/1-1.jpg\",\"image4\": \"https://laboutiquegreenlines.com/wp-content/uploads/2021/11/1-1.jpg\"}'
     );
 
 /* Reservation*/
