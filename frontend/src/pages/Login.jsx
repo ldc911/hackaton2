@@ -1,36 +1,47 @@
 /* eslint-disable import/no-unresolved */
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import Cookies from "universal-cookie";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-const { VITE_BACKEND_URL } = import.meta.env;
-const cookies = new Cookies();
+import { login } from "../slices/auth";
+import { clearMessage } from "../slices/message";
 
 export default function Login() {
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
+
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { message } = useSelector((state) => state.message);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(clearMessage());
+  }, [dispatch]);
+
   const [password, setPassword] = useState("");
   const [email, setemail] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post(`${VITE_BACKEND_URL}/api/login`, {
-        email,
-        password,
+    setLoading(true);
+
+    dispatch(login({ email, password }))
+      .unwrap()
+      .then(() => {
+        navigate("/profil");
+        window.location.reload();
       })
-      .then((res) => {
-        cookies.set("token", `${res.data.user.token}`, {
-          path: "/",
-          maxAge: 1 * 60 * 24,
-        });
-        const { user } = res.data;
-        localStorage.setItem("user", JSON.stringify(user));
-        navigate("/car");
-      })
-      .catch((err) => {
-        console.error(err);
+      .catch(() => {
+        setLoading(false);
       });
   };
+
+  if (isLoggedIn) {
+    return <Navigate to="/profil" />;
+  }
+
   return (
     <div className="width flex">
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
@@ -178,10 +189,39 @@ export default function Login() {
                     type="submit"
                     className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
+                    {loading && (
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v8H4z"
+                        />
+                      </svg>
+                    )}
                     Connexion
                   </button>
                 </div>
               </form>
+              {message && (
+                <div className="form-group">
+                  <div className="alert alert-danger" role="alert">
+                    {message}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
