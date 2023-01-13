@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-/* This example requires Tailwind CSS v2.0+ */
-
 export default function OrderSummaries({ dataCar, total }) {
   const car = [
     {
@@ -46,8 +44,8 @@ export default function OrderSummaries({ dataCar, total }) {
               className="py-10 border-b border-gray-200 flex space-x-6"
             >
               <img
-                src={product.imageSrc}
-                alt={product.imageAlt}
+                src={product.imageSrc.id1}
+                alt={product.imageAlt.id1}
                 className="flex-none w-60 h-60 object-center object-cover bg-gray-100 rounded-lg sm:w-80 sm:h-80"
               />
               <div className="flex-auto flex flex-col">
@@ -98,10 +96,10 @@ export default function OrderSummaries({ dataCar, total }) {
                 <dt className="flex font-medium text-gray-900">
                   Réduction
                   <span className="rounded-full bg-gray-200 text-xs text-gray-600 py-0.5 px-2 ml-2">
-                    sépetitetduraliresurtoutsiséattacéetmalécrit50
+                    bigcarsmall10k
                   </span>
                 </dt>
-                <dd className="text-gray-700">-€{reduction} (13,3%)</dd>
+                <dd className="text-gray-700">-€{reduction} (10%)</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="font-medium text-gray-900">Total</dt>
