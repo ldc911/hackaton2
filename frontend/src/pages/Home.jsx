@@ -4,8 +4,8 @@ const metrics = [
   {
     id: 1,
     stat: "8K+",
-    emphasis: "Concessionnaire",
-    rest: "déjà séduit par notre site",
+    emphasis: "Concessionnaires",
+    rest: "déjà séduits par notre site",
   },
   {
     id: 2,
@@ -16,14 +16,20 @@ const metrics = [
   {
     id: 3,
     stat: "98%",
-    emphasis: "Des clients sont toujours satisfaits de nos services,",
-    rest: " comme en témoignent les retours positifs reçus.",
+    emphasis: "Satisfaction des clients :",
+    rest: "le client au coeur de nos préoccupations",
   },
   {
     id: 4,
     stat: "12M+",
-    emphasis: "D'utilisateur",
+    emphasis: "d'utilisateurs",
     rest: "par mois",
+  },
+  {
+    id: 5,
+    stat: "Allez",
+    emphasis: "où vous voulez",
+    rest: "quand vous voulez",
   },
 ];
 
@@ -46,13 +52,13 @@ export default function Home() {
               </div>
               <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
                 <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-                  <span className="block text-white">
-                    Prend le controle de ta vie
+                  <span className="block text-white">Allez-y,</span>
+                  <span className="block text-indigo-200">
+                    même sans permis.
                   </span>
-                  <span className="block text-indigo-200">sans permis</span>
                 </h1>
                 <p className="mt-6 max-w-lg mx-auto text-center text-xl text-indigo-200 sm:max-w-3xl">
-                  Découvrez la flotte de véhicule chez EliteFleet
+                  Découvrez la flotte de véhicules EliteFleet©
                 </p>
                 <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                   <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-1 sm:gap-5">
@@ -60,7 +66,7 @@ export default function Home() {
                       to="/car"
                       className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-indigo-700 bg-white hover:bg-indigo-50 sm:px-8"
                     >
-                      Louer
+                      Louez
                     </Link>
                   </div>
                 </div>
@@ -72,24 +78,24 @@ export default function Home() {
         {/* Logo Cloud */}
         <div className="bg-gray-100">
           <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-sm font-semibold uppercase text-gray-500 tracking-wide">
-              SOUTENUE PAR PLUS DE 5 ENTREPRISES
+            <p className="text-center text-sm font-semibold uppercase text-gray-500 text-2xl tracking-wide pb-12">
+              Ils nous font confiance :
             </p>
             <div className="mt-6 grid grid-cols-2 gap-8 md:grid-cols-6 lg:grid-cols-5">
               <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                <img className="h-12" src="/img/amazon.png" alt="Tuple" />
+                <img className="h-16" src="/img/amazon.png" alt="Tuple" />
               </div>
               <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                <img className="h-12" src="/img/appel.png" alt="Mirage" />
+                <img className="h-16" src="/img/tesla.png" alt="StaticKit" />
               </div>
               <div className="col-span-1 flex justify-center md:col-span-2 lg:col-span-1">
-                <img className="h-12" src="/img/tesla.png" alt="StaticKit" />
+                <img className="h-16" src="/img/appel.png" alt="Mirage" />
               </div>
               <div className="col-span-1 flex justify-center md:col-span-2 md:col-start-2 lg:col-span-1">
-                <img className="h-12" src="/img/google.png" alt="Transistor" />
+                <img className="h-16" src="/img/google.png" alt="Transistor" />
               </div>
               <div className="col-span-2 flex justify-center md:col-span-2 md:col-start-4 lg:col-span-1">
-                <img className="h-12" src="/img/sony.png" alt="Workcation" />
+                <img className="h-16" src="/img/sony.png" alt="Workcation" />
               </div>
             </div>
           </div>
@@ -113,29 +119,29 @@ export default function Home() {
             </div>
           </div>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 xl:grid xl:grid-cols-2 xl:grid-flow-col-dense xl:gap-x-8">
-            <div className="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24">
+            <div className="relative pt-12 pb-64 sm:pt-12 sm:pb-64 xl:col-start-1 xl:pb-24">
               <h2 className="text-sm font-semibold tracking-wide uppercase">
-                <span className="bg-gradient-to-r from-purple-300 to-indigo-300 bg-clip-text text-transparent">
-                  EliteFleet
+                <span className="bg-gradient-to-r from-purple-300 to-indigo-300 bg-clip-text text-transparent text-4xl">
+                  EliteFleet©
                 </span>
               </h2>
               <p className="mt-3 text-3xl font-extrabold text-white">
                 Mettez à louer vos voitures sans permis
               </p>
-              <p className="mt-5 text-lg text-gray-300">
+              <p className="mt-5 text-lg text-gray-300 py-10 px-4 text-justify">
                 Mettez vos voitures sans permis en location dès maintenant pour
                 augmenter votre revenu ! En proposant vos véhicules à la
-                location, vous pourrez les utiliser de manière rentable
-                lorsqu'ils ne sont pas utilisés par vous. De plus, en étant en
-                mesure de proposer des véhicules récents et bien entretenus,
-                vous pourrez vous démarquer de vos concurrents et attirer une
-                clientèle fidèle. Grâce à notre plateforme facile à utiliser,
-                vous pourrez gérer vos locations en temps réel et maximiser
-                votre revenu. N'attendez plus, mettez vos voitures sans permis
-                en location dès maintenant et profitez de tous les avantages de
-                notre plateforme
+                location, vous pourrez rentabiliser les périodes où vous ne vous
+                en servez pas. De plus, en étant en mesure de proposer des
+                véhicules récents et bien entretenus, vous pourrez vous
+                démarquer de vos concurrents et attirer une clientèle fidèle.
+                Grâce à notre plateforme facile à utiliser, vous pourrez gérer
+                vos locations en temps réel et maximiser vos revenus. N'attendez
+                plus, mettez vos voitures sans permis en location dès maintenant
+                et profitez de tous les avantages de notre plateforme
+                EliteFleet©
               </p>
-              <div className="mt-12 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2">
+              <div className="mt-16 grid grid-cols-1 gap-y-12 gap-x-6 sm:grid-cols-2 px-4">
                 {metrics.map((item) => (
                   <p key={item.id}>
                     <span className="block text-2xl font-bold text-white">
@@ -158,9 +164,9 @@ export default function Home() {
         <div className="bg-white">
           <div className="max-w-4xl mx-auto py-16 px-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 lg:flex lg:items-center lg:justify-between">
             <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              <span className="block">Pret à démarrer</span>
+              <span className="block">Prêt à démarrer</span>
               <span className="block bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                Clique et créer ton compte.
+                Cliquez et créez votre compte.
               </span>
             </h2>
             <div className="mt-6 space-y-4 sm:space-y-0 sm:flex sm:space-x-5">

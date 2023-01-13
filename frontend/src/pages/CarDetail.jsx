@@ -165,7 +165,7 @@ export default function CardDetail() {
                 </div>
               </div>
               <div className="mt-10">
-                <h3 className="text-sm font-medium text-gray-900">Details</h3>
+                <h3 className="text-sm font-medium text-gray-900">Détails</h3>
 
                 <div className="mt-4">
                   <ul className="list-disc space-y-2 pl-4 text-sm">
@@ -200,13 +200,13 @@ export default function CardDetail() {
             {/* Calendrier */}
             <div className="mt-4 lg:mt-0 lg:row-span-2">
               <div className="flex flex-col justify-center items-center mt-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
-                <h2 className="sr-only">Product information</h2>
+                <h2 className="sr-only">Information produit</h2>
                 <p className="text-3xl tracking-tight text-gray-900">
                   {carPrice}€{" "}
                 </p>
                 <p className="text-sm text-gray-500">/day</p>
                 <p className="text-xl text-center text-gray-900 flex flex-col items-center">
-                  Booking
+                  Réservation
                 </p>
                 <DateRange
                   disabledDates={dateReserved}
@@ -226,7 +226,7 @@ export default function CardDetail() {
                   type="submit"
                   className="mt-10 bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
-                  Reserver
+                  Réserver
                 </button>
               </div>
             </div>
