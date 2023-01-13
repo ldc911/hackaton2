@@ -1,4 +1,3 @@
-import React from "react";
 import { PhoneIcon } from "@heroicons/react/solid";
 
 const tabs = [{ name: "Profile", href: "#", current: true }];
