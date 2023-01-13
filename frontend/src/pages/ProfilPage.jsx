@@ -1,33 +1,25 @@
-import { PhoneIcon } from "@heroicons/react/solid";
+import React from "react";
 
-const tabs = [{ name: "Profile", href: "#", current: true }];
-const profile = {
-  name: "Ricardo Cooper",
-  imageUrl:
-    "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-  coverImageUrl:
-    "https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-  about: `
-    <p>Tincidunt quam neque in cursus viverra orci, dapibus nec tristique. Nullam ut sit dolor consectetur urna, dui cras nec sed. Cursus risus congue arcu aenean posuere aliquam.</p>
-    <p>Et vivamus lorem pulvinar nascetur non. Pulvinar a sed platea rhoncus ac mauris amet. Urna, sem pretium sit pretium urna, senectus vitae. Scelerisque fermentum, cursus felis dui suspendisse velit pharetra. Augue et duis cursus maecenas eget quam lectus. Accumsan vitae nascetur pharetra rhoncus praesent dictum risus suspendisse.</p>
-  `,
-  fields: {
-    téléphone: "06 20 21 22 23",
-    Email: "ricardocooper@example.com",
-    Titre: "Senior Front-End Developer",
-    Profession: "Product Development",
-    Ville: "Toulouse",
-    Adresse: "Oasis, 4th floor",
-    Autre: "$145,000",
-    Age: "June 8, 1990",
-  },
-};
+const tabs = [{ name: "Profil", href: "#", current: true }];
+
+const { user } = JSON.parse(localStorage.getItem("user"));
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Example() {
+  const profile = {
+    name: `${user.firstName} ${user.lastName}`,
+    imageUrl: user.avatar,
+    coverImageUrl: "https://picsum.photos/1950/1300",
+    fields: {
+      Email: user.email,
+      Ville: user.city,
+      Date_de_naissance: user.birthday.split("T")[0],
+      Permis_n: user.drivingLicenseNumber,
+    },
+  };
   return (
     <div className="">
       <div className="">
@@ -57,18 +49,6 @@ export default function Example() {
                         <h1 className="text-2xl font-bold text-gray-900 truncate">
                           {profile.name}
                         </h1>
-                      </div>
-                      <div className="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
-                        <button
-                          type="button"
-                          className="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
-                        >
-                          <PhoneIcon
-                            className="-ml-1 mr-2 h-5 w-5 text-gray-400"
-                            aria-hidden="true"
-                          />
-                          <span>Téléphone</span>
-                        </button>
                       </div>
                     </div>
                   </div>
@@ -118,17 +98,6 @@ export default function Example() {
                       </dd>
                     </div>
                   ))}
-                  <div className="sm:col-span-2">
-                    <dt className="text-sm font-medium text-gray-500">
-                      {" "}
-                      à propos de :
-                    </dt>
-                    <dd
-                      className="mt-1 max-w-prose text-sm text-gray-900 space-y-5"
-                      // eslint-disable-next-line react/no-danger
-                      dangerouslySetInnerHTML={{ __html: profile.about }}
-                    />
-                  </div>
                 </dl>
               </div>
             </div>
