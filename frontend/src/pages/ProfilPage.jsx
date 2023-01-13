@@ -1,32 +1,25 @@
 import React from "react";
 
-const tabs = [{ name: "Profile", href: "#", current: true }];
-const profile = {
-  name: "Ricardo Cooper",
-  imageUrl:
-    "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80",
-  coverImageUrl: "https://picsum.photos/1950/1300",
-  about: `
-    <p>Tincidunt quam neque in cursus viverra orci, dapibus nec tristique. Nullam ut sit dolor consectetur urna, dui cras nec sed. Cursus risus congue arcu aenean posuere aliquam.</p>
-    <p>Et vivamus lorem pulvinar nascetur non. Pulvinar a sed platea rhoncus ac mauris amet. Urna, sem pretium sit pretium urna, senectus vitae. Scelerisque fermentum, cursus felis dui suspendisse velit pharetra. Augue et duis cursus maecenas eget quam lectus. Accumsan vitae nascetur pharetra rhoncus praesent dictum risus suspendisse.</p>
-  `,
-  fields: {
-    téléphone: "06 20 21 22 23",
-    Email: "ricardocooper@example.com",
-    Titre: "Senior Front-End Developer",
-    Profession: "Product Development",
-    Ville: "Toulouse",
-    Adresse: "Oasis, 4th floor",
-    Autre: "$145,000",
-    Age: "June 8, 1990",
-  },
-};
+const tabs = [{ name: "Profil", href: "#", current: true }];
+
+const user = JSON.parse(localStorage.getItem("user"));
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Example() {
+  const profile = {
+    name: `${user.firstName} ${user.lastName}`,
+    imageUrl: user.avatar,
+    coverImageUrl: "https://picsum.photos/1950/1300",
+    fields: {
+      Email: user.email,
+      Ville: user.city,
+      Date_de_naissance: user.birthday.split("T")[0],
+      Permis_n: user.drivingLicenseNumber,
+    },
+  };
   return (
     <div className="">
       <div className="">
