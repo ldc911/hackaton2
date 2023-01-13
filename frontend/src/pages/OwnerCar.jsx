@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+// eslint-disable-next-line import/no-unresolved
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+// eslint-disable-next-line import/no-unresolved
 import { Pie } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -33,6 +35,7 @@ const data2 = {
 
 const people = [
   {
+    id: 0,
     name: "Hummer Mini HX",
     title: "rouge 2022",
     role: "Electrique",

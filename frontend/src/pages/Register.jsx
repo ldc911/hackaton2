@@ -27,23 +27,15 @@ export default function Register() {
     setError("");
 
     axios
-      .post(
-        `${VITE_BACKEND_URL}/api/register`,
-        {
-          email,
-          password,
-          firstname,
-          lastname,
-          city,
-          birthday,
-          drivingLicense,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .post(`${VITE_BACKEND_URL}/api/register`, {
+        email,
+        password,
+        firstname,
+        lastname,
+        city,
+        birthday,
+        drivingLicense,
+      })
       .then(function handleResponse() {
         navigate("/login");
       });
