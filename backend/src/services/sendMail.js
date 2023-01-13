@@ -14,7 +14,7 @@ const sendMail = (req, res, next) => {
     },
   });
   const message =
-    "Merci pour votre confiance et bienvenue dans la plus grande entreprise de location de véhicules sans permis. Nous sommes ravis de vous conmpter parmi nos utilisateurs et sommes à votre entière disposition. N'hésitez pas à nous contacter si besoin à `eliteFleet@eliteFleet.eliteFleet.fleet`";
+    "Merci pour votre confiance et bienvenue dans la plus grande entreprise de location de véhicules sans permis. \n\n Nous sommes ravis de vous compter parmi nos utilisateurs et sommes à votre entière disposition.\n\n N'hésitez pas à nous contacter si besoin à `eliteFleet@eliteFleet.eliteFleet.fleet`\n\n Cordialement.";
   const mailOptions = {
     from: "notification@eliteFleet.com",
     to: email,
