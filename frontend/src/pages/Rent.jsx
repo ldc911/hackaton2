@@ -70,7 +70,7 @@ export default function Rent() {
       annee: car.annee.toString(),
       couleur: car.couleur,
       ville: car.ville,
-      image: car.image,
+      image: car.image.image1,
       prix: car.prix,
     }));
     setDataCar(cars);
@@ -357,8 +357,8 @@ export default function Rent() {
                   >
                     <div className="w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden bg-gray-100 group-hover:opaville-75">
                       <img
-                        src={product.image.id1}
-                        alt={product.image.id1}
+                        src={product.image}
+                        alt={product.image}
                         className="w-full h-full object-center object-cover"
                       />
                     </div>

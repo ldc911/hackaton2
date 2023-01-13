@@ -430,8 +430,8 @@ export default function Order({ carPrice, dataCar, duration, close }) {
                       <li key={product.id} className="flex py-6 px-4 sm:px-6">
                         <div className="flex-shrink-0">
                           <img
-                            src={product.imageSrc.id1}
-                            alt={product.imageAlt.id1}
+                            src={product.imageSrc.image1}
+                            alt={product.imageAlt.image1}
                             className="w-20 rounded-md"
                           />
                         </div>

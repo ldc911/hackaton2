@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-unresolved */
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -20,24 +20,30 @@ export default function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const user = {
+      email,
+      password,
+      prenom,
+      nom,
+      ville,
+      dateNaissance,
+      drivingLicense,
+    };
     if (password !== confirmPassword) {
-      setError("Password and confirm password should be the same");
+      setError("Vos mot de passes ne correspondent pas");
       return;
     }
     setError("");
 
     axios
       .post(`${VITE_BACKEND_URL}/api/register`, {
-        email,
-        password,
-        prenom,
-        nom,
-        ville,
-        dateNaissance,
-        drivingLicense,
+        user,
       })
       .then(function handleResponse() {
         navigate("/login");
+      })
+      .catch(() => {
+        setError("Une erreur est survenue");
       });
   };
 
