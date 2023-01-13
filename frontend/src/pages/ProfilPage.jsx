@@ -10,10 +10,12 @@ function classNames(...classes) {
 export default function ProfilPage() {
   const [profile, setProfile] = useState({});
   const { user: currentUser } = useSelector((state) => state.auth);
+
   const [isOwner, setIsOwner] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+
   useEffect(() => {
-    window.location.replace("/");
+    if (isOwner || isAdmin) window.location.replace("/");
   }, [isOwner][isAdmin]);
 
   useEffect(() => {
