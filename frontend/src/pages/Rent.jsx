@@ -8,6 +8,7 @@ import {
   MinusSmIcon,
   PlusSmIcon,
 } from "@heroicons/react/solid";
+// eslint-disable-next-line import/no-unresolved
 import DatePicker from "@components/DatePicker";
 import axios from "axios";
 
