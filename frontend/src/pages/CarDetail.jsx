@@ -158,9 +158,11 @@ export default function CardDetail() {
                 <h3 className="sr-only">Description</h3>
                 <div className="space-y-6">
                   <p className="text-base text-gray-900">
-                    Déplacez-vous autrement ! Twizy E-Tech 100% électrique est
-                    le véhicule idéal pour tous vos trajets urbains à 2. Twizy
-                    E-Tech 100% electric peut se conduire avec et sans permis.
+                    Déplacez-vous autrement ! La {dataCar[0].manufacturer}
+                    {dataCar[0].model} est le véhicule idéal pour tous vos
+                    trajets urbains à 2. La {dataCar[0].manufacturer}
+                    {dataCar[0].model} peut se conduire avec et sans permis.
+                    N'hésitez pas à venir l'essayer !
                   </p>
                 </div>
               </div>

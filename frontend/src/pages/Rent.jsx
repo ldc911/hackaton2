@@ -94,6 +94,8 @@ export default function Rent() {
   };
 
   useEffect(() => {
+    console.warn(filtersList);
+    console.warn(filterCar);
     fetchCars();
     fetchFilters();
   }, []);
