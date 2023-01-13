@@ -47,8 +47,8 @@ const getUrlImageByEmail = (req, res, next) => {
   const size = 200; // Size of images
   const hash = md5(email.trim().toLowerCase());
 
-  req.body.profilePicture = `https://www.gravatar.com/avatar/$%7Bhash%7D?d=$%7B
-    option[Math.floor(Math.random() option.length + 1)]
+  req.body.profilePicture = `https://www.gravatar.com/avatar/${hash}?d=${
+    option[Math.floor(Math.random() * option.length + 1)]
   }&s=${size}`;
   next();
 };
